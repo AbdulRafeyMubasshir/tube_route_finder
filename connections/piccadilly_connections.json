@@ -1,0 +1,110 @@
+[
+    {
+      "from": "South Kensington",
+      "to": "Knightsbridge",
+      "line": "Piccadilly (Eastbound)",
+      "time": 2.48
+    },
+    {
+      "from": "Knightsbridge",
+      "to": "Hyde Park Corner",
+      "line": "Piccadilly (Eastbound)",
+      "time": 1.10
+    },
+    {
+      "from": "Hyde Park Corner",
+      "to": "Green Park",
+      "line": "Piccadilly (Eastbound)",
+      "time": 1.73
+    },
+    {
+      "from": "Green Park",
+      "to": "Piccadilly Circus",
+      "line": "Piccadilly (Eastbound)",
+      "time": 1.10
+    },
+    {
+      "from": "Piccadilly Circus",
+      "to": "Leicester Square",
+      "line": "Piccadilly (Eastbound)",
+      "time": 1.17
+    },
+    {
+      "from": "Leicester Square",
+      "to": "Covent Garden",
+      "line": "Piccadilly (Eastbound)",
+      "time": 0.77
+    },
+    {
+      "from": "Covent Garden",
+      "to": "Holborn",
+      "line": "Piccadilly (Eastbound)",
+      "time": 1.40
+    },
+    {
+      "from": "Holborn",
+      "to": "Russell Square",
+      "line": "Piccadilly (Eastbound)",
+      "time": 1.55
+    },
+    {
+      "from": "Russell Square",
+      "to": "Kings Cross St Pancras",
+      "line": "Piccadilly (Eastbound)",
+      "time": 1.90
+    },
+    {
+      "from": "Kings Cross St Pancras",
+      "to": "Russell Square",
+      "line": "Piccadilly (Westbound)",
+      "time": 1.67
+    },
+    {
+      "from": "Russell Square",
+      "to": "Holborn",
+      "line": "Piccadilly (Westbound)",
+      "time": 1.37
+    },
+    {
+      "from": "Holborn",
+      "to": "Covent Garden",
+      "line": "Piccadilly (Westbound)",
+      "time": 1.53
+    },
+    {
+      "from": "Covent Garden",
+      "to": "Leicester Square",
+      "line": "Piccadilly (Westbound)",
+      "time": 0.77
+    },
+    {
+      "from": "Leicester Square",
+      "to": "Piccadilly Circus",
+      "line": "Piccadilly (Westbound)",
+      "time": 1.07
+    },
+    {
+      "from": "Piccadilly Circus",
+      "to": "Green Park",
+      "line": "Piccadilly (Westbound)",
+      "time": 1.18
+    },
+    {
+      "from": "Green Park",
+      "to": "Hyde Park Corner",
+      "line": "Piccadilly (Westbound)",
+      "time": 1.73
+    },
+    {
+      "from": "Hyde Park Corner",
+      "to": "Knightsbridge",
+      "line": "Piccadilly (Westbound)",
+      "time": 1.12
+    },
+    {
+      "from": "Knightsbridge",
+      "to": "South Kensington",
+      "line": "Piccadilly (Westbound)",
+      "time": 2.23
+    }
+]

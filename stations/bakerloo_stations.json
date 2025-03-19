@@ -1,0 +1,20 @@
+{
+    "stations": [
+      {
+        "name": "Regents Park",
+        "x": 320,
+        "y": 400
+      },
+      {
+        "name": "Piccadilly Circus",
+        "x": 400,
+        "y": 600
+      },
+      {
+        "name": "Charing Cross",
+        "x": 520,
+        "y": 630
+      }
+    ]
+  }
+  

@@ -1,0 +1,62 @@
+[
+    {
+      "from": "Baker Street",
+      "to": "Regents Park",
+      "line": "Bakerloo (Southbound)",
+      "time": 1.68
+    },
+    {
+      "from": "Regents Park",
+      "to": "Oxford Circus",
+      "line": "Bakerloo (Southbound)",
+      "time": 1.85
+    },
+    {
+      "from": "Oxford Circus",
+      "to": "Piccadilly Circus",
+      "line": "Bakerloo (Southbound)",
+      "time": 1.95
+    },
+    {
+      "from": "Piccadilly Circus",
+      "to": "Charing Cross",
+      "line": "Bakerloo (Southbound)",
+      "time": 1.35
+    },
+    {
+      "from": "Charing Cross",
+      "to": "Embankment",
+      "line": "Bakerloo (Southbound)",
+      "time": 0.95
+    },
+    {
+      "from": "Embankment",
+      "to": "Charing Cross",
+      "line": "Bakerloo (Northbound)",
+      "time": 0.97
+    },
+    {
+      "from": "Charing Cross",
+      "to": "Piccadilly Circus",
+      "line": "Bakerloo (Northbound)",
+      "time": 1.60
+    },
+    {
+      "from": "Piccadilly Circus",
+      "to": "Oxford Circus",
+      "line": "Bakerloo (Northbound)",
+      "time": 2.02
+    },
+    {
+      "from": "Oxford Circus",
+      "to": "Regents Park",
+      "line": "Bakerloo (Northbound)",
+      "time": 1.72
+    },
+    {
+      "from": "Regents Park",
+      "to": "Baker Street",
+      "line": "Bakerloo (Northbound)",
+      "time": 1.65
+    }
+]

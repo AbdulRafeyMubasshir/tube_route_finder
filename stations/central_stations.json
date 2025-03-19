@@ -1,0 +1,45 @@
+{
+    "stations": [
+      {
+        "name": "Queensway",
+        "x": 200,
+        "y": 525
+      },
+      {
+        "name": "Lancaster Gate",
+        "x": 225,
+        "y": 500
+      },
+      {
+        "name": "Marble Arch",
+        "x": 250,
+        "y": 475
+      },
+      {
+        "name": "Tottenham Court Road",
+        "x": 430,
+        "y": 500
+      },
+      {
+        "name": "Holborn",
+        "x": 550,
+        "y": 500
+      },
+      {
+        "name": "Chancery Lane",
+        "x": 640,
+        "y": 500
+      },
+      {
+        "name": "St Paul's",
+        "x": 760,
+        "y": 500
+      },
+      {
+        "name": "Bank",
+        "x": 880,
+        "y": 500
+      }
+    ]
+  }
+  

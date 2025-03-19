@@ -1,0 +1,134 @@
+[
+    {
+      "from": "Notting Hill Gate",
+      "to": "Queensway",
+      "line": "Central (Eastbound)",
+      "time": 1.17
+    },
+    {
+      "from": "Queensway",
+      "to": "Lancaster Gate",
+      "line": "Central (Eastbound)",
+      "time": 1.35
+    },
+    {
+      "from": "Lancaster Gate",
+      "to": "Marble Arch",
+      "line": "Central (Eastbound)",
+      "time": 1.92
+    },
+    {
+      "from": "Marble Arch",
+      "to": "Bond Street",
+      "line": "Central (Eastbound)",
+      "time": 1.00
+    },
+    {
+      "from": "Bond Street",
+      "to": "Oxford Circus",
+      "line": "Central (Eastbound)",
+      "time": 1.10
+    },
+    {
+      "from": "Oxford Circus",
+      "to": "Tottenham Court Road",
+      "line": "Central (Eastbound)",
+      "time": 0.98
+    },
+    {
+      "from": "Tottenham Court Road",
+      "to": "Holborn",
+      "line": "Central (Eastbound)",
+      "time": 1.63
+    },
+    {
+      "from": "Holborn",
+      "to": "Chancery Lane",
+      "line": "Central (Eastbound)",
+      "time": 0.87
+    },
+    {
+      "from": "Chancery Lane",
+      "to": "St Paul's",
+      "line": "Central (Eastbound)",
+      "time": 1.52
+    },
+    {
+      "from": "St Paul's",
+      "to": "Bank",
+      "line": "Central (Eastbound)",
+      "time": 1.62
+    },
+    {
+      "from": "Bank",
+      "to": "Liverpool Street",
+      "line": "Central (Eastbound)",
+      "time": 1.62
+    },
+    {
+      "from": "Liverpool Street",
+      "to": "Bank",
+      "line": "Central (Westbound)",
+      "time": 1.65
+    },
+    {
+      "from": "Bank",
+      "to": "St Paul's",
+      "line": "Central (Westbound)",
+      "time": 1.63
+    },
+    {
+      "from": "St Paul's",
+      "to": "Chancery Lane",
+      "line": "Central (Westbound)",
+      "time": 1.52
+    },
+    {
+      "from": "Chancery Lane",
+      "to": "Holborn",
+      "line": "Central (Westbound)",
+      "time": 0.85
+    },
+    {
+      "from": "Holborn",
+      "to": "Tottenham Court Road",
+      "line": "Central (Westbound)",
+      "time": 1.38
+    },
+    {
+      "from": "Tottenham Court Road",
+      "to": "Oxford Circus",
+      "line": "Central (Westbound)",
+      "time": 1.02
+    },
+    {
+      "from": "Oxford Circus",
+      "to": "Bond Street",
+      "line": "Central (Westbound)",
+      "time": 1.03
+    },
+    {
+      "from": "Bond Street",
+      "to": "Marble Arch",
+      "line": "Central (Westbound)",
+      "time": 1.02
+    },
+    {
+      "from": "Marble Arch",
+      "to": "Lancaster Gate",
+      "line": "Central (Westbound)",
+      "time": 1.62
+    },
+    {
+      "from": "Lancaster Gate",
+      "to": "Queensway",
+      "line": "Central (Westbound)",
+      "time": 1.65
+    },
+    {
+      "from": "Queensway",
+      "to": "Notting Hill Gate",
+      "line": "Central (Westbound)",
+      "time": 1.18
+    }
+]

@@ -1,0 +1,30 @@
+{
+    "stations": [
+      {
+        "name": "Knightsbridge",
+        "x": 200,
+        "y": 650
+      },
+      {
+        "name": "Hyde Park Corner",
+        "x": 225,
+        "y": 625
+      },
+      {
+        "name": "Leicester Square",
+        "x": 450,
+        "y": 562
+      },
+      {
+        "name": "Covent Garden",
+        "x": 490,
+        "y": 540
+      },
+      {
+        "name": "Russell Square",
+        "x": 550,
+        "y": 400
+      }
+    ]
+  }
+  
