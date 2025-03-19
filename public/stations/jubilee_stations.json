@@ -1,0 +1,130 @@
+{
+    "stations": [
+      {
+        "name": "Stanmore",
+        "x": 0,
+        "y": 15
+      },
+      {
+        "name": "Canons Park",
+        "x": 0,
+        "y": 60
+      },
+      {
+        "name": "Queensbury",
+        "x": 0,
+        "y": 110
+      },
+      {
+        "name": "Kingsbury",
+        "x": 0,
+        "y": 160
+      },
+      {
+        "name": "Wembley Park",
+        "x": 25,
+        "y": 177.5
+      },
+      {
+        "name": "Neasden",
+        "x": 50,
+        "y": 195
+      },
+      {
+        "name": "Dollis Hill",
+        "x": 75,
+        "y": 212.5
+      },
+      {
+        "name": "Willesden Green",
+        "x": 100,
+        "y": 230
+      },
+      {
+        "name": "Kilburn",
+        "x": 125,
+        "y": 247.5
+      },
+      {
+        "name": "West Hampstead",
+        "x": 150,
+        "y": 265
+      },
+      {
+        "name": "Finchley Road",
+        "x": 175,
+        "y": 282.5
+      },
+      {
+        "name": "Swiss Cottage",
+        "x": 200,
+        "y": 300
+      },
+      {
+        "name": "St John's Wood",
+        "x": 225,
+        "y": 320
+      },
+      {
+        "name": "Baker Street",
+        "x": 250,
+        "y": 340
+      },
+      {
+        "name": "Bond Street",
+        "x": 275,
+        "y": 450
+      },
+      {
+        "name": "Waterloo",
+        "x": 500,
+        "y": 900
+      },
+      {
+        "name": "Southwark",
+        "x": 600,
+        "y": 900
+      },
+      {
+        "name": "London Bridge",
+        "x": 700,
+        "y": 800
+      },
+      {
+        "name": "Bermondsey",
+        "x": 800,
+        "y": 800
+      },
+      {
+        "name": "Canada Water",
+        "x": 900,
+        "y": 800
+      },
+      {
+        "name": "Canary Wharf",
+        "x": 1000,
+        "y": 800
+      },
+      {
+        "name": "North Greenwich",
+        "x": 1200,
+        "y": 800
+      },
+      {
+        "name": "Canning Town",
+        "x": 1200,
+        "y": 700
+      },
+      {
+        "name": "West Ham",
+        "x": 1200,
+        "y": 600
+      },
+      {
+        "name": "Stratford",
+        "x": 1200,
+        "y": 500
+      }
+    ]
+  }
+  

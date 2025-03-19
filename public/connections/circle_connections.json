@@ -1,0 +1,434 @@
+[
+    {
+      "from": "Edgware Road",
+      "to": "Paddington Circle",
+      "line": "Circle (Inner)",
+      "time": 1.85
+    },
+    {
+      "from": "Paddington Circle",
+      "to": "Bayswater",
+      "line": "Circle (Inner)",
+      "time": 1.65
+    },
+    {
+      "from": "Bayswater",
+      "to": "Notting Hill Gate",
+      "line": "Circle (Inner)",
+      "time": 1.47
+    },
+    {
+      "from": "Notting Hill Gate",
+      "to": "High Street Kensington",
+      "line": "Circle (Inner)",
+      "time": 1.58
+    },
+    {
+      "from": "High Street Kensington",
+      "to": "Gloucester Road",
+      "line": "Circle (Inner)",
+      "time": 1.80
+    },
+    {
+      "from": "Gloucester Road",
+      "to": "South Kensington",
+      "line": "Circle (Inner)",
+      "time": 1.43
+    },
+    {
+      "from": "South Kensington",
+      "to": "Sloane Square",
+      "line": "Circle (Inner)",
+      "time": 1.98
+    },
+    {
+      "from": "Sloane Square",
+      "to": "Victoria",
+      "line": "Circle (Inner)",
+      "time": 1.80
+    },
+    {
+      "from": "Victoria",
+      "to": "St James Park",
+      "line": "Circle (Inner)",
+      "time": 1.42
+    },
+    {
+      "from": "St James Park",
+      "to": "Westminster",
+      "line": "Circle (Inner)",
+      "time": 1.50
+    },
+    {
+      "from": "Westminster",
+      "to": "Embankment",
+      "line": "Circle (Inner)",
+      "time": 1.37
+    },
+    {
+      "from": "Embankment",
+      "to": "Temple",
+      "line": "Circle (Inner)",
+      "time": 1.37
+    },
+    {
+      "from": "Temple",
+      "to": "Blackfriars",
+      "line": "Circle (Inner)",
+      "time": 1.40
+    },
+    {
+      "from": "Blackfriars",
+      "to": "Mansion House",
+      "line": "Circle (Inner)",
+      "time": 1.52
+    },
+    {
+      "from": "Mansion House",
+      "to": "Cannon Street",
+      "line": "Circle (Inner)",
+      "time": 0.98
+    },
+    {
+      "from": "Cannon Street",
+      "to": "Monument",
+      "line": "Circle (Inner)",
+      "time": 0.97
+    },
+    {
+      "from": "Monument",
+      "to": "Tower Hill",
+      "line": "Circle (Inner)",
+      "time": 1.80
+    },
+    {
+      "from": "Tower Hill",
+      "to": "Aldgate",
+      "line": "Circle (Inner)",
+      "time": 1.30
+    },
+    {
+      "from": "Aldgate",
+      "to": "Liverpool Street",
+      "line": "Circle (Inner)",
+      "time": 1.75
+    },
+    {
+      "from": "Liverpool Street",
+      "to": "Moorgate",
+      "line": "Circle (Inner)",
+      "time": 1.32
+    },
+    {
+      "from": "Moorgate",
+      "to": "Barbican",
+      "line": "Circle (Inner)",
+      "time": 1.38
+    },
+    {
+      "from": "Barbican",
+      "to": "Farringdon",
+      "line": "Circle (Inner)",
+      "time": 1.20
+    },
+    {
+      "from": "Farringdon",
+      "to": "Kings Cross St Pancras",
+      "line": "Circle (Inner)",
+      "time": 3.12
+    },
+    {
+      "from": "Kings Cross St Pancras",
+      "to": "Euston Square",
+      "line": "Circle (Inner)",
+      "time": 1.65
+    },
+    {
+      "from": "Euston Square",
+      "to": "Great Portland Street",
+      "line": "Circle (Inner)",
+      "time": 1.30
+    }, 
+    {
+      "from": "Great Portland Street",
+      "to": "Baker Street",
+      "line": "Circle (Inner)",
+      "time": 1.90
+    },
+    {
+      "from": "Baker Street",
+      "to": "Edgware Road",
+      "line": "Circle (Inner)",
+      "time": 1.47
+    },
+    {
+      "from": "Edgware Road",
+      "to": "Paddington H C",
+      "line": "Circle (Inner)",
+      "time": 2.33
+    },
+    {
+      "from": "Paddington H C",
+      "to": "Royal Oak",
+      "line": "Circle (Inner)",
+      "time": 1.33
+    },
+    {
+      "from": "Royal Oak",
+      "to": "Westbourne Park",
+      "line": "Circle (Inner)",
+      "time": 1.72
+    },
+    {
+      "from": "Westbourne Park",
+      "to": "Ladbroke Grove",
+      "line": "Circle (Inner)",
+      "time": 1.48
+    },
+    {
+      "from": "Ladbroke Grove",
+      "to": "Latimer Road",
+      "line": "Circle (Inner)",
+      "time": 1.28
+    },
+    {
+      "from": "Latimer Road",
+      "to": "Wood Lane",
+      "line": "Circle (Inner)",
+      "time": 0
+    },
+    {
+      "from": "Wood Lane",
+      "to": "Shepherds Bush Market",
+      "line": "Circle (Inner)",
+      "time": 0
+    },
+    {
+      "from": "Shepherds Bush Market",
+      "to": "Goldhawk Road",
+      "line": "Circle (Inner)",
+      "time": 1.15
+    },
+    {
+      "from": "Goldhawk Road",
+      "to": "Hammersmith H C",
+      "line": "Circle (Inner)",
+      "time": 2.43
+    },
+    {
+      "from": "Hammersmith H C",
+      "to": "Goldhawk Road",
+      "line": "Circle (Outer)",
+      "time": 2.05
+    },
+    {
+      "from": "Goldhawk Road",
+      "to": "Shepherds Bush Market",
+      "line": "Circle (Outer)",
+      "time": 1.15
+    },
+    {
+      "from": "Shepherds Bush Market",
+      "to": "Wood Lane",
+      "line": "Circle (Outer)",
+      "time": 0
+    },
+    {
+      "from": "Wood Lane",
+      "to": "Latimer Road",
+      "line": "Circle (Outer)",
+      "time": 0
+    },
+    {
+      "from": "Latimer Road",
+      "to": "Ladbroke Grove",
+      "line": "Circle (Outer)",
+      "time": 1.37
+    },
+    {
+      "from": "Ladbroke Grove",
+      "to": "Westbourne Park",
+      "line": "Circle (Outer)",
+      "time": 1.48
+    },
+    {
+      "from": "Westbourne Park",
+      "to": "Royal Oak",
+      "line": "Circle (Outer)",
+      "time": 1.78
+    },
+    {
+      "from": "Royal Oak",
+      "to": "Paddington H C",
+      "line": "Circle (Outer)",
+      "time": 1.52
+    },
+    {
+      "from": "Paddington H C",
+      "to": "Edgware Road",
+      "line": "Circle (Outer)",
+      "time": 2.33
+    },
+    {
+      "from": "Edgware Road",
+      "to": "Baker Street",
+      "line": "Circle (Outer)",
+      "time": 1.47
+    },
+    {
+      "from": "Baker Street",
+      "to": "Great Portland Street",
+      "line": "Circle (Outer)",
+      "time": 1.90
+    },
+    {
+      "from": "Great Portland Street",
+      "to": "Euston Square",
+      "line": "Circle (Outer)",
+      "time": 1.25
+    },
+    {
+      "from": "Euston Square",
+      "to": "Kings Cross St Pancras",
+      "line": "Circle (Outer)",
+      "time": 1.75
+    },
+    {
+      "from": "Kings Cross St Pancras",
+      "to": "Farringdon",
+      "line": "Circle (Outer)",
+      "time": 2.98
+    },
+    {
+      "from": "Farringdon",
+      "to": "Barbican",
+      "line": "Circle (Outer)",
+      "time": 1.22
+    },
+    {
+      "from": "Barbican",
+      "to": "Moorgate",
+      "line": "Circle (Outer)",
+      "time": 1.32
+    },
+    {
+      "from": "Moorgate",
+      "to": "Liverpool Street",
+      "line": "Circle (Outer)",
+      "time": 1.18
+    },
+    {
+      "from": "Liverpool Street",
+      "to": "Aldgate",
+      "line": "Circle (Outer)",
+      "time": 2.18
+    },
+    {
+      "from": "Aldgate",
+      "to": "Tower Hill",
+      "line": "Circle (Outer)",
+      "time": 1.37
+    },
+    {
+      "from": "Tower Hill",
+      "to": "Monument",
+      "line": "Circle (Outer)",
+      "time": 1.48
+    },
+    {
+      "from": "Monument",
+      "to": "Cannon Street",
+      "line": "Circle (Outer)",
+      "time": 0.88
+    },
+    {
+      "from": "Cannon Street",
+      "to": "Mansion House",
+      "line": "Circle (Outer)",
+      "time": 0.93
+    },
+    {
+      "from": "Mansion House",
+      "to": "Blackfriars",
+      "line": "Circle (Outer)",
+      "time": 1.22
+    },
+    {
+      "from": "Blackfriars",
+      "to": "Temple",
+      "line": "Circle (Outer)",
+      "time": 1.37
+    },
+    {
+      "from": "Temple",
+      "to": "Embankment",
+      "line": "Circle (Outer)",
+      "time": 1.43
+    },
+    {
+      "from": "Embankment",
+      "to": "Westminster",
+      "line": "Circle (Outer)",
+      "time": 1.40
+    },
+    {
+      "from": "Westminster",
+      "to": "St James Park",
+      "line": "Circle (Outer)",
+      "time": 1.52
+    },
+    {
+      "from": "St James Park",
+      "to": "Victoria",
+      "line": "Circle (Outer)",
+      "time": 1.33
+    },
+    {
+      "from": "Victoria",
+      "to": "Sloane Square",
+      "line": "Circle (Outer)",
+      "time": 1.75
+    },
+    {
+      "from": "Sloane Square",
+      "to": "South Kensington",
+      "line": "Circle (Outer)",
+      "time": 2.00
+    },
+    {
+      "from": "South Kensington",
+      "to": "Gloucester Road",
+      "line": "Circle (Outer)",
+      "time": 1.48
+    },
+    {
+      "from": "Gloucester Road",
+      "to": "High Street Kensington",
+      "line": "Circle (Outer)",
+      "time": 2.23
+    },
+    {
+      "from": "High Street Kensington",
+      "to": "Notting Hill Gate",
+      "line": "Circle (Outer)",
+      "time": 1.68
+    },
+    {
+      "from": "Notting Hill Gate",
+      "to": "Bayswater",
+      "line": "Circle (Outer)",
+      "time": 1.77
+    },
+    {
+      "from": "Bayswater",
+      "to": "Paddington Circle",
+      "line": "Circle (Outer)",
+      "time": 1.63
+    },
+    {
+      "from": "Paddington Circle",
+      "to": "Edgware Road",
+      "line": "Circle (Outer)",
+      "time": 2.15
+    }
+]

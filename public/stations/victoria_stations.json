@@ -1,0 +1,85 @@
+{
+    "stations": [
+      {
+        "name": "Walthamstow",
+        "x": 1000,
+        "y": 100
+      },
+      {
+        "name": "Blackhorse Road",
+        "x": 900,
+        "y": 100
+      },
+      {
+        "name": "Tottenham Hale",
+        "x": 800,
+        "y": 100
+      },
+      {
+        "name": "Seven Sisters",
+        "x": 700,
+        "y": 100
+      },
+      {
+        "name": "Finsbury Park",
+        "x": 650,
+        "y": 200
+      },
+      {
+        "name": "Highbury",
+        "x": 650,
+        "y": 250
+      },
+      {
+        "name": "Kings Cross St Pancras",
+        "x": 550,
+        "y": 300
+      },
+      {
+        "name": "Euston",
+        "x": 450,
+        "y": 300
+      },
+      {
+        "name": "Warren Street",
+        "x": 400,
+        "y": 400
+      },
+      {
+        "name": "Oxford Circus",
+        "x": 350,
+        "y": 500
+      },
+      {
+        "name": "Green Park",
+        "x": 300,
+        "y": 600
+      },
+      {
+        "name": "Victoria",
+        "x": 250,
+        "y": 700
+      },
+      {
+        "name": "Pimlico",
+        "x": 250,
+        "y": 800
+      },
+      {
+        "name": "Vauxhall",
+        "x": 250,
+        "y": 900
+      },
+      {
+        "name": "Stockwell",
+        "x": 300,
+        "y": 1000
+      },
+      {
+        "name": "Brixton",
+        "x": 350,
+        "y": 1100
+      }
+    ]
+  }
+  

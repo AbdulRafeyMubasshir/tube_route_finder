@@ -1,0 +1,170 @@
+{
+    "stations": [
+      {
+        "name": "Edgware Road",
+        "x": 150,
+        "y": 340
+      },
+      {
+        "name": "Paddington Circle",
+        "x": 150,
+        "y": 400
+      },
+      {
+        "name": "Bayswater",
+        "x": 150,
+        "y": 450
+      },
+      {
+        "name": "Notting Hill Gate",
+        "x": 150,
+        "y": 500
+      },
+      {
+        "name": "High Street Kensington",
+        "x": 150,
+        "y": 550
+      },
+      {
+        "name": "Gloucester Road",
+        "x": 150,
+        "y": 600
+      },
+      {
+        "name": "South Kensington",
+        "x": 150,
+        "y": 700
+      },
+      {
+        "name": "Sloane Square",
+        "x": 200,
+        "y": 700
+      },
+      {
+        "name": "St James Park",
+        "x": 350,
+        "y": 700
+      },
+      {
+        "name": "Westminster",
+        "x": 500,
+        "y": 700
+      },
+      {
+        "name": "Embankment",
+        "x": 650,
+        "y": 700
+      },
+      {
+        "name": "Temple",
+        "x": 800,
+        "y": 700
+      },
+      {
+        "name": "Blackfriars",
+        "x": 850,
+        "y": 640
+      },
+      {
+        "name": "Mansion House",
+        "x": 900,
+        "y": 580
+      },
+      {
+        "name": "Cannon Street",
+        "x": 950,
+        "y": 520
+      },
+      {
+        "name": "Monument",
+        "x": 1050,
+        "y": 520
+      },
+      {
+        "name": "Tower Hill",
+        "x": 1150,
+        "y": 520
+      },
+      {
+        "name": "Aldgate",
+        "x": 1150,
+        "y": 460
+      },
+      {
+        "name": "Liverpool Street",
+        "x": 1050,
+        "y": 460
+      },
+      {
+        "name": "Moorgate",
+        "x": 950,
+        "y": 460
+      },
+      {
+        "name": "Barbican",
+        "x": 850,
+        "y": 400
+      },
+      {
+        "name": "Farringdon",
+        "x": 750,
+        "y": 340
+      },
+      {
+        "name": "Euston Square",
+        "x": 450,
+        "y": 340
+      },
+      {
+        "name": "Great Portland Street",
+        "x": 325,
+        "y": 340
+      },
+      {
+        "name": "Paddington H C",
+        "x": 50,
+        "y": 340
+      },
+      {
+        "name": "Royal Oak",
+        "x": 10,
+        "y": 390
+      },
+      {
+        "name": "Westbourne Park",
+        "x": -30,
+        "y": 440
+      },
+      {
+        "name": "Ladbroke Grove",
+        "x": -70,
+        "y": 490
+      },
+      {
+        "name": "Latimer Road",
+        "x": -110,
+        "y": 540
+      },
+      {
+        "name": "Wood Lane",
+        "x": -110,
+        "y": 590
+      },
+      {
+        "name": "Shepherds Bush Market",
+        "x": -110,
+        "y": 640
+      },
+      {
+        "name": "Goldhawk Road",
+        "x": -110,
+        "y": 690
+      },
+      {
+        "name": "Hammersmith H C",
+        "x": -110,
+        "y": 740
+      }
+    ]
+  }
+  

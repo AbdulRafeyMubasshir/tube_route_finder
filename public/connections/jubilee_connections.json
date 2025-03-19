@@ -1,0 +1,314 @@
+[
+    {
+      "from": "Stanmore",
+      "to": "Canons Park",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.95
+    },
+    {
+      "from": "Canons Park",
+      "to": "Queensbury",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.93
+    },
+    {
+      "from": "Queensbury",
+      "to": "Kingsbury",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.72
+    },
+    {
+      "from": "Kingsbury",
+      "to": "Wembley Park",
+      "line": "Jubilee (Eastbound)",
+      "time": 3.47
+    },
+    {
+      "from": "Wembley Park",
+      "to": "Neasden",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.60
+    },
+    {
+      "from": "Neasden",
+      "to": "Dollis Hill",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.43
+    },
+    {
+      "from": "Dollis Hill",
+      "to": "Willesden Green",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.80
+    },
+    {
+      "from": "Willesden Green",
+      "to": "Kilburn",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.68
+    },
+    {
+      "from": "Kilburn",
+      "to": "West Hampstead",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.63
+    },
+    {
+      "from": "West Hampstead",
+      "to": "Finchley Road",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.25
+    },
+    {
+      "from": "Finchley Road",
+      "to": "Swiss Cottage",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.18
+    },
+    {
+      "from": "Swiss Cottage",
+      "to": "St John's Wood",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.52
+    },
+    {
+      "from": "St John's Wood",
+      "to": "Baker Street",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.77
+    },
+    {
+      "from": "Baker Street",
+      "to": "Bond Street",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.10
+    },
+    {
+      "from": "Bond Street",
+      "to": "Green Park",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.78
+    },
+    {
+      "from": "Green Park",
+      "to": "Westminster",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.87
+    },
+    {
+      "from": "Westminster",
+      "to": "Waterloo",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.38
+    },
+    {
+      "from": "Waterloo",
+      "to": "Southwark",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.02
+    },
+    {
+      "from": "Southwark",
+      "to": "London Bridge",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.65
+    },
+    {
+      "from": "London Bridge",
+      "to": "Bermondsey",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.25
+    },
+    {
+      "from": "Bermondsey",
+      "to": "Canada Water",
+      "line": "Jubilee (Eastbound)",
+      "time": 1.48
+    },
+    {
+      "from": "Canada Water",
+      "to": "Canary Wharf",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.50
+    },
+    {
+      "from": "Canary Wharf",
+      "to": "North Greenwich",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.23
+    },
+    {
+      "from": "North Greenwich",
+      "to": "Canning Town",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.15
+    },
+    {
+      "from": "Canning Town",
+      "to": "West Ham",
+      "line": "Jubilee (Eastbound)",
+      "time": 2.15
+    },
+    {
+      "from": "West Ham",
+      "to": "Stratford",
+      "line": "Jubilee (Eastbound)",
+      "time": 3.15
+    },
+    {
+      "from": "Stratford",
+      "to": "West Ham",
+      "line": "Jubilee (Westbound)",
+      "time": 2.42
+    },
+    {
+      "from": "West Ham",
+      "to": "Canning Town",
+      "line": "Jubilee (Westbound)",
+      "time": 2.13
+    },
+    {
+      "from": "Canning Town",
+      "to": "North Greenwich",
+      "line": "Jubilee (Westbound)",
+      "time": 2.17
+    },
+    {
+      "from": "North Greenwich",
+      "to": "Canary Wharf",
+      "line": "Jubilee (Westbound)",
+      "time": 1.98
+    },
+    {
+      "from": "Canary Wharf",
+      "to": "Canada Water",
+      "line": "Jubilee (Westbound)",
+      "time": 2.63
+    },
+    {
+      "from": "Canada Water",
+      "to": "Bermondsey",
+      "line": "Jubilee (Westbound)",
+      "time": 1.52
+    },
+    {
+      "from": "Bermondsey",
+      "to": "London Bridge",
+      "line": "Jubilee (Westbound)",
+      "time": 2.17
+    },
+    {
+      "from": "London Bridge",
+      "to": "Southwark",
+      "line": "Jubilee (Westbound)",
+      "time": 1.77
+    },
+    {
+      "from": "Southwark",
+      "to": "Waterloo",
+      "line": "Jubilee (Westbound)",
+      "time": 0.97
+    },
+    {
+      "from": "Waterloo",
+      "to": "Westminster",
+      "line": "Jubilee (Westbound)",
+      "time": 1.43
+    },
+    {
+      "from": "Westminster",
+      "to": "Green Park",
+      "line": "Jubilee (Westbound)",
+      "time": 1.82
+    },
+    {
+      "from": "Green Park",
+      "to": "Bond Street",
+      "line": "Jubilee (Westbound)",
+      "time": 1.82
+    },
+    {
+      "from": "Bond Street",
+      "to": "Baker Street",
+      "line": "Jubilee (Westbound)",
+      "time": 2.28
+    },
+    {
+      "from": "Baker Street",
+      "to": "St John's Wood",
+      "line": "Jubilee (Westbound)",
+      "time": 2.85
+    },
+    {
+      "from": "St John's Wood",
+      "to": "Swiss Cottage",
+      "line": "Jubilee (Westbound)",
+      "time": 1.52
+    },
+    {
+      "from": "Swiss Cottage",
+      "to": "Finchley Road",
+      "line": "Jubilee (Westbound)",
+      "time": 1.18
+    },
+    {
+      "from": "Finchley Road",
+      "to": "West Hampstead",
+      "line": "Jubilee (Westbound)",
+      "time": 1.20
+    },
+    {
+      "from": "West Hampstead",
+      "to": "Kilburn",
+      "line": "Jubilee (Westbound)",
+      "time": 1.55
+    },
+    {
+      "from": "Kilburn",
+      "to": "Willesden Green",
+      "line": "Jubilee (Westbound)",
+      "time": 2.07
+    },
+    {
+      "from": "Willesden Green",
+      "to": "Dollis Hill",
+      "line": "Jubilee (Westbound)",
+      "time": 1.67
+    },
+    {
+      "from": "Dollis Hill",
+      "to": "Neasden",
+      "line": "Jubilee (Westbound)",
+      "time": 1.38
+    },
+    {
+      "from": "Neasden",
+      "to": "Wembley Park",
+      "line": "Jubilee (Westbound)",
+      "time": 2.65
+    },
+    {
+      "from": "Wembley Park",
+      "to": "Kingsbury",
+      "line": "Jubilee (Westbound)",
+      "time": 3.47
+    },
+    {
+      "from": "Kingsbury",
+      "to": "Queensbury",
+      "line": "Jubilee (Westbound)",
+      "time": 1.85
+    },
+    {
+      "from": "Queensbury",
+      "to": "Canons Park",
+      "line": "Jubilee (Westbound)",
+      "time": 2.23
+    },
+    {
+      "from": "Canons Park",
+      "to": "Stanmore",
+      "line": "Jubilee (Westbound)",
+      "time": 2.87
+    }
+]

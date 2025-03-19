@@ -1,0 +1,183 @@
+[
+    {
+      "from": "Walthamstow",
+      "to": "Blackhorse Road",
+      "line": "Victoria (Southbound)",
+      "time": 2.12
+    },
+    {
+      "from": "Blackhorse Road",
+      "to": "Tottenham Hale",
+      "line": "Victoria (Southbound)",
+      "time": 1.90
+    },
+    {
+      "from": "Tottenham Hale",
+      "to": "Seven Sisters",
+      "line": "Victoria (Southbound)",
+      "time": 2.00
+    },
+    {
+      "from": "Seven Sisters",
+      "to": "Finsbury Park",
+      "line": "Victoria (Southbound)",
+      "time": 3.77
+    },
+    {
+      "from": "Finsbury Park",
+      "to": "Highbury",
+      "line": "Victoria (Southbound)",
+      "time": 2.90
+    },
+    {
+      "from": "Highbury",
+      "to": "Kings Cross St Pancras",
+      "line": "Victoria (Southbound)",
+      "time": 2.77
+    },
+    {
+      "from": "Kings Cross St Pancras",
+      "to": "Euston",
+      "line": "Victoria (Southbound)",
+      "time": 1.32
+    },
+    {
+      "from": "Euston",
+      "to": "Warren Street",
+      "line": "Victoria (Southbound)",
+      "time": 1.30
+    },
+    {
+      "from": "Warren Street",
+      "to": "Oxford Circus",
+      "line": "Victoria (Southbound)",
+      "time": 1.72
+    },
+    {
+      "from": "Oxford Circus",
+      "to": "Green Park",
+      "line": "Victoria (Southbound)",
+      "time": 1.78
+    },
+    {
+      "from": "Green Park",
+      "to": "Victoria",
+      "line": "Victoria (Southbound)",
+      "time": 1.88
+    },
+    {
+      "from": "Victoria",
+      "to": "Pimlico",
+      "line": "Victoria (Southbound)",
+      "time": 1.83
+    },
+    {
+      "from": "Pimlico",
+      "to": "Vauxhall",
+      "line": "Victoria (Southbound)",
+      "time": 1.40
+    },
+    {
+      "from": "Vauxhall",
+      "to": "Stockwell",
+      "line": "Victoria (Southbound)",
+      "time": 2.30
+    },
+    {
+      "from": "Stockwell",
+      "to": "Brixton",
+      "line": "Victoria (Southbound)",
+      "time": 2.03
+    },
+    {
+      "from": "Brixton",
+      "to": "Stockwell",
+      "line": "Victoria (Northbound)",
+      "time": 2.18
+    },
+    {
+      "from": "Stockwell",
+      "to": "Vauxhall",
+      "line": "Victoria (Northbound)",
+      "time": 2.23
+    },
+    {
+      "from": "Vauxhall",
+      "to": "Pimlico",
+      "line": "Victoria (Northbound)",
+      "time": 1.37
+    },
+    {
+      "from": "Pimlico",
+      "to": "Victoria",
+      "line": "Victoria (Northbound)",
+      "time": 2.18
+    },
+    {
+      "from": "Victoria",
+      "to": "Green Park",
+      "line": "Victoria (Northbound)",
+      "time": 1.95
+    },
+    {
+      "from": "Green Park",
+      "to": "Oxford Circus",
+      "line": "Victoria (Northbound)",
+      "time": 1.97
+    },
+    {
+      "from": "Oxford Circus",
+      "to": "Warren Street",
+      "line": "Victoria (Northbound)",
+      "time": 1.53
+    },
+    {
+      "from": "Warren Street",
+      "to": "Euston",
+      "line": "Victoria (Northbound)",
+      "time": 1.32
+    },
+    {
+      "from": "Euston",
+      "to": "Kings Cross St Pancras",
+      "line": "Victoria (Northbound)",
+      "time": 1.35
+    },
+    {
+      "from": "Kings Cross St Pancras",
+      "to": "Highbury",
+      "line": "Victoria (Northbound)",
+      "time": 2.87
+    },
+    {
+      "from": "Highbury",
+      "to": "Finsbury Park",
+      "line": "Victoria (Northbound)",
+      "time": 2.40
+    },
+    {
+      "from": "Finsbury Park",
+      "to": "Seven Sisters",
+      "line": "Victoria (Northbound)",
+      "time": 4.25
+    },
+    {
+      "from": "Seven Sisters",
+      "to": "Tottenham Hale",
+      "line": "Victoria (Northbound)",
+      "time": 1.60
+    },
+    {
+      "from": "Tottenham Hale",
+      "to": "Blackhorse Road",
+      "line": "Victoria (Northbound)",
+      "time": 1.97
+    },
+    {
+      "from": "Blackhorse Road",
+      "to": "Walthamstow",
+      "line": "Victoria (Northbound)",
+      "time": 2.12
+    }
+  ]
+  
