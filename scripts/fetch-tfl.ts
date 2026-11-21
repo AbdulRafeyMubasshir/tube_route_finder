@@ -8,6 +8,7 @@
 import { writeFileSync } from "node:fs";
 import { setTimeout as sleep } from "node:timers/promises";
 import { fetchSource } from "./tfl/fetchSource";
+import { stringifyCompact } from "./tfl/stringify";
 
 const BASE = "https://api.tfl.gov.uk";
 const appKey = process.env.TFL_APP_KEY;
@@ -36,8 +37,12 @@ async function get(path: string): Promise<unknown> {
 
 const source = await fetchSource(get, console.log);
 const out = new URL("../data/tfl/source.json", import.meta.url);
-writeFileSync(out, JSON.stringify(source, null, 1) + "\n");
+writeFileSync(out, stringifyCompact(source) + "\n");
+const trips = source.timetables.reduce(
+  (n, t) => n + t.schedules.reduce((m, s) => m + s.departures.length, 0),
+  0,
+);
 console.log(
   `Saved ${source.stops.length} stops, ${source.patterns.length} patterns, ` +
-    `${source.hops.length} timed hops (${requests} requests) to data/tfl/source.json`,
+    `${source.hops.length} timed hops and ${trips} trips (${requests} requests) to data/tfl/source.json`,
 );

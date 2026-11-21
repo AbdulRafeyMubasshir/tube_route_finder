@@ -3,9 +3,11 @@
 [![CI](https://github.com/AbdulRafeyMubasshir/tube_route_finder/actions/workflows/ci.yml/badge.svg)](https://github.com/AbdulRafeyMubasshir/tube_route_finder/actions/workflows/ci.yml)
 
 A journey planner for London's rail network: the Underground, DLR, Overground
-and Elizabeth line. Pick two stations, by typing or by clicking the map, and it
-finds the fastest route using real TfL timetable data. It shows which train to
-take, where to change and walk, and frames the journey on a geographic map.
+and Elizabeth line. Pick two stations and a time, and it plans journeys on real
+TfL timetables with **RAPTOR**, the algorithm behind production journey
+planners. It shows the trade-off between faster journeys with more changes and
+simpler ones, gives clock times for every step, and frames the journey on a
+geographic map.
 
 **Live demo:** https://tube-route-finder.vercel.app
 
@@ -13,6 +15,11 @@ take, where to change and walk, and frames the journey on a geographic map.
 
 ## Features
 
+- **Timetabled journeys** ("08:35 → 09:23") from about 25,000 TfL departures,
+  for leaving now or at a chosen day and time. It handles trains running past
+  midnight and tells you when trains have stopped.
+- **Pareto-optimal options**: the faster journey with more changes, and the
+  simpler ones, each one a real trade-off.
 - **Whole network:** 420 stations on 19 lines, built from the TfL Unified API.
 - **Branch-aware routing.** The engine knows which trains actually run where.
   It won't ride "the Northern line" from the Charing Cross branch to the Bank
@@ -32,14 +39,26 @@ take, where to change and walk, and frames the journey on a geographic map.
 ## How it works
 
 ```
-TfL Unified API ──► fetch:tfl ──► data/tfl/source.json ──► build:network ──► src/data/network.json ──► Graph ──► findRoute()
-                    (patterns,      (committed snapshot)     (normalise,          (compact, validated)     (indexed)   (Dijkstra)
-                     stops, times)                            estimate, validate)
+TfL Unified API ─► fetch:tfl ─► data/tfl/source.json ─► build:network ─┬─► network.json   ─► Graph     ─► findRoute()    (Dijkstra, typical times)
+                   (patterns,     (committed snapshot)    (normalise,     └─► timetable.json ─► Timetable ─► planJourneys()  (RAPTOR, clock times)
+                    stops, trips)                          validate)          (lazy-loaded)
 ```
 
 ### Routing engine (`src/engine/`)
 
-A pure TypeScript module with no React or DOM dependencies.
+A pure TypeScript module with no React or DOM dependencies, with two routers:
+
+- **`planJourneys` (RAPTOR):** answers "when will I get there?". Round _k_ finds
+  the earliest arrival everywhere using at most _k_ trains, by scanning each
+  route touched in the previous round once and boarding the earliest catchable
+  trip (binary search). Walks are relaxed between rounds. Each round that
+  improves the destination arrival is a Pareto option. A minimum change time
+  applies, and target pruning keeps it fast. See
+  [ADR 0005](docs/adr/0005-raptor-with-tfl-timetables.md).
+- **`findRoute` (Dijkstra):** answers "how long does this usually take?" from
+  average run times. It is instant, needs no timetable, and is the fallback.
+
+Both share the same model:
 
 - **Service patterns, not lines.** TfL publishes each line as ordered stopping
   patterns (8 for the Northern line). The search tracks which train you are on:
@@ -78,25 +97,28 @@ Design decisions are recorded in [`docs/adr/`](docs/adr).
 
 ## Testing
 
-| Layer    | What is tested                                                                                                                                                                 |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Engine   | Edge cases: same place, unreachable, one-way patterns, parallel lines, branch changes, shared sections, walking, multi-station origins, penalties, ties                        |
-| Engine   | **Property-based tests** ([fast-check](https://fast-check.dev)): on 400 random networks per property, results match a simple Bellman-Ford reference and are always valid paths |
-| Pipeline | Fetch logic against a fake TfL API; compilation, estimates, walking links, name clashes and validation errors                                                                  |
-| Data     | Connectivity across the real network; golden journeys (Brixton→Stanmore, Morden→High Barnet, Heathrow T5→Canary Wharf…)                                                        |
-| UI       | Testing Library tests for search, keyboard navigation, map clicks, URL state and error states                                                                                  |
+| Layer    | What is tested                                                                                                                                                                     |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RAPTOR   | Waiting, last trains, minimum change time, Pareto options, walks, boarding an earlier trip mid-route; **property test** against a time-dependent Dijkstra on 400 random timetables |
+| Engine   | Edge cases: same place, unreachable, one-way patterns, parallel lines, branch changes, shared sections, walking, multi-station origins, penalties, ties                            |
+| Engine   | **Property-based tests** ([fast-check](https://fast-check.dev)): on 400 random networks per property, results match a simple Bellman-Ford reference and are always valid paths     |
+| Pipeline | Fetch logic against a fake TfL API; compilation, estimates, walking links, name clashes and validation errors                                                                      |
+| Data     | Connectivity across the real network; golden journeys (Brixton→Stanmore, Morden→High Barnet, Heathrow T5→Canary Wharf…)                                                            |
+| UI       | Testing Library tests for search, keyboard navigation, map clicks, URL state and error states                                                                                      |
 
 Coverage is enforced in CI (thresholds: 90% lines, 85% branches).
 
 ## Performance
 
 `npm run bench` times 20,000 fixed pseudo-random journeys on the full network
-(420 places, 3,539 search states):
+(420 places, 3,539 search states, 243 timetable routes), departing between
+06:00 and 22:00 on a weekday for RAPTOR:
 
-| Mode          | p50     | p95     | p99     |
-| ------------- | ------- | ------- | ------- |
-| Fastest       | ~370 µs | ~650 µs | ~820 µs |
-| Fewer changes | ~340 µs | ~690 µs | ~880 µs |
+| Router                              | p50     | p95     | p99     |
+| ----------------------------------- | ------- | ------- | ------- |
+| RAPTOR, timetabled, full Pareto set | ~300 µs | ~440 µs | ~550 µs |
+| Dijkstra, typical times             | ~380 µs | ~660 µs | ~800 µs |
+| Dijkstra, fewer changes             | ~350 µs | ~720 µs | ~920 µs |
 
 Measured on Node 22 in a CI-class Linux container. Numbers vary by machine.
 
@@ -118,12 +140,12 @@ Requires Node 20 or later (see `.nvmrc`).
 
 ```
 src/
-  engine/        routing engine: Graph, StateIndex, findRoute, MinHeap, types (framework-free)
-  data/          generated network.json and the shared graph instance
+  engine/        routing engine: raptor (Timetable, planJourneys), Graph, StateIndex, findRoute, MinHeap
+  data/          generated network.json and timetable.json, and the shared graph instance
   components/    React UI: StationCombobox, RouteDetails, TubeMap, Legend
-  lib/           search, formatting, URL state, map geometry
+  lib/           service days and clock times, journey choice, search, URL state, map geometry
 scripts/
-  tfl/           TfL fetcher and network compiler (pure, unit-tested)
+  tfl/           TfL fetcher, network and timetable compilers (pure, unit-tested)
   fetch-tfl.ts   CLI: download the snapshot
   build-network.ts  CLI: compile and validate
   benchmark.ts
@@ -133,15 +155,15 @@ docs/adr/        architecture decision records
 
 ## Limitations and roadmap
 
-- Journey times exclude the wait for the first train; frequencies aren't
-  modelled yet.
-- Elizabeth line and Overground run times are estimated (no TfL timetable).
+- Elizabeth line and Overground have no TfL timetable: run times are estimated
+  from distance and trips from an assumed frequency (marked "est.").
+- Trains that start mid-line (e.g. from depots) are missing, as timetables are
+  fetched from termini.
 - Shared track sections (e.g. Circle, District, H&C) are drawn on top of each
   other rather than side by side.
 
 Next:
 
-- **Phase 3:** RAPTOR for timetable-aware, multi-criteria (Pareto) results, benchmarked against this engine
 - **Phase 4:** live line status and rerouting around disruption; step-free routing
 - **Phase 5:** map polish (parallel lines, label collision), offline-capable PWA, leave-at / arrive-by
 - **Phase 6:** technical write-up and demo video

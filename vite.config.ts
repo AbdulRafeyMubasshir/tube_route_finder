@@ -7,6 +7,9 @@ export default defineConfig({
   build: {
     // Keep the CRA output folder so the existing Vercel project keeps working.
     outDir: "build",
+    // The network (~240 kB, ~50 kB gzipped) is bundled on purpose so the first
+    // route can be planned without a request; the timetable is lazy-loaded.
+    chunkSizeWarningLimit: 600,
   },
   test: {
     globals: true,

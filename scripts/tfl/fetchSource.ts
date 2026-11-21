@@ -4,6 +4,7 @@ import type {
   SourcePattern,
   SourcePlace,
   SourceStop,
+  SourceTimetable,
   TflSource,
 } from "./types";
 
@@ -37,7 +38,13 @@ interface ApiSequence {
 interface ApiTimetable {
   timetable?: {
     departureStopId?: string;
-    routes?: { stationIntervals?: { intervals: { stopId: string; timeToArrival: number }[] }[] }[];
+    routes?: {
+      stationIntervals?: { id?: string; intervals: { stopId: string; timeToArrival: number }[] }[];
+      schedules?: {
+        name: string;
+        knownJourneys?: { hour: string; minute: string; intervalId: number }[];
+      }[];
+    }[];
   };
 }
 interface ApiStopPoint {
@@ -83,6 +90,40 @@ export function hopSamplesFromTimetable(
     }
   }
   return samples;
+}
+
+/**
+ * Extracts trip-level data from a timetable response: each stopping pattern
+ * (cumulative minutes from the origin) and every known departure, per schedule.
+ */
+export function tripsFromTimetable(
+  line: string,
+  direction: "inbound" | "outbound",
+  origin: string,
+  timetable: ApiTimetable,
+): SourceTimetable | null {
+  const route = timetable.timetable?.routes?.[0];
+  if (!route?.stationIntervals?.length) return null;
+  const routes = route.stationIntervals.map(({ intervals }) => ({
+    stops: [origin, ...intervals.map((i) => i.stopId)],
+    times: [0, ...intervals.map((i) => i.timeToArrival)],
+  }));
+  const ids = route.stationIntervals.map((si, i) => Number(si.id ?? i));
+  const schedules = (route.schedules ?? []).map((schedule) => {
+    const journeys = (schedule.knownJourneys ?? [])
+      .map((j) => ({
+        time: Number(j.hour) * 60 + Number(j.minute),
+        route: ids.indexOf(j.intervalId),
+      }))
+      .filter((j) => j.route >= 0 && Number.isFinite(j.time))
+      .sort((a, b) => a.time - b.time || a.route - b.route);
+    return {
+      name: schedule.name,
+      departures: journeys.map((j) => j.time),
+      routes: journeys.map((j) => j.route),
+    };
+  });
+  return { line, direction, origin, routes, schedules };
 }
 
 /** Averages samples per (line, from, to). */
@@ -186,6 +227,7 @@ export async function fetchSource(
   const stops = new Map<string, SourceStop>();
   const patterns: SourcePattern[] = [];
   const samples: { line: string; from: string; to: string; minutes: number }[] = [];
+  const timetables: SourceTimetable[] = [];
 
   for (const line of lines) {
     for (const direction of DIRECTIONS) {
@@ -232,6 +274,8 @@ export async function fetchSource(
         for (const s of hopSamplesFromTimetable(origin as string, timetable)) {
           samples.push({ line: line.id, ...s });
         }
+        const trips = tripsFromTimetable(line.id, direction, origin as string, timetable);
+        if (trips) timetables.push(trips);
       }
     }
     log(`  ${line.id}: ${patterns.filter((p) => p.line === line.id).length} patterns`);
@@ -246,5 +290,6 @@ export async function fetchSource(
     places,
     patterns,
     hops: aggregateHops(samples),
+    timetables,
   };
 }

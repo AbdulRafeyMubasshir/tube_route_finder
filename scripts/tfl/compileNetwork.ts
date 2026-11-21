@@ -283,6 +283,28 @@ export function compileNetwork(source: TflSource): CompileResult {
     }
   }
 
+  // Make walking transitively closed (A→B→C implies A→C), as RAPTOR relaxes
+  // only one walk at a time. Components are tiny, so Floyd–Warshall is fine.
+  const walkMinutes = new Map(walks.map((w) => [`${w.from}|${w.to}`, w.minutes]));
+  const walkNodes = [...new Set(walks.flatMap((w) => [w.from, w.to]))];
+  for (const k of walkNodes) {
+    for (const i of walkNodes) {
+      const ik = walkMinutes.get(`${i}|${k}`);
+      if (ik === undefined) continue;
+      for (const j of walkNodes) {
+        const kj = walkMinutes.get(`${k}|${j}`);
+        if (kj === undefined || i === j) continue;
+        const current = walkMinutes.get(`${i}|${j}`);
+        if (current === undefined || ik + kj < current) walkMinutes.set(`${i}|${j}`, ik + kj);
+      }
+    }
+  }
+  walks.length = 0;
+  for (const [key, minutes] of [...walkMinutes].sort(([a], [b]) => a.localeCompare(b))) {
+    const [from, to] = key.split("|") as [string, string];
+    walks.push({ from, to, minutes });
+  }
+
   // ---- Connectivity: every place reachable from the first, both ways -------
   const adjacency = new Map<string, Set<string>>(places.map((p) => [p.id, new Set()]));
   const reverse = new Map<string, Set<string>>(places.map((p) => [p.id, new Set()]));

@@ -1,6 +1,9 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
+import { recommend } from "./lib/recommend";
+import { Timetable, type Journey, type TimetableData } from "./engine/raptor";
+import timetableData from "./data/timetable.json";
 import { Graph, findRoute } from "./engine";
 import { makeNetwork } from "./engine/testNetwork";
 import { tubeGraph } from "./data/network";
@@ -16,7 +19,7 @@ describe("App", () => {
   beforeEach(() => window.history.replaceState(null, "", "/"));
 
   it("shows a prompt before any stations are chosen", () => {
-    render(<App />);
+    render(<App timetable={null} />);
     expect(
       screen.getByRole("heading", { name: "London Underground Route Finder" }),
     ).toBeInTheDocument();
@@ -24,14 +27,14 @@ describe("App", () => {
   });
 
   it("plans a journey and shows each ride", async () => {
-    render(<App />);
+    render(<App timetable={null} />);
     await chooseStation("From", "brix", "Brixton");
     await chooseStation("To", "stanm", "Stanmore");
 
     const details = screen.getByRole("region", { name: "Journey details" });
     const expected = findRoute(tubeGraph, "brixton", "stanmore")!;
     expect(within(details).getByText(formatMinutes(expected.totalMinutes))).toBeInTheDocument();
-    expect(within(details).getByText(/1 change$/)).toBeInTheDocument();
+    expect(within(details).getByText(/1 change · typical time$/)).toBeInTheDocument();
     expect(
       within(details).getByText("Victoria line towards Walthamstow Central"),
     ).toBeInTheDocument();
@@ -42,7 +45,7 @@ describe("App", () => {
 
   it("highlights only the segments the route uses", async () => {
     window.history.replaceState(null, "", "/?from=brixton&to=stanmore");
-    render(<App />);
+    render(<App timetable={null} />);
     const hops = findRoute(tubeGraph, "brixton", "stanmore")!.edges.length;
     expect(screen.getAllByTestId("route-segment")).toHaveLength(hops);
   });
@@ -50,7 +53,7 @@ describe("App", () => {
   it("restores a journey from the URL and swaps direction", async () => {
     window.history.replaceState(null, "", "/?from=walthamstow-central&to=brixton");
     const user = userEvent.setup();
-    render(<App />);
+    render(<App timetable={null} />);
     expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("Walthamstow Central");
     expect(screen.getByText("Victoria line towards Brixton")).toBeInTheDocument();
 
@@ -62,14 +65,14 @@ describe("App", () => {
 
   it("ignores unknown place ids in the URL", () => {
     window.history.replaceState(null, "", "/?from=atlantis&to=bank");
-    render(<App />);
+    render(<App timetable={null} />);
     expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("");
     expect(screen.getByRole("combobox", { name: "To" })).toHaveValue("Bank");
   });
 
   it("sets origin then destination when stations are clicked on the map", () => {
     // fireEvent rather than userEvent: d3-zoom's mousedown handler needs a real window view.
-    const { container } = render(<App />);
+    const { container } = render(<App timetable={null} />);
     const click = (id: string) => fireEvent.click(container.querySelector(`[data-place="${id}"]`)!);
 
     click("bank");
@@ -86,7 +89,7 @@ describe("App", () => {
   it("can prefer fewer changes", async () => {
     window.history.replaceState(null, "", "/?from=brixton&to=stanmore");
     const user = userEvent.setup();
-    render(<App />);
+    render(<App timetable={null} />);
     await user.click(screen.getByRole("checkbox", { name: "Prefer fewer changes" }));
     expect(window.location.search).toContain("prefer=fewer-changes");
     expect(screen.getByRole("region", { name: "Journey details" })).toBeInTheDocument();
@@ -94,7 +97,7 @@ describe("App", () => {
 
   it("tells the user when two stations are the same", () => {
     window.history.replaceState(null, "", "/?from=bank&to=bank");
-    render(<App />);
+    render(<App timetable={null} />);
     expect(screen.getByText(/already there/)).toBeInTheDocument();
   });
 
@@ -106,7 +109,98 @@ describe("App", () => {
       ]),
     );
     window.history.replaceState(null, "", "/?from=x&to=q");
-    render(<App graph={graph} />);
+    render(<App graph={graph} timetable={null} />);
     expect(screen.getByRole("alert")).toHaveTextContent("No route found");
+  });
+});
+
+describe("App with timetables", () => {
+  const timetable = new Timetable(tubeGraph, timetableData as TimetableData);
+  // Monday 2026-11-23 09:00 in London (GMT).
+  const monday9am = () => new Date("2026-11-23T09:00:00Z");
+
+  beforeEach(() => window.history.replaceState(null, "", "/?from=brixton&to=stanmore"));
+
+  it("shows clock times from the timetable when leaving now", () => {
+    render(<App timetable={timetable} now={monday9am} />);
+    const details = screen.getByRole("region", { name: "Journey details" });
+    expect(within(details).getByText(/^09:\d\d → 09:\d\d$/)).toBeInTheDocument();
+    expect(within(details).getByText(/Times from TfL timetables/)).toBeInTheDocument();
+    expect(
+      within(details).getByText("Victoria line towards Walthamstow Central"),
+    ).toBeInTheDocument();
+  });
+
+  it("plans for a chosen day and time from the URL", () => {
+    window.history.replaceState(null, "", "/?from=brixton&to=stanmore&at=07:30&day=sat");
+    render(<App timetable={timetable} now={monday9am} />);
+    expect(screen.getByRole("combobox", { name: "Leave now or later" })).toHaveValue("at");
+    expect(screen.getByRole("combobox", { name: "Day" })).toHaveValue("sat");
+    expect(screen.getByText(/^07:\d\d → 08:\d\d$/)).toBeInTheDocument();
+  });
+
+  it("switches between leaving now and a planned time", async () => {
+    const user = userEvent.setup();
+    render(<App timetable={timetable} now={monday9am} />);
+    await user.selectOptions(screen.getByRole("combobox", { name: "Leave now or later" }), "at");
+    expect(window.location.search).toMatch(/at=\d\d%3A\d\d&day=\w{3}/);
+    await user.selectOptions(screen.getByRole("combobox", { name: "Day" }), "sun");
+    expect(window.location.search).toContain("day=sun");
+    fireEvent.change(screen.getByLabelText("Time"), { target: { value: "10:15" } });
+    expect(window.location.search).toContain("at=10%3A15");
+    await user.selectOptions(screen.getByRole("combobox", { name: "Leave now or later" }), "now");
+    expect(window.location.search).not.toContain("at=");
+  });
+
+  it("shows the next morning's first journey late at night", () => {
+    window.history.replaceState(null, "", "/?from=morden&to=high-barnet&at=02:30&day=tue");
+    render(<App timetable={timetable} now={monday9am} />);
+    expect(screen.getByRole("status")).toHaveTextContent(
+      /No trains for a while: the next journey leaves at 0[45]:\d\d/,
+    );
+  });
+
+  it("lets you pick between journey options", async () => {
+    const network = makeNetwork([
+      ["slow", ["a", "z"], 30],
+      ["red", ["a", "m"], 5],
+      ["blue", ["m", "z"], 5],
+    ]);
+    const graph = new Graph(network);
+    const everyDay = (times: number[]) => ({
+      weekday: times,
+      friday: times,
+      saturday: times,
+      sunday: times,
+    });
+    const small = new Timetable(graph, {
+      routes: [
+        { line: "slow", stops: ["a", "z"], times: [0, 30], trips: everyDay([600]) },
+        { line: "red", stops: ["a", "m"], times: [0, 5], trips: everyDay([600]) },
+        { line: "blue", stops: ["m", "z"], times: [0, 5], trips: everyDay([610]) },
+      ],
+    });
+    window.history.replaceState(null, "", "/?from=a&to=z&at=10:00&day=wed");
+    const user = userEvent.setup();
+    render(<App graph={graph} timetable={small} now={monday9am} />);
+
+    const options = within(screen.getByRole("group", { name: "Journey options" })).getAllByRole(
+      "button",
+    );
+    expect(options).toHaveLength(2);
+    expect(options[1]).toHaveAttribute("aria-pressed", "true"); // fastest by default
+    await user.click(options[0]!);
+    expect(options[0]).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByText("SLOW line towards Z")).toBeInTheDocument();
+  });
+});
+
+describe("recommend", () => {
+  const j = (arrival: number) => ({ arrival }) as Journey;
+  it("picks the fastest, or the simplest within tolerance when preferring fewer changes", () => {
+    expect(recommend([], false)).toBe(-1);
+    expect(recommend([j(100), j(95), j(80)], false)).toBe(2);
+    expect(recommend([j(100), j(88), j(80)], true)).toBe(1);
+    expect(recommend([j(89), j(88), j(80)], true)).toBe(0);
   });
 });

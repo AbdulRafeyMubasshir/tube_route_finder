@@ -1,26 +1,59 @@
-import { useMemo } from "react";
-import { network, tubeGraph } from "./data/network";
-import { findRoute, type Graph, type PlaceId } from "./engine";
+import { useEffect, useMemo, useState } from "react";
+import { tubeGraph } from "./data/network";
+import { findRoute, type Graph, type PlaceId, type Route } from "./engine";
+import type { Timetable } from "./engine/raptor";
 import { StationCombobox } from "./components/StationCombobox";
 import { RouteDetails } from "./components/RouteDetails";
+import { JourneyOptions } from "./components/JourneyOptions";
+import { DepartureControl } from "./components/DepartureControl";
 import { TubeMap } from "./components/TubeMap";
 import { Legend } from "./components/Legend";
 import { useJourneyParams } from "./lib/useUrlState";
+import { useTimetable } from "./lib/useTimetable";
+import { FEWER_CHANGES_PENALTY, LONG_WAIT, recommend } from "./lib/recommend";
+import {
+  WEEKDAYS,
+  formatClock,
+  londonNow,
+  parseClock,
+  planAcrossServiceDays,
+  type Weekday,
+} from "./lib/serviceTime";
 
-/** Extra cost per change when "fewer changes" is on (steers the search; not added to times). */
-export const FEWER_CHANGES_PENALTY = 8;
+interface Props {
+  graph?: Graph;
+  /** Injected in tests; defaults to the lazily loaded bundled timetable. */
+  timetable?: Timetable | null;
+  /** Injected in tests; defaults to the real clock. */
+  now?: () => Date;
+}
 
-export function App({ graph = tubeGraph }: { graph?: Graph }) {
+export function App({ graph = tubeGraph, timetable: injected, now = () => new Date() }: Props) {
   const [params, setParams] = useJourneyParams();
+  const loaded = useTimetable(graph);
+  const timetable = injected === undefined ? loaded : injected;
   const places = useMemo(
     () => [...graph.places.values()].sort((a, b) => a.name.localeCompare(b.name)),
     [graph],
   );
-  // Ignore ids in a shared URL that aren't stations.
+
+  // Re-plan "leave now" journeys as the clock moves on.
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = window.setInterval(() => setTick((t) => t + 1), 30_000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  // Ignore ids in a shared URL that aren't places.
   const from = params.from && graph.places.has(params.from) ? params.from : null;
   const to = params.to && graph.places.has(params.to) ? params.to : null;
+  const plannedAt = params.at ? parseClock(params.at) : null;
+  const plannedDay = WEEKDAYS.includes(params.day as Weekday) ? (params.day as Weekday) : null;
 
-  const route = useMemo(
+  const update = (patch: Partial<typeof params>) => setParams({ ...params, from, to, ...patch });
+
+  // Typical journey (no timetable): instant, and the fallback if no trains run.
+  const typical: Route | null = useMemo(
     () =>
       from && to
         ? findRoute(graph, from, to, {
@@ -30,7 +63,26 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
     [graph, from, to, params.fewerChanges],
   );
 
-  const update = (patch: Partial<typeof params>) => setParams({ ...params, from, to, ...patch });
+  const timed = useMemo(() => {
+    if (!timetable || !from || !to || from === to) return null;
+    const clock = londonNow(now());
+    const weekday = plannedAt !== null ? (plannedDay ?? clock.weekday) : clock.weekday;
+    const minutes = plannedAt ?? clock.minutes;
+    return { ...planAcrossServiceDays(timetable, from, to, weekday, minutes), minutes };
+    // `tick` re-runs "leave now" plans every 30 seconds.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timetable, from, to, plannedAt, plannedDay, tick]);
+
+  const [chosen, setChosen] = useState<number | null>(null);
+  const [chosenFor, setChosenFor] = useState(timed);
+  if (chosenFor !== timed) {
+    setChosenFor(timed);
+    setChosen(null);
+  }
+  const journeys = timed?.journeys ?? [];
+  const selected = chosen ?? recommend(journeys, params.fewerChanges);
+  const journey = journeys[selected] ?? null;
+  const route: Route | null = journey ?? typical;
 
   const onPlaceClick = (id: PlaceId) => {
     if (!from || (from && to)) update({ from: id, to: null });
@@ -42,8 +94,8 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
       <header className="app-header">
         <h1>London Underground Route Finder</h1>
         <p className="muted">
-          Fastest journeys across {places.length} stations on the Underground, DLR, Overground and
-          Elizabeth line.
+          Journeys across {places.length} stations on the Underground, DLR, Overground and Elizabeth
+          line, using TfL timetables.
         </p>
       </header>
 
@@ -78,6 +130,11 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
               value={to}
               onChange={(id) => update({ to: id })}
             />
+            <DepartureControl
+              at={params.at}
+              day={plannedDay}
+              onChange={(at, day) => update({ at, day })}
+            />
             <label className="checkbox">
               <input
                 type="checkbox"
@@ -89,7 +146,25 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
           </form>
 
           {route ? (
-            <RouteDetails graph={graph} route={route} />
+            <>
+              {journey &&
+                timed &&
+                (timed.nextMorning || journey.departure - timed.minutes > LONG_WAIT) && (
+                  <p className="notice" role="status">
+                    No trains for a while: the next journey leaves at{" "}
+                    {formatClock(journey.departure)}.
+                  </p>
+                )}
+              {timed && journeys.length === 0 && (
+                <p className="notice" role="status">
+                  No timetabled journey found; showing a typical journey time.
+                </p>
+              )}
+              {journeys.length > 1 && (
+                <JourneyOptions journeys={journeys} selected={selected} onSelect={setChosen} />
+              )}
+              <RouteDetails graph={graph} route={route} journey={journey} />
+            </>
           ) : from && to ? (
             <p role="alert">No route found between these stations.</p>
           ) : (
@@ -104,9 +179,8 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
       </main>
 
       <footer className="app-footer muted small">
-        Network data from the TfL Unified API
-        {network.fetchedAt ? ` (${new Date(network.fetchedAt).toLocaleDateString("en-GB")})` : ""}.
-        Powered by TfL Open Data. Not affiliated with TfL.
+        Network and timetable data from the TfL Unified API. Powered by TfL Open Data. Not
+        affiliated with TfL.
       </footer>
     </div>
   );

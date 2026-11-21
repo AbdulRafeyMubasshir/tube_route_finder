@@ -50,6 +50,7 @@ const source = (): TflSource => ({
     { line: "weaver", direction: "inbound", name: "G-A", stops: ["R2", "R1"] },
   ],
   hops: [{ line: "victoria", from: "V1", to: "V2", minutes: 0, samples: 3 }],
+  timetables: [],
 });
 
 describe("compileNetwork", () => {

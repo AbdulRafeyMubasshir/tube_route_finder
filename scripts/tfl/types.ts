@@ -10,6 +10,22 @@ export interface TflSource {
   places: SourcePlace[];
   patterns: SourcePattern[];
   hops: SourceHop[];
+  /** Trip-level timetables, for modes where TfL publishes them. */
+  timetables: SourceTimetable[];
+}
+
+/**
+ * Departures from one origin stop in one direction. Each route is a stopping
+ * pattern with cumulative minutes from the origin; each schedule (e.g.
+ * "Monday - Thursday") lists departure times as minutes after midnight (values
+ * over 1440 run past midnight) with the route each train follows.
+ */
+export interface SourceTimetable {
+  line: string;
+  direction: "inbound" | "outbound";
+  origin: string;
+  routes: { stops: string[]; times: number[] }[];
+  schedules: { name: string; departures: number[]; routes: number[] }[];
 }
 
 export interface SourceLine {
