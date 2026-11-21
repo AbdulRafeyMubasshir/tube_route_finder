@@ -16,7 +16,7 @@ geographic map.
 ## Features
 
 - **Timetabled journeys** ("08:35 → 09:23") from about 25,000 TfL departures,
-  for leaving now or at a chosen day and time. It handles trains running past
+  for leaving now, leaving at a chosen time, or **arriving by** a time. It handles trains running past
   midnight and tells you when trains have stopped.
 - **Live disruption routing:** a live status panel from TfL, and journeys that
   route around closures and allow for delays. The map shows closed sections.
@@ -31,9 +31,11 @@ geographic map.
   walking links between nearby stations (e.g. Bank ↔ Monument). Estimated times
   are labelled.
 - **"Prefer fewer changes"** mode that trades a little time for simpler journeys.
-- **Interactive geographic map:** pan and zoom, with labels that appear as you
-  zoom in. It frames each route automatically, and you can click stations to
-  plan.
+- **Interactive geographic map:** pan and zoom, lines that share track drawn
+  side by side, and collision-free labels placed for every zoom level. It
+  frames each route automatically, and you can click stations to plan.
+- **Works offline and installs as an app (PWA):** the timetable and network are
+  cached on the device, so planning works underground.
 - **Accessible station search**: a WAI-ARIA combobox with full keyboard support
   and forgiving matching ("kings" finds King's Cross St Pancras).
 - **Shareable URLs**: `?from=brixton&to=stanmore` restores a journey.
@@ -110,15 +112,17 @@ development.
 
 ## Testing
 
-| Layer    | What is tested                                                                                                                                                                     |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Live     | Status parsing from a real TfL response; edge function (caching headers, upstream failure); client fallback; closures and delays in both engines; rerouting and warnings in the UI |
-| RAPTOR   | Waiting, last trains, minimum change time, Pareto options, walks, boarding an earlier trip mid-route; **property test** against a time-dependent Dijkstra on 400 random timetables |
-| Engine   | Edge cases: same place, unreachable, one-way patterns, parallel lines, branch changes, shared sections, walking, multi-station origins, penalties, ties                            |
-| Engine   | **Property-based tests** ([fast-check](https://fast-check.dev)): on 400 random networks per property, results match a simple Bellman-Ford reference and are always valid paths     |
-| Pipeline | Fetch logic against a fake TfL API; compilation, estimates, walking links, name clashes and validation errors                                                                      |
-| Data     | Connectivity across the real network; golden journeys (Brixton→Stanmore, Morden→High Barnet, Heathrow T5→Canary Wharf…)                                                            |
-| UI       | Testing Library tests for search, keyboard navigation, map clicks, URL state and error states                                                                                      |
+| Layer     | What is tested                                                                                                                                                                     |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Map       | Label placement (property test: labels never overlap), side-by-side offsets for shared sections                                                                                    |
+| Arrive by | Latest departure per number of trains, and the case where nothing arrives in time                                                                                                  |
+| Live      | Status parsing from a real TfL response; edge function (caching headers, upstream failure); client fallback; closures and delays in both engines; rerouting and warnings in the UI |
+| RAPTOR    | Waiting, last trains, minimum change time, Pareto options, walks, boarding an earlier trip mid-route; **property test** against a time-dependent Dijkstra on 400 random timetables |
+| Engine    | Edge cases: same place, unreachable, one-way patterns, parallel lines, branch changes, shared sections, walking, multi-station origins, penalties, ties                            |
+| Engine    | **Property-based tests** ([fast-check](https://fast-check.dev)): on 400 random networks per property, results match a simple Bellman-Ford reference and are always valid paths     |
+| Pipeline  | Fetch logic against a fake TfL API; compilation, estimates, walking links, name clashes and validation errors                                                                      |
+| Data      | Connectivity across the real network; golden journeys (Brixton→Stanmore, Morden→High Barnet, Heathrow T5→Canary Wharf…)                                                            |
+| UI        | Testing Library tests for search, keyboard navigation, map clicks, URL state and error states                                                                                      |
 
 Coverage is enforced in CI (thresholds: 90% lines, 85% branches).
 
@@ -157,7 +161,7 @@ src/
   engine/        routing engine: raptor (Timetable, planJourneys), Graph, StateIndex, findRoute, MinHeap
   data/          generated network.json and timetable.json, and the shared graph instance
   components/    React UI: StationCombobox, RouteDetails, TubeMap, Legend
-  lib/           service days and clock times, journey choice, search, URL state, map geometry
+  lib/           service days, arrive-by, journey choice, label placement, map geometry, search, URL state
 api/
   status.ts      edge function: cached, trimmed TfL line status
 scripts/
@@ -184,13 +188,13 @@ docs/adr/        architecture decision records
 
 Next:
 
-- **Phase 5:** map polish (parallel lines, label collision), offline-capable PWA, leave-at / arrive-by
 - **Phase 6:** technical write-up and demo video
 
 ## Tech
 
-React 19 · TypeScript 5 (strict) · Vite · d3-zoom · Vitest · Testing Library ·
-fast-check · ESLint · Prettier · GitHub Actions · Vercel
+React 19 · TypeScript 5 (strict) · Vite · d3-zoom · Workbox (PWA) · Vitest ·
+Testing Library · fast-check · ESLint · Prettier · GitHub Actions · Vercel (Edge
+Functions)
 
 Data: Powered by TfL Open Data. Contains OS data © Crown copyright and database
 rights. Not affiliated with or endorsed by Transport for London.

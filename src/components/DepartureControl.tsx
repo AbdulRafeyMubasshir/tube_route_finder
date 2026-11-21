@@ -5,21 +5,26 @@ interface Props {
   /** "HH:MM", or null for leave now. */
   at: string | null;
   day: Weekday | null;
-  onChange: (at: string | null, day: Weekday | null) => void;
+  /** With `at`: arrive by that time instead of leaving at it. */
+  arrive: boolean;
+  onChange: (at: string | null, day: Weekday | null, arrive: boolean) => void;
 }
 
 const ORDER: Weekday[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-/** "Leave now" or "Leave at" a chosen day and time (London time). */
-export function DepartureControl({ at, day, onChange }: Props) {
+/** "Leave now", "Leave at" or "Arrive by" a chosen day and time (London time). */
+export function DepartureControl({ at, day, arrive, onChange }: Props) {
   const id = useId();
   const planned = at !== null;
+  const mode = !planned ? "now" : arrive ? "arrive" : "at";
 
-  const startPlanning = () => {
+  const setMode = (next: string) => {
+    if (next === "now") return onChange(null, null, false);
+    if (planned) return onChange(at, day, next === "arrive");
     const now = londonNow();
     const hh = String(Math.floor(now.minutes / 60)).padStart(2, "0");
     const mm = String(now.minutes % 60).padStart(2, "0");
-    onChange(`${hh}:${mm}`, now.weekday);
+    onChange(`${hh}:${mm}`, now.weekday, next === "arrive");
   };
 
   return (
@@ -27,14 +32,13 @@ export function DepartureControl({ at, day, onChange }: Props) {
       <legend className="field-label">When</legend>
       <div className="departure-row">
         <select
-          aria-label="Leave now or later"
-          value={planned ? "at" : "now"}
-          onChange={(event) =>
-            event.target.value === "now" ? onChange(null, null) : startPlanning()
-          }
+          aria-label="When to travel"
+          value={mode}
+          onChange={(event) => setMode(event.target.value)}
         >
           <option value="now">Leave now</option>
           <option value="at">Leave at…</option>
+          <option value="arrive">Arrive by…</option>
         </select>
         {planned && (
           <>
@@ -42,7 +46,7 @@ export function DepartureControl({ at, day, onChange }: Props) {
               id={`${id}-day`}
               aria-label="Day"
               value={day ?? WEEKDAYS[new Date().getDay()]}
-              onChange={(event) => onChange(at, event.target.value as Weekday)}
+              onChange={(event) => onChange(at, event.target.value as Weekday, arrive)}
             >
               {ORDER.map((d) => (
                 <option key={d} value={d}>
@@ -54,7 +58,7 @@ export function DepartureControl({ at, day, onChange }: Props) {
               type="time"
               aria-label="Time"
               value={at}
-              onChange={(event) => event.target.value && onChange(event.target.value, day)}
+              onChange={(event) => event.target.value && onChange(event.target.value, day, arrive)}
             />
           </>
         )}

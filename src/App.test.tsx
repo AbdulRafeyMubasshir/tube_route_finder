@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
-import { recommend } from "./lib/recommend";
+import { recommend, recommendArriveBy } from "./lib/recommend";
 import { Timetable, type Journey, type TimetableData } from "./engine/raptor";
 import timetableData from "./data/timetable.json";
 import { Graph, findRoute } from "./engine";
@@ -134,7 +134,7 @@ describe("App with timetables", () => {
   it("plans for a chosen day and time from the URL", () => {
     window.history.replaceState(null, "", "/?from=brixton&to=stanmore&at=07:30&day=sat");
     render(<App timetable={timetable} now={monday9am} liveStatus={null} />);
-    expect(screen.getByRole("combobox", { name: "Leave now or later" })).toHaveValue("at");
+    expect(screen.getByRole("combobox", { name: "When to travel" })).toHaveValue("at");
     expect(screen.getByRole("combobox", { name: "Day" })).toHaveValue("sat");
     expect(screen.getByText(/^07:\d\d → 08:\d\d$/)).toBeInTheDocument();
   });
@@ -142,14 +142,27 @@ describe("App with timetables", () => {
   it("switches between leaving now and a planned time", async () => {
     const user = userEvent.setup();
     render(<App timetable={timetable} now={monday9am} liveStatus={null} />);
-    await user.selectOptions(screen.getByRole("combobox", { name: "Leave now or later" }), "at");
+    await user.selectOptions(screen.getByRole("combobox", { name: "When to travel" }), "at");
     expect(window.location.search).toMatch(/at=\d\d%3A\d\d&day=\w{3}/);
     await user.selectOptions(screen.getByRole("combobox", { name: "Day" }), "sun");
     expect(window.location.search).toContain("day=sun");
     fireEvent.change(screen.getByLabelText("Time"), { target: { value: "10:15" } });
     expect(window.location.search).toContain("at=10%3A15");
-    await user.selectOptions(screen.getByRole("combobox", { name: "Leave now or later" }), "now");
+    await user.selectOptions(screen.getByRole("combobox", { name: "When to travel" }), "now");
     expect(window.location.search).not.toContain("at=");
+  });
+
+  it("plans to arrive by a time", async () => {
+    window.history.replaceState(null, "", "/?from=brixton&to=stanmore&at=09:30&day=wed&by=arrive");
+    const user = userEvent.setup();
+    render(<App timetable={timetable} now={monday9am} liveStatus={null} />);
+    expect(screen.getByRole("combobox", { name: "When to travel" })).toHaveValue("arrive");
+    const clock = screen.getByText(/^0\d:\d\d → 0\d:\d\d$/);
+    const [, arrival] = clock.textContent!.split(" → ");
+    expect(arrival! <= "09:30").toBe(true);
+    expect(screen.queryByText(/No trains for a while/)).not.toBeInTheDocument();
+    await user.selectOptions(screen.getByRole("combobox", { name: "When to travel" }), "at");
+    expect(window.location.search).not.toContain("by=arrive");
   });
 
   it("shows the next morning's first journey late at night", () => {
@@ -197,6 +210,13 @@ describe("App with timetables", () => {
 
 describe("recommend", () => {
   const j = (arrival: number) => ({ arrival }) as Journey;
+  const d = (departure: number) => ({ departure }) as Journey;
+  it("prefers the latest departure when arriving by a time", () => {
+    expect(recommendArriveBy([], false)).toBe(-1);
+    expect(recommendArriveBy([d(500), d(530)], false)).toBe(1);
+    expect(recommendArriveBy([d(525), d(530)], true)).toBe(0);
+    expect(recommendArriveBy([d(500), d(530)], true)).toBe(1);
+  });
   it("picks the fastest, or the simplest within tolerance when preferring fewer changes", () => {
     expect(recommend([], false)).toBe(-1);
     expect(recommend([j(100), j(95), j(80)], false)).toBe(2);
@@ -269,6 +289,13 @@ describe("App with live status", () => {
       />,
     );
     expect(screen.getByText("Good service on all lines.")).toBeInTheDocument();
+  });
+
+  it("tells you when you're offline", () => {
+    const spy = vi.spyOn(navigator, "onLine", "get").mockReturnValue(false);
+    render(<App timetable={null} liveStatus={null} />);
+    expect(screen.getByText(/You’re offline/)).toBeInTheDocument();
+    spy.mockRestore();
   });
 
   it("shows when live status is unavailable", () => {

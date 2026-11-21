@@ -10,6 +10,7 @@ describe("journey URL params", () => {
       at: "09:30",
       day: "mon",
       live: false,
+      arrive: true,
     };
     expect(readJourneyParams(writeJourneyParams(params))).toEqual(params);
   });
@@ -23,6 +24,7 @@ describe("journey URL params", () => {
         at: null,
         day: "mon",
         live: true,
+        arrive: true,
       }),
     ).toBe("");
   });
@@ -39,6 +41,7 @@ describe("journey URL params", () => {
         at: null,
         day: null,
         live: true,
+        arrive: false,
       }),
     );
     expect(window.location.search).toBe("?from=bank&to=euston");

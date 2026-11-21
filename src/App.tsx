@@ -10,6 +10,7 @@ import { TubeMap } from "./components/TubeMap";
 import { Legend } from "./components/Legend";
 import { StatusPanel } from "./components/StatusPanel";
 import { useLineStatus, type LiveStatus } from "./lib/useLineStatus";
+import { useOnline } from "./lib/useOnline";
 import {
   CLOSURE_SEVERITIES,
   NO_CONDITIONS,
@@ -19,13 +20,14 @@ import {
 } from "./engine/conditions";
 import { useJourneyParams } from "./lib/useUrlState";
 import { useTimetable } from "./lib/useTimetable";
-import { FEWER_CHANGES_PENALTY, LONG_WAIT, recommend } from "./lib/recommend";
+import { FEWER_CHANGES_PENALTY, LONG_WAIT, recommend, recommendArriveBy } from "./lib/recommend";
 import {
   WEEKDAYS,
   formatClock,
   londonNow,
   parseClock,
   planAcrossServiceDays,
+  planArriveBy,
   type Weekday,
 } from "./lib/serviceTime";
 
@@ -48,6 +50,7 @@ export function App({
   liveStatus,
 }: Props) {
   const [params, setParams] = useJourneyParams();
+  const online = useOnline();
   const polled = useLineStatus(liveStatus === undefined ? undefined : noStatus);
   const status = liveStatus === undefined ? polled.status : liveStatus;
   const avoidDisruptions = params.live;
@@ -96,10 +99,18 @@ export function App({
     const minutes = plannedAt ?? clock.minutes;
     // Live status describes now, so only apply it to journeys leaving now.
     const options = plannedAt === null ? { conditions } : {};
-    return { ...planAcrossServiceDays(timetable, from, to, weekday, minutes, options), minutes };
+    if (plannedAt !== null && params.arrive) {
+      const journeys = planArriveBy(timetable, from, to, weekday, minutes, options);
+      return { journeys, nextMorning: false, minutes: -Infinity, arriveBy: true };
+    }
+    return {
+      ...planAcrossServiceDays(timetable, from, to, weekday, minutes, options),
+      minutes,
+      arriveBy: false,
+    };
     // `tick` re-runs "leave now" plans every 30 seconds.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timetable, from, to, plannedAt, plannedDay, tick, conditions]);
+  }, [timetable, from, to, plannedAt, plannedDay, params.arrive, tick, conditions]);
 
   const [chosen, setChosen] = useState<number | null>(null);
   const [chosenFor, setChosenFor] = useState(timed);
@@ -108,7 +119,11 @@ export function App({
     setChosen(null);
   }
   const journeys = timed?.journeys ?? [];
-  const selected = chosen ?? recommend(journeys, params.fewerChanges);
+  const selected =
+    chosen ??
+    (timed?.arriveBy
+      ? recommendArriveBy(journeys, params.fewerChanges)
+      : recommend(journeys, params.fewerChanges));
   const journey = journeys[selected] ?? null;
   const route: Route | null = journey ?? typical;
 
@@ -156,6 +171,13 @@ export function App({
         </p>
       </header>
 
+      {!online && (
+        <p className="notice offline" role="status">
+          You’re offline. Timetabled journeys still work; live status will update when you
+          reconnect.
+        </p>
+      )}
+
       <main className="layout">
         <aside className="panel">
           <form
@@ -190,7 +212,8 @@ export function App({
             <DepartureControl
               at={params.at}
               day={plannedDay}
-              onChange={(at, day) => update({ at, day })}
+              arrive={params.arrive}
+              onChange={(at, day, arrive) => update({ at, day, arrive })}
             />
             <label className="checkbox">
               <input
@@ -214,7 +237,8 @@ export function App({
             <>
               {journey &&
                 timed &&
-                (timed.nextMorning || journey.departure - timed.minutes > LONG_WAIT) && (
+                (timed.nextMorning ||
+                  (!timed.arriveBy && journey.departure - timed.minutes > LONG_WAIT)) && (
                   <p className="notice" role="status">
                     No trains for a while: the next journey leaves at{" "}
                     {formatClock(journey.departure)}.

@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, type CSSProperties } from "react";
 import { select } from "d3-selection";
 import { zoom, zoomIdentity, type ZoomBehavior, type ZoomTransform } from "d3-zoom";
 import type { Graph, PlaceId, Route } from "../engine";
 import { boundsOf, buildSegments, pairKey, type Bounds } from "../lib/mapSegments";
+import { placeLabels, type LabelPosition } from "../lib/labels";
 
 interface Props {
   graph: Graph;
@@ -14,9 +15,15 @@ interface Props {
   closedHops?: ReadonlySet<string> | undefined;
 }
 
-/** Zoom levels at which more labels appear: big interchanges, then all interchanges, then all. */
-const MAJOR_LABELS_ZOOM = 1.6;
-const ALL_LABELS_ZOOM = 3;
+/** Label geometry in screen pixels (12px font). */
+const CHAR_WIDTH = 6.6;
+const LABEL_HEIGHT = 14;
+const LABEL_ATTRIBUTES: Record<LabelPosition, { anchor: string; dx: string; dy: string }> = {
+  ne: { anchor: "start", dx: "0.7em", dy: "-0.5em" },
+  se: { anchor: "start", dx: "0.7em", dy: "1.2em" },
+  nw: { anchor: "end", dx: "-0.7em", dy: "-0.5em" },
+  sw: { anchor: "end", dx: "-0.7em", dy: "1.2em" },
+};
 
 /**
  * Geographic network map. Lines, dots and labels keep a constant on-screen
@@ -52,14 +59,64 @@ export function TubeMap({ graph, route, from, to, onPlaceClick, closedHops }: Pr
   );
   const hasRoute = routeKeys.size > 0;
 
-  /** Updates the CSS scale variables after a zoom or resize. */
+  /**
+   * Places station labels for the current view so they never overlap:
+   * route stations first, then by number of lines. Runs after each zoom
+   * frame, writing straight to the DOM to avoid re-rendering 400 stations.
+   */
+  const layoutLabels = () => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const { k, x: tx, y: ty } = transformRef.current;
+    const width = svg.clientWidth;
+    const height = svg.clientHeight;
+    const scale = Math.min(width / view.width, height / view.height) || 1;
+    const offsetX = (width - view.width * scale) / 2;
+    const offsetY = (height - view.height * scale) / 2;
+    const groups = svg.querySelectorAll<SVGGElement>("g.station");
+    const inputs = [...groups].flatMap((g) => {
+      const place = graph.places.get(g.dataset.place ?? "");
+      if (!place || g.classList.contains("faded")) return [];
+      const priority =
+        (g.classList.contains("endpoint") ? 100 : 0) +
+        (g.classList.contains("on-route") ? 50 : 0) +
+        place.lines.length;
+      return [
+        {
+          id: place.id,
+          x: (k * place.x + tx - view.minX) * scale + offsetX,
+          y: (k * place.y + ty - view.minY) * scale + offsetY,
+          width: place.name.length * CHAR_WIDTH,
+          height: LABEL_HEIGHT,
+          priority,
+        },
+      ];
+    });
+    const placed = placeLabels(inputs, { width, height });
+    for (const g of groups) {
+      const text = g.querySelector("text");
+      if (!text) continue;
+      const position = placed.get(g.dataset.place ?? "");
+      text.style.display = position ? "" : "none";
+      if (position) {
+        const { anchor, dx, dy } = LABEL_ATTRIBUTES[position];
+        text.setAttribute("text-anchor", anchor);
+        text.setAttribute("dx", dx);
+        text.setAttribute("dy", dy);
+      }
+    }
+  };
+
+  /** Updates the CSS scale variable after a zoom or resize, then lays out labels (once per frame). */
+  const frame = useRef(0);
   const applyScale = () => {
     const svg = svgRef.current;
     if (!svg) return;
     const k = transformRef.current.k;
     const pxPerUnit = Math.min(svg.clientWidth / view.width, svg.clientHeight / view.height) || 1;
     svg.style.setProperty("--u", String(1 / (pxPerUnit * k)));
-    svg.dataset.detail = k >= ALL_LABELS_ZOOM ? "all" : k >= MAJOR_LABELS_ZOOM ? "major" : "hubs";
+    cancelAnimationFrame(frame.current);
+    frame.current = requestAnimationFrame(layoutLabels);
   };
 
   useEffect(() => {
@@ -150,7 +207,6 @@ export function TubeMap({ graph, route, from, to, onPlaceClick, closedHops }: Pr
         preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label="Network map. Scroll or pinch to zoom, drag to pan, and click a station to set it as your origin or destination."
-        data-detail="hubs"
       >
         <g ref={layerRef}>
           <g className={hasRoute ? "segments dimmed" : "segments"}>
@@ -163,6 +219,7 @@ export function TubeMap({ graph, route, from, to, onPlaceClick, closedHops }: Pr
                 <line
                   key={s.key}
                   data-testid={onRoute ? "route-segment" : closed ? "closed-segment" : undefined}
+                  style={{ "--ox": s.ox, "--oy": s.oy } as CSSProperties}
                   className={["segment", onRoute ? "on-route" : "", closed ? "closed" : ""]
                     .join(" ")
                     .trim()}
@@ -182,7 +239,6 @@ export function TubeMap({ graph, route, from, to, onPlaceClick, closedHops }: Pr
               const classes = [
                 "station",
                 place.lines.length > 1 ? "major" : "",
-                place.lines.length > 2 ? "hub" : "",
                 onRoute ? "on-route" : "",
                 hasRoute && !onRoute ? "faded" : "",
                 isEnd ? "endpoint" : "",

@@ -1,9 +1,0 @@
-{
-  "name": "London Underground Route Finder",
-  "short_name": "Tube Route",
-  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#1d4ed8",
-  "background_color": "#f5f6f8"
-}

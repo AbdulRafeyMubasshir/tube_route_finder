@@ -10,6 +10,8 @@ export interface JourneyParams {
   day: string | null;
   /** Whether to route around live disruptions (default true). */
   live: boolean;
+  /** With `at`: true to arrive by that time rather than leave at it. */
+  arrive: boolean;
 }
 
 export function readJourneyParams(search: string): JourneyParams {
@@ -21,6 +23,7 @@ export function readJourneyParams(search: string): JourneyParams {
     at: params.get("at"),
     day: params.get("day"),
     live: params.get("live") !== "off",
+    arrive: params.get("by") === "arrive",
   };
 }
 
@@ -31,6 +34,7 @@ export function writeJourneyParams({
   at,
   day,
   live,
+  arrive,
 }: JourneyParams): string {
   const params = new URLSearchParams();
   if (from) params.set("from", from);
@@ -38,6 +42,7 @@ export function writeJourneyParams({
   if (fewerChanges) params.set("prefer", "fewer-changes");
   if (at) params.set("at", at);
   if (at && day) params.set("day", day);
+  if (at && arrive) params.set("by", "arrive");
   if (!live) params.set("live", "off");
   const query = params.toString();
   return query ? `?${query}` : "";

@@ -352,6 +352,9 @@ details summary {
 }
 
 .segment {
+  /* Lines sharing a section are shifted side by side by a fixed number of
+     screen pixels (--ox/--oy), converted to map units with --u. */
+  transform: translate(calc(var(--ox, 0) * var(--u) * 1px), calc(var(--oy, 0) * var(--u) * 1px));
   stroke-width: 3.5;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
@@ -396,23 +399,12 @@ details summary {
   pointer-events: none;
 }
 
-/* Labels appear as you zoom in: big interchanges, then all interchanges, then
-   every station. Stations on the current route are always labelled. */
-.map svg[data-detail="hubs"] .station:not(.hub):not(.on-route) text,
-.map svg[data-detail="major"] .station:not(.major):not(.on-route) text {
-  display: none;
-}
-
 .station.faded text {
   display: none;
 }
 
 .station:hover circle {
   stroke: var(--accent);
-}
-
-.station:hover text {
-  display: inline !important;
 }
 
 .station.faded {
@@ -615,4 +607,9 @@ details summary {
 .notice.warning {
   background: #fef3f2;
   border-color: #fda29b;
+}
+
+.notice.offline {
+  background: #eef4ff;
+  border-color: #b2ccff;
 }

@@ -112,3 +112,47 @@ export function planAcrossServiceDays(
   const next = run(nextDay, minutes < SERVICE_DAY_START ? start : SERVICE_DAY_START, shift);
   return { journeys: paretoFront(next), nextMorning: next.length > 0 };
 }
+
+/** How far back to look for a departure when planning to arrive by a time. */
+const ARRIVE_BY_WINDOW = 4 * 60;
+
+/**
+ * Plans journeys that arrive by `arriveBy`: for each number of trains, the
+ * latest departure that still gets there in time. Earliest arrival never
+ * decreases as departure gets later (trains don't overtake), so each is found
+ * by binary search over departure minutes with forward RAPTOR queries.
+ * Options are kept only if each extra train buys a later departure.
+ */
+export function planArriveBy(
+  timetable: Timetable,
+  from: string,
+  to: string,
+  weekday: Weekday,
+  arriveBy: number,
+  options: { changeMinutes?: number; conditions?: Conditions } = {},
+): Journey[] {
+  const latestFor = (trains: number): Journey | null => {
+    const fits = (departAt: number) =>
+      planAcrossServiceDays(timetable, from, to, weekday, departAt, options).journeys.find(
+        (j) => trainCount(j) <= trains && j.arrival <= arriveBy,
+      ) ?? null;
+    let lo = Math.max(0, arriveBy - ARRIVE_BY_WINDOW);
+    let hi = arriveBy;
+    if (!fits(lo)) return null;
+    while (lo < hi) {
+      const mid = Math.ceil((lo + hi) / 2);
+      if (fits(mid)) lo = mid;
+      else hi = mid - 1;
+    }
+    return fits(lo);
+  };
+
+  const result: Journey[] = [];
+  for (let trains = 0; trains <= 6; trains++) {
+    const journey = latestFor(trains);
+    if (!journey || trainCount(journey) !== trains) continue;
+    const previous = result.at(-1);
+    if (!previous || journey.departure > previous.departure) result.push(journey);
+  }
+  return result;
+}

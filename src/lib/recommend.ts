@@ -15,3 +15,12 @@ export function recommend(journeys: Journey[], fewerChanges: boolean): number {
   const limit = (journeys[fastest] as Journey).arrival + FEWER_CHANGES_TOLERANCE;
   return journeys.findIndex((j) => j.arrival <= limit);
 }
+
+/** For "arrive by": the latest departure, or the simplest leaving within tolerance of it. */
+export function recommendArriveBy(journeys: Journey[], fewerChanges: boolean): number {
+  if (journeys.length === 0) return -1;
+  const latest = journeys.length - 1;
+  if (!fewerChanges) return latest;
+  const limit = (journeys[latest] as Journey).departure - FEWER_CHANGES_TOLERANCE;
+  return journeys.findIndex((j) => j.departure >= limit);
+}

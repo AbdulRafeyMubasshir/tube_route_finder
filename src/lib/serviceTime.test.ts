@@ -8,6 +8,7 @@ import {
   paretoFront,
   parseClock,
   planAcrossServiceDays,
+  planArriveBy,
 } from "./serviceTime";
 
 describe("clock helpers", () => {
@@ -82,5 +83,47 @@ describe("planAcrossServiceDays", () => {
   it("finds the first train when asked before services start", () => {
     const { journeys } = planAcrossServiceDays(timetable, "a", "b", "tue", 60);
     expect(journeys[0]?.departure).toBe(330);
+  });
+});
+
+describe("planArriveBy", () => {
+  const graph = new Graph(
+    makeNetwork([
+      ["slow", ["a", "z"], 30],
+      ["red", ["a", "m"], 5],
+      ["blue", ["m", "z"], 5],
+    ]),
+  );
+  const every = (start: number, step: number, end: number) => {
+    const out: number[] = [];
+    for (let t = start; t <= end; t += step) out.push(t);
+    return out.map((t, i) => t - (i ? (out[i - 1] as number) : 0));
+  };
+  const all = (deltas: number[]) => Object.fromEntries(DAY_TYPES.map((d) => [d, deltas]));
+  const timetable = new Timetable(graph, {
+    routes: [
+      { line: "slow", stops: ["a", "z"], times: [0, 30], trips: all(every(480, 20, 720)) },
+      { line: "red", stops: ["a", "m"], times: [0, 5], trips: all(every(480, 10, 720)) },
+      { line: "blue", stops: ["m", "z"], times: [0, 5], trips: all(every(482, 10, 722)) },
+    ],
+  });
+
+  it("finds the latest departure for each number of trains that arrives in time", () => {
+    // Arrive by 10:00 (600).
+    const journeys = planArriveBy(timetable, "a", "z", "wed", 600, { changeMinutes: 0 });
+    expect(
+      journeys.map((j) => [
+        j.segments.filter((s) => s.kind === "ride").length,
+        j.departure,
+        j.arrival,
+      ]),
+    ).toEqual([
+      [1, 560, 590], // direct: the 09:20 slow train
+      [2, 580, 597], // with a change: red 09:40 (m at 09:45), then blue 09:52
+    ]);
+  });
+
+  it("returns nothing when no journey arrives in time", () => {
+    expect(planArriveBy(timetable, "a", "z", "wed", 300)).toEqual([]);
   });
 });
