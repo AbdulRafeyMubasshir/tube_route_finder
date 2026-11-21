@@ -1,6 +1,7 @@
 import type { Graph } from "./Graph";
 import type { Edge, LineId, PlaceId, Route, Segment, StationId } from "./types";
 import { DEFAULT_CHANGE_MINUTES } from "./findRoute";
+import { NO_CONDITIONS, hopKey, type Conditions } from "./conditions";
 
 export const DAY_TYPES = ["weekday", "friday", "saturday", "sunday"] as const;
 export type DayType = (typeof DAY_TYPES)[number];
@@ -60,6 +61,38 @@ export class Timetable {
     this.routes.forEach((route, r) => route.stops.forEach((s, pos) => lists[s]?.push(r, pos)));
     this.stopRoutes = lists.map((l) => Int32Array.from(l));
   }
+
+  private readonly conditionCache = new WeakMap<Conditions, RouteConditions>();
+
+  /** Per-route delay factor and closed hops under `conditions` (cached). */
+  routeConditions(conditions: Conditions): RouteConditions {
+    let result = this.conditionCache.get(conditions);
+    if (!result) {
+      const ids = this.graph.index.stationIds;
+      result = {
+        factor: Float64Array.from(this.routes, (r) => conditions.delayFactor.get(r.line) ?? 1),
+        closedInto: this.routes.map((r) =>
+          Uint8Array.from(r.stops, (s, pos) =>
+            pos > 0 &&
+            conditions.closedHops.has(
+              hopKey(r.line, ids[r.stops[pos - 1] as number] as string, ids[s] as string),
+            )
+              ? 1
+              : 0,
+          ),
+        ),
+      };
+      this.conditionCache.set(conditions, result);
+    }
+    return result;
+  }
+}
+
+interface RouteConditions {
+  /** Run-time multiplier per route. */
+  factor: Float64Array;
+  /** Per route: 1 at positions whose incoming hop is closed. */
+  closedInto: Uint8Array[];
 }
 
 export interface JourneyOptions {
@@ -70,6 +103,8 @@ export interface JourneyOptions {
   changeMinutes?: number;
   /** Maximum number of trains. Default 6. */
   maxTrains?: number;
+  /** Live conditions: trains can't run through closed hops; delayed lines run slower. */
+  conditions?: Conditions;
 }
 
 /** A timed journey: a Route plus clock times. */
@@ -97,7 +132,6 @@ function lowerBound(values: Float64Array, x: number): number {
 
 const NONE = -1;
 const RIDE = 1;
-const WALK = 2;
 
 /**
  * RAPTOR (Round-bAsed Public Transit Optimized Router; Delling, Pajor and
@@ -130,15 +164,26 @@ export function planJourneys(
   const maxTrains = options.maxTrains ?? 6;
   const t0 = options.departAt;
   if (from === to) return [];
+  const live = timetable.routeConditions(options.conditions ?? NO_CONDITIONS);
 
   const rounds = maxTrains + 1;
   const arrival = new Float64Array(rounds * n).fill(Infinity); // arrival[k * n + s]
   const best = new Float64Array(n).fill(Infinity);
+  // Best arrival by train (or at the origin). Kept apart from `best` because a
+  // walk can't follow a walk: a train arriving no earlier than a walk still
+  // matters if it lets you walk on from there.
+  const bestRide = new Float64Array(n).fill(Infinity);
   const parentKind = new Int8Array(rounds * n).fill(NONE);
   const parentA = new Int32Array(rounds * n); // ride: route; walk: from station
   const parentB = new Int32Array(rounds * n); // ride: trip index; walk: walk edge index
   const parentC = new Int32Array(rounds * n); // ride: board position
   const parentD = new Int32Array(rounds * n); // ride: alight position
+  // Arrival by train (or at the origin) per round, and walk parents kept apart:
+  // a stop's walk-improved arrival must not be walked on from, and journeys
+  // are rebuilt from the train arrival that a walk started from.
+  const rideArrival = new Float64Array(rounds * n).fill(Infinity);
+  const walkSrc = new Int32Array(rounds * n).fill(-1);
+  const walkEdgeOf = new Int32Array(rounds * n);
   const targets = destination.stations.map((id) => ix.stationIndex.get(id) as number);
   const isTarget = new Uint8Array(n);
   targets.forEach((s) => (isTarget[s] = 1));
@@ -146,30 +191,38 @@ export function planJourneys(
   let targetBound = Infinity;
 
   let marked = new Uint8Array(n);
+  /** Relaxes one walk from each source, using arrivals from before any walk this round. */
   const walkFrom = (k: number, sources: Uint8Array) => {
+    const from: number[] = [];
+    const base: number[] = [];
     for (let s = 0; s < n; s++) {
-      if (!sources[s]) continue;
-      const base = arrival[k * n + s] as number;
+      if (sources[s]) {
+        from.push(s);
+        base.push(rideArrival[k * n + s] as number);
+      }
+    }
+    from.forEach((s, j) => {
       for (let i = ix.walkStart[s] as number; i < (ix.walkStart[s + 1] as number); i++) {
         const q = ix.walkTarget[i] as number;
-        const t = base + (ix.walkMinutes[i] as number);
+        const t = (base[j] as number) + (ix.walkMinutes[i] as number);
         if (t < (arrival[k * n + q] as number) && t < (best[q] as number) && t < targetBound) {
           arrival[k * n + q] = t;
           best[q] = t;
           if (isTarget[q]) targetBound = t;
-          parentKind[k * n + q] = WALK;
-          parentA[k * n + q] = s;
-          parentB[k * n + q] = ix.walkEdge[i] as number;
+          walkSrc[k * n + q] = s;
+          walkEdgeOf[k * n + q] = ix.walkEdge[i] as number;
           marked[q] = 1;
         }
       }
-    }
+    });
   };
 
   for (const id of origin.stations) {
     const s = ix.stationIndex.get(id) as number;
     arrival[s] = t0;
+    rideArrival[s] = t0;
     best[s] = t0;
+    bestRide[s] = t0;
     marked[s] = 1;
   }
   const routeStart = new Int32Array(timetable.routes.length);
@@ -201,18 +254,24 @@ export function planJourneys(
       const start = routeStart[r] as number;
       const route = timetable.routes[r] as CompiledRoute;
       const trips = route.trips[options.day];
+      const factor = live.factor[r] as number;
+      const closedInto = live.closedInto[r] as Uint8Array;
       let trip = -1;
       let tripStart = 0;
       let boardPos = -1;
       for (let pos = start; pos < route.stops.length; pos++) {
         const s = route.stops[pos] as number;
-        const offset = route.times[pos] as number;
+        // Delays stretch run times; a closed hop ends the current trip here.
+        const offset = (route.times[pos] as number) * factor;
+        if (closedInto[pos]) trip = -1;
         // Alight here if the current trip improves the arrival.
         if (trip >= 0) {
           const t = tripStart + offset;
-          if (t < (best[s] as number) && t < targetBound) {
+          if (t < (bestRide[s] as number) && t < targetBound) {
             arrival[cur + s] = t;
-            best[s] = t;
+            rideArrival[cur + s] = t;
+            bestRide[s] = t;
+            if (t < (best[s] as number)) best[s] = t;
             if (isTarget[s]) targetBound = t;
             parentKind[cur + s] = RIDE;
             parentA[cur + s] = r;
@@ -251,9 +310,9 @@ export function planJourneys(
       }
     }
     if (bestStop >= 0) {
-      const parents = { parentKind, parentA, parentB, parentC, parentD };
+      const parents = { parentKind, parentA, parentB, parentC, parentD, walkSrc, walkEdgeOf };
       journeys.push(
-        reconstruct(timetable, from, to, k, bestStop, arrival, parents, t0, options.day),
+        reconstruct(timetable, from, to, k, bestStop, arrival, parents, t0, options.day, live),
       );
     }
   }
@@ -273,9 +332,12 @@ function reconstruct(
     parentB: Int32Array;
     parentC: Int32Array;
     parentD: Int32Array;
+    walkSrc: Int32Array;
+    walkEdgeOf: Int32Array;
   },
   t0: number,
   day: DayType,
+  live: RouteConditions,
 ): Journey {
   const { graph } = timetable;
   const ix = graph.index;
@@ -288,18 +350,15 @@ function reconstruct(
   const legs: Leg[] = [];
   let k = round;
   let s = stop;
+  let trainOnly = false; // after a walk, continue from the train arrival it started from
   while (k >= 0) {
     const at = k * n + s;
-    const kind = p.parentKind[at];
-    if (kind === WALK) {
-      legs.push({
-        kind: "walk",
-        from: p.parentA[at] as number,
-        to: s,
-        edge: p.parentB[at] as number,
-      });
-      s = p.parentA[at] as number;
-    } else if (kind === RIDE) {
+    const src = p.walkSrc[at] as number;
+    if (!trainOnly && src >= 0) {
+      legs.push({ kind: "walk", from: src, to: s, edge: p.walkEdgeOf[at] as number });
+      s = src;
+      trainOnly = true;
+    } else if (p.parentKind[at] === RIDE) {
       const route = timetable.routes[p.parentA[at] as number] as CompiledRoute;
       legs.push({
         kind: "ride",
@@ -310,6 +369,7 @@ function reconstruct(
       });
       s = route.stops[p.parentC[at] as number] as number;
       k -= 1;
+      trainOnly = false;
     } else {
       break; // reached an origin station
     }
@@ -338,7 +398,8 @@ function reconstruct(
     for (let pos = leg.board + 1; pos <= leg.alight; pos++) {
       const a = id(route.stops[pos - 1] as number);
       const b = id(route.stops[pos] as number);
-      const minutes = (route.times[pos] as number) - (route.times[pos - 1] as number);
+      const f = live.factor[leg.route] as number;
+      const minutes = ((route.times[pos] as number) - (route.times[pos - 1] as number)) * f;
       edges.push({
         kind: "ride",
         from: a,
@@ -351,11 +412,12 @@ function reconstruct(
       stops.push(b);
       stations.push(b);
     }
-    const minutes = (route.times[leg.alight] as number) - (route.times[leg.board] as number);
+    const f = live.factor[leg.route] as number;
+    const minutes = ((route.times[leg.alight] as number) - (route.times[leg.board] as number)) * f;
     const tripStart = route.trips[day][leg.trip] as number;
     times.push({
-      start: tripStart + (route.times[leg.board] as number),
-      end: tripStart + (route.times[leg.alight] as number),
+      start: tripStart + (route.times[leg.board] as number) * f,
+      end: tripStart + (route.times[leg.alight] as number) * f,
     });
     rideMinutes += minutes;
     const fromId = id(route.stops[leg.board] as number);
@@ -384,7 +446,8 @@ function reconstruct(
       .reduce((sum, seg) => sum + seg.minutes, 0);
     const route = timetable.routes[firstRide.route] as CompiledRoute;
     const boardTime =
-      (route.trips[day][firstRide.trip] as number) + (route.times[firstRide.board] as number);
+      (route.trips[day][firstRide.trip] as number) +
+      (route.times[firstRide.board] as number) * (live.factor[firstRide.route] as number);
     departure = boardTime - walkBefore;
   }
   // Walks happen straight after the previous segment (or at the departure time).

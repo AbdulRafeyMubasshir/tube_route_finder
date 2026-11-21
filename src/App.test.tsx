@@ -19,7 +19,7 @@ describe("App", () => {
   beforeEach(() => window.history.replaceState(null, "", "/"));
 
   it("shows a prompt before any stations are chosen", () => {
-    render(<App timetable={null} />);
+    render(<App timetable={null} liveStatus={null} />);
     expect(
       screen.getByRole("heading", { name: "London Underground Route Finder" }),
     ).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe("App", () => {
   });
 
   it("plans a journey and shows each ride", async () => {
-    render(<App timetable={null} />);
+    render(<App timetable={null} liveStatus={null} />);
     await chooseStation("From", "brix", "Brixton");
     await chooseStation("To", "stanm", "Stanmore");
 
@@ -45,7 +45,7 @@ describe("App", () => {
 
   it("highlights only the segments the route uses", async () => {
     window.history.replaceState(null, "", "/?from=brixton&to=stanmore");
-    render(<App timetable={null} />);
+    render(<App timetable={null} liveStatus={null} />);
     const hops = findRoute(tubeGraph, "brixton", "stanmore")!.edges.length;
     expect(screen.getAllByTestId("route-segment")).toHaveLength(hops);
   });
@@ -53,7 +53,7 @@ describe("App", () => {
   it("restores a journey from the URL and swaps direction", async () => {
     window.history.replaceState(null, "", "/?from=walthamstow-central&to=brixton");
     const user = userEvent.setup();
-    render(<App timetable={null} />);
+    render(<App timetable={null} liveStatus={null} />);
     expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("Walthamstow Central");
     expect(screen.getByText("Victoria line towards Brixton")).toBeInTheDocument();
 
@@ -65,14 +65,14 @@ describe("App", () => {
 
   it("ignores unknown place ids in the URL", () => {
     window.history.replaceState(null, "", "/?from=atlantis&to=bank");
-    render(<App timetable={null} />);
+    render(<App timetable={null} liveStatus={null} />);
     expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("");
     expect(screen.getByRole("combobox", { name: "To" })).toHaveValue("Bank");
   });
 
   it("sets origin then destination when stations are clicked on the map", () => {
     // fireEvent rather than userEvent: d3-zoom's mousedown handler needs a real window view.
-    const { container } = render(<App timetable={null} />);
+    const { container } = render(<App timetable={null} liveStatus={null} />);
     const click = (id: string) => fireEvent.click(container.querySelector(`[data-place="${id}"]`)!);
 
     click("bank");
@@ -89,7 +89,7 @@ describe("App", () => {
   it("can prefer fewer changes", async () => {
     window.history.replaceState(null, "", "/?from=brixton&to=stanmore");
     const user = userEvent.setup();
-    render(<App timetable={null} />);
+    render(<App timetable={null} liveStatus={null} />);
     await user.click(screen.getByRole("checkbox", { name: "Prefer fewer changes" }));
     expect(window.location.search).toContain("prefer=fewer-changes");
     expect(screen.getByRole("region", { name: "Journey details" })).toBeInTheDocument();
@@ -97,7 +97,7 @@ describe("App", () => {
 
   it("tells the user when two stations are the same", () => {
     window.history.replaceState(null, "", "/?from=bank&to=bank");
-    render(<App timetable={null} />);
+    render(<App timetable={null} liveStatus={null} />);
     expect(screen.getByText(/already there/)).toBeInTheDocument();
   });
 
@@ -109,7 +109,7 @@ describe("App", () => {
       ]),
     );
     window.history.replaceState(null, "", "/?from=x&to=q");
-    render(<App graph={graph} timetable={null} />);
+    render(<App graph={graph} timetable={null} liveStatus={null} />);
     expect(screen.getByRole("alert")).toHaveTextContent("No route found");
   });
 });
@@ -122,7 +122,7 @@ describe("App with timetables", () => {
   beforeEach(() => window.history.replaceState(null, "", "/?from=brixton&to=stanmore"));
 
   it("shows clock times from the timetable when leaving now", () => {
-    render(<App timetable={timetable} now={monday9am} />);
+    render(<App timetable={timetable} now={monday9am} liveStatus={null} />);
     const details = screen.getByRole("region", { name: "Journey details" });
     expect(within(details).getByText(/^09:\d\d → 09:\d\d$/)).toBeInTheDocument();
     expect(within(details).getByText(/Times from TfL timetables/)).toBeInTheDocument();
@@ -133,7 +133,7 @@ describe("App with timetables", () => {
 
   it("plans for a chosen day and time from the URL", () => {
     window.history.replaceState(null, "", "/?from=brixton&to=stanmore&at=07:30&day=sat");
-    render(<App timetable={timetable} now={monday9am} />);
+    render(<App timetable={timetable} now={monday9am} liveStatus={null} />);
     expect(screen.getByRole("combobox", { name: "Leave now or later" })).toHaveValue("at");
     expect(screen.getByRole("combobox", { name: "Day" })).toHaveValue("sat");
     expect(screen.getByText(/^07:\d\d → 08:\d\d$/)).toBeInTheDocument();
@@ -141,7 +141,7 @@ describe("App with timetables", () => {
 
   it("switches between leaving now and a planned time", async () => {
     const user = userEvent.setup();
-    render(<App timetable={timetable} now={monday9am} />);
+    render(<App timetable={timetable} now={monday9am} liveStatus={null} />);
     await user.selectOptions(screen.getByRole("combobox", { name: "Leave now or later" }), "at");
     expect(window.location.search).toMatch(/at=\d\d%3A\d\d&day=\w{3}/);
     await user.selectOptions(screen.getByRole("combobox", { name: "Day" }), "sun");
@@ -154,7 +154,7 @@ describe("App with timetables", () => {
 
   it("shows the next morning's first journey late at night", () => {
     window.history.replaceState(null, "", "/?from=morden&to=high-barnet&at=02:30&day=tue");
-    render(<App timetable={timetable} now={monday9am} />);
+    render(<App timetable={timetable} now={monday9am} liveStatus={null} />);
     expect(screen.getByRole("status")).toHaveTextContent(
       /No trains for a while: the next journey leaves at 0[45]:\d\d/,
     );
@@ -182,7 +182,7 @@ describe("App with timetables", () => {
     });
     window.history.replaceState(null, "", "/?from=a&to=z&at=10:00&day=wed");
     const user = userEvent.setup();
-    render(<App graph={graph} timetable={small} now={monday9am} />);
+    render(<App graph={graph} timetable={small} now={monday9am} liveStatus={null} />);
 
     const options = within(screen.getByRole("group", { name: "Journey options" })).getAllByRole(
       "button",
@@ -202,5 +202,77 @@ describe("recommend", () => {
     expect(recommend([j(100), j(95), j(80)], false)).toBe(2);
     expect(recommend([j(100), j(88), j(80)], true)).toBe(1);
     expect(recommend([j(89), j(88), j(80)], true)).toBe(0);
+  });
+});
+
+describe("App with live status", () => {
+  const live = {
+    updatedAt: new Date("2026-11-21T22:00:00Z"),
+    statuses: [
+      {
+        line: "jubilee",
+        severity: 5,
+        description: "Part Closure",
+        reason: "No service between Green Park and Bond Street.",
+        closedSections: [["940GZZLUGPK", "940GZZLUBND"]],
+      },
+      {
+        line: "victoria",
+        severity: 9,
+        description: "Minor Delays",
+        reason: "Signal failure.",
+        closedSections: [],
+      },
+      {
+        line: "central",
+        severity: 10,
+        description: "Good Service",
+        reason: null,
+        closedSections: [],
+      },
+    ],
+  };
+
+  beforeEach(() => window.history.replaceState(null, "", "/?from=brixton&to=stanmore"));
+
+  it("routes around a closure, warns about delays, and lists disrupted lines", () => {
+    const { container } = render(<App timetable={null} liveStatus={live} />);
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "Rerouted to avoid: Jubilee (Part Closure)",
+    );
+    expect(
+      screen.getByText(/Victoria: Minor Delays\. Journey times allow for delays\./),
+    ).toBeInTheDocument();
+
+    const panel = screen.getByRole("region", { name: "Live line status" });
+    expect(within(panel).getByText("Part Closure")).toBeInTheDocument();
+    expect(within(panel).getByText("Minor Delays")).toBeInTheDocument();
+    expect(within(panel).queryByText("Central")).not.toBeInTheDocument();
+    expect(within(panel).getByText(/Updated \d\d:\d\d/)).toBeInTheDocument();
+    expect(container.querySelectorAll('[data-testid="closed-segment"]').length).toBeGreaterThan(0);
+  });
+
+  it("can ignore live disruptions", async () => {
+    const user = userEvent.setup();
+    render(<App timetable={null} liveStatus={live} />);
+    await user.click(screen.getByRole("checkbox", { name: "Avoid live disruptions" }));
+    expect(window.location.search).toContain("live=off");
+    expect(screen.queryByText(/Rerouted to avoid/)).not.toBeInTheDocument();
+    expect(screen.getByText("Jubilee line towards Stanmore")).toBeInTheDocument();
+  });
+
+  it("says when everything is running normally", () => {
+    render(
+      <App
+        timetable={null}
+        liveStatus={{ updatedAt: new Date(), statuses: [live.statuses[2]!] }}
+      />,
+    );
+    expect(screen.getByText("Good service on all lines.")).toBeInTheDocument();
+  });
+
+  it("shows when live status is unavailable", () => {
+    render(<App timetable={null} liveStatus={null} />);
+    expect(screen.getByRole("region", { name: "Live line status" })).toHaveTextContent("Loading");
   });
 });

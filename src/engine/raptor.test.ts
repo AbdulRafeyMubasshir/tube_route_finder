@@ -113,6 +113,76 @@ describe("planJourneys (RAPTOR)", () => {
     expect(plan(timetable, "a", "z", 600)[0]?.arrival).toBe(610);
   });
 
+  it("lets you walk on from a stop reached by train, even if walking there was as quick", () => {
+    // Regression found by the property test: walks can't chain, so the train
+    // arrival at m matters even though the walk to m is just as fast.
+    const { timetable } = setup(
+      [{ line: "red", stops: ["a", "m"], times: [0, 1], departures: [0] }],
+      [
+        { from: "a", to: "m", minutes: 1 },
+        { from: "m", to: "z", minutes: 1 },
+      ],
+    );
+    expect(plan(timetable, "a", "z", 0, 0)[0]?.arrival).toBe(2);
+  });
+
+  it("doesn't chain walks through a stop whose arrival improved by walking", () => {
+    // Regression: the walk m->x improved x, which must not then be walked from in the same round.
+    const { timetable } = setup(
+      [{ line: "red", stops: ["a", "m", "x"], times: [0, 1, 6], departures: [0] }],
+      [
+        { from: "m", to: "x", minutes: 1 },
+        { from: "x", to: "z", minutes: 1 },
+      ],
+    );
+    expect(plan(timetable, "a", "z", 0, 0)[0]?.arrival).toBe(7);
+  });
+
+  it("rebuilds a walk from the train arrival it started from, not a walk-improved one", () => {
+    // Regression: x was reached by train at 10 and by walking at 2. The walk
+    // x->z started from the train arrival, so the journey must not show a
+    // chain of two walks.
+    const { timetable } = setup(
+      [{ line: "red", stops: ["a", "m", "x"], times: [0, 1, 10], departures: [0] }],
+      [
+        { from: "m", to: "x", minutes: 1 },
+        { from: "x", to: "z", minutes: 1 },
+      ],
+    );
+    const [journey] = plan(timetable, "a", "z", 0, 0);
+    expect(journey?.segments.map((s) => `${s.kind}:${s.from}-${s.to}`)).toEqual([
+      "ride:a-x",
+      "walk:x-z",
+    ]);
+    expect(journey?.times.at(-1)?.end).toBe(11);
+  });
+
+  it("avoids closed sections and slows delayed lines", () => {
+    const { timetable } = setup([
+      { line: "red", stops: ["a", "b", "c"], times: [0, 5, 10], departures: [600] },
+      { line: "blue", stops: ["a", "c"], times: [0, 20], departures: [600] },
+    ]);
+    const normal = plan(timetable, "a", "c", 600);
+    expect(normal.at(-1)?.arrival).toBe(610);
+
+    const closed = {
+      closedHops: new Set(["red|b|c", "red|c|b"]),
+      delayFactor: new Map([["blue", 1.5]]),
+    };
+    const [rerouted] = planJourneys(timetable, "a", "c", {
+      departAt: 600,
+      day: "weekday",
+      conditions: closed,
+    });
+    expect(rerouted?.segments).toMatchObject([{ kind: "ride", line: "blue", minutes: 30 }]);
+    expect(rerouted?.arrival).toBe(630);
+    // The open part of the red line still works.
+    expect(
+      planJourneys(timetable, "a", "b", { departAt: 600, day: "weekday", conditions: closed })[0]
+        ?.arrival,
+    ).toBe(605);
+  });
+
   it("rejects timetables with unknown stations", () => {
     const graph = new Graph(makeNetwork([["red", ["a", "b"], 1]]));
     expect(
@@ -255,7 +325,7 @@ describe("planJourneys properties", () => {
           expect(j.times.at(-1)?.end).toBe(j.arrival);
         }
       }),
-      { numRuns: 400 },
+      { numRuns: 1000 },
     );
   });
 });

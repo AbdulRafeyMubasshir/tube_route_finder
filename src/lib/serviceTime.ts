@@ -1,4 +1,5 @@
 import { planJourneys, type DayType, type Journey, type Timetable } from "../engine/raptor";
+import type { Conditions } from "../engine/conditions";
 
 export const WEEKDAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
 export type Weekday = (typeof WEEKDAYS)[number];
@@ -93,14 +94,12 @@ export function planAcrossServiceDays(
   to: string,
   weekday: Weekday,
   minutes: number,
-  changeMinutes?: number,
+  options: { changeMinutes?: number; conditions?: Conditions } = {},
 ): { journeys: Journey[]; nextMorning: boolean } {
   const run = (day: Weekday, departAt: number, shift: number) =>
-    planJourneys(timetable, from, to, {
-      day: dayTypeOf(day),
-      departAt,
-      ...(changeMinutes === undefined ? {} : { changeMinutes }),
-    }).map((j) => shiftJourney(j, shift));
+    planJourneys(timetable, from, to, { ...options, day: dayTypeOf(day), departAt }).map((j) =>
+      shiftJourney(j, shift),
+    );
 
   const found = run(weekday, minutes, 0);
   if (minutes < SERVICE_DAY_START)

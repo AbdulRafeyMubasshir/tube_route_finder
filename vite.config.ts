@@ -17,7 +17,7 @@ export default defineConfig({
     setupFiles: ["./src/test/setup.ts"],
     coverage: {
       provider: "v8",
-      include: ["src/**/*.{ts,tsx}", "scripts/tfl/**/*.ts"],
+      include: ["src/**/*.{ts,tsx}", "scripts/tfl/**/*.ts", "api/**/*.ts"],
       exclude: ["src/main.tsx", "src/test/**", "**/*.test.{ts,tsx}", "scripts/tfl/types.ts"],
       reporter: ["text", "html", "json-summary"],
       thresholds: { lines: 90, functions: 90, branches: 85, statements: 90 },

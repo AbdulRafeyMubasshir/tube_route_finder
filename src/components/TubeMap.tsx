@@ -10,6 +10,8 @@ interface Props {
   from: PlaceId | null;
   to: PlaceId | null;
   onPlaceClick: (id: PlaceId) => void;
+  /** Live closures ("line|from|to"); closed sections are drawn dashed. */
+  closedHops?: ReadonlySet<string> | undefined;
 }
 
 /** Zoom levels at which more labels appear: big interchanges, then all interchanges, then all. */
@@ -21,7 +23,7 @@ const ALL_LABELS_ZOOM = 3;
  * size at any zoom: strokes use non-scaling-stroke, and dot radii and font
  * sizes are scaled by the CSS variable --u (map units per screen pixel).
  */
-export function TubeMap({ graph, route, from, to, onPlaceClick }: Props) {
+export function TubeMap({ graph, route, from, to, onPlaceClick, closedHops }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
   const layerRef = useRef<SVGGElement>(null);
   const zoomRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null);
@@ -156,11 +158,14 @@ export function TubeMap({ graph, route, from, to, onPlaceClick }: Props) {
               const a = graph.station(s.a);
               const b = graph.station(s.b);
               const onRoute = routeKeys.has(s.key);
+              const closed = closedHops?.has(`${s.line}|${s.a}|${s.b}`) ?? false;
               return (
                 <line
                   key={s.key}
-                  data-testid={onRoute ? "route-segment" : undefined}
-                  className={onRoute ? "segment on-route" : "segment"}
+                  data-testid={onRoute ? "route-segment" : closed ? "closed-segment" : undefined}
+                  className={["segment", onRoute ? "on-route" : "", closed ? "closed" : ""]
+                    .join(" ")
+                    .trim()}
                   x1={a.x}
                   y1={a.y}
                   x2={b.x}

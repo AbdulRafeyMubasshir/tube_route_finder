@@ -18,6 +18,8 @@ geographic map.
 - **Timetabled journeys** ("08:35 → 09:23") from about 25,000 TfL departures,
   for leaving now or at a chosen day and time. It handles trains running past
   midnight and tells you when trains have stopped.
+- **Live disruption routing:** a live status panel from TfL, and journeys that
+  route around closures and allow for delays. The map shows closed sections.
 - **Pareto-optimal options**: the faster journey with more changes, and the
   simpler ones, each one a real trade-off.
 - **Whole network:** 420 stations on 19 lines, built from the TfL Unified API.
@@ -77,7 +79,18 @@ Both share the same model:
 - **Costs**: time + `changeMinutes` per change (counted in the journey time) +
   an optional `changePenalty` (steers the choice only). Ties prefer fewer changes.
 
+Live conditions (closures and delays from TfL's status feed) are applied by
+both engines: closed hops can't be travelled, and delayed lines run slower. See
+[ADR 0006](docs/adr/0006-live-status-and-disruption-routing.md).
+
 Design decisions are recorded in [`docs/adr/`](docs/adr).
+
+### Live status (`api/status.ts`)
+
+A Vercel Edge Function proxies TfL's status feed, keeps the optional app key on
+the server, trims the response, and caches it at the edge for 60 seconds. The
+app polls it every two minutes and falls back to TfL directly in local
+development.
 
 ### Data pipeline (`scripts/`)
 
@@ -99,6 +112,7 @@ Design decisions are recorded in [`docs/adr/`](docs/adr).
 
 | Layer    | What is tested                                                                                                                                                                     |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Live     | Status parsing from a real TfL response; edge function (caching headers, upstream failure); client fallback; closures and delays in both engines; rerouting and warnings in the UI |
 | RAPTOR   | Waiting, last trains, minimum change time, Pareto options, walks, boarding an earlier trip mid-route; **property test** against a time-dependent Dijkstra on 400 random timetables |
 | Engine   | Edge cases: same place, unreachable, one-way patterns, parallel lines, branch changes, shared sections, walking, multi-station origins, penalties, ties                            |
 | Engine   | **Property-based tests** ([fast-check](https://fast-check.dev)): on 400 random networks per property, results match a simple Bellman-Ford reference and are always valid paths     |
@@ -144,6 +158,8 @@ src/
   data/          generated network.json and timetable.json, and the shared graph instance
   components/    React UI: StationCombobox, RouteDetails, TubeMap, Legend
   lib/           service days and clock times, journey choice, search, URL state, map geometry
+api/
+  status.ts      edge function: cached, trimmed TfL line status
 scripts/
   tfl/           TfL fetcher, network and timetable compilers (pure, unit-tested)
   fetch-tfl.ts   CLI: download the snapshot
@@ -159,12 +175,15 @@ docs/adr/        architecture decision records
   from distance and trips from an assumed frequency (marked "est.").
 - Trains that start mid-line (e.g. from depots) are missing, as timetables are
   fetched from termini.
+- Delays are modelled as slower run times (e.g. 1.35× for severe delays), as TfL
+  doesn't publish expected delay minutes.
+- **No step-free routing yet.** TfL's API accessibility data is too incomplete
+  to rely on (see ADR 0006).
 - Shared track sections (e.g. Circle, District, H&C) are drawn on top of each
   other rather than side by side.
 
 Next:
 
-- **Phase 4:** live line status and rerouting around disruption; step-free routing
 - **Phase 5:** map polish (parallel lines, label collision), offline-capable PWA, leave-at / arrive-by
 - **Phase 6:** technical write-up and demo video
 

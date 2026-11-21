@@ -8,6 +8,15 @@ import { JourneyOptions } from "./components/JourneyOptions";
 import { DepartureControl } from "./components/DepartureControl";
 import { TubeMap } from "./components/TubeMap";
 import { Legend } from "./components/Legend";
+import { StatusPanel } from "./components/StatusPanel";
+import { useLineStatus, type LiveStatus } from "./lib/useLineStatus";
+import {
+  CLOSURE_SEVERITIES,
+  NO_CONDITIONS,
+  conditionsFrom,
+  hopKey,
+  isDisrupted,
+} from "./engine/conditions";
 import { useJourneyParams } from "./lib/useUrlState";
 import { useTimetable } from "./lib/useTimetable";
 import { FEWER_CHANGES_PENALTY, LONG_WAIT, recommend } from "./lib/recommend";
@@ -26,10 +35,26 @@ interface Props {
   timetable?: Timetable | null;
   /** Injected in tests; defaults to the real clock. */
   now?: () => Date;
+  /** Injected in tests; defaults to polling TfL. */
+  liveStatus?: LiveStatus | null;
 }
 
-export function App({ graph = tubeGraph, timetable: injected, now = () => new Date() }: Props) {
+const noStatus = () => new Promise<LiveStatus>(() => {});
+
+export function App({
+  graph = tubeGraph,
+  timetable: injected,
+  now = () => new Date(),
+  liveStatus,
+}: Props) {
   const [params, setParams] = useJourneyParams();
+  const polled = useLineStatus(liveStatus === undefined ? undefined : noStatus);
+  const status = liveStatus === undefined ? polled.status : liveStatus;
+  const avoidDisruptions = params.live;
+  const conditions = useMemo(
+    () => (status && avoidDisruptions ? conditionsFrom(status.statuses) : NO_CONDITIONS),
+    [status, avoidDisruptions],
+  );
   const loaded = useTimetable(graph);
   const timetable = injected === undefined ? loaded : injected;
   const places = useMemo(
@@ -58,9 +83,10 @@ export function App({ graph = tubeGraph, timetable: injected, now = () => new Da
       from && to
         ? findRoute(graph, from, to, {
             changePenalty: params.fewerChanges ? FEWER_CHANGES_PENALTY : 0,
+            conditions,
           })
         : null,
-    [graph, from, to, params.fewerChanges],
+    [graph, from, to, params.fewerChanges, conditions],
   );
 
   const timed = useMemo(() => {
@@ -68,10 +94,12 @@ export function App({ graph = tubeGraph, timetable: injected, now = () => new Da
     const clock = londonNow(now());
     const weekday = plannedAt !== null ? (plannedDay ?? clock.weekday) : clock.weekday;
     const minutes = plannedAt ?? clock.minutes;
-    return { ...planAcrossServiceDays(timetable, from, to, weekday, minutes), minutes };
+    // Live status describes now, so only apply it to journeys leaving now.
+    const options = plannedAt === null ? { conditions } : {};
+    return { ...planAcrossServiceDays(timetable, from, to, weekday, minutes, options), minutes };
     // `tick` re-runs "leave now" plans every 30 seconds.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timetable, from, to, plannedAt, plannedDay, tick]);
+  }, [timetable, from, to, plannedAt, plannedDay, tick, conditions]);
 
   const [chosen, setChosen] = useState<number | null>(null);
   const [chosenFor, setChosenFor] = useState(timed);
@@ -83,6 +111,35 @@ export function App({ graph = tubeGraph, timetable: injected, now = () => new Da
   const selected = chosen ?? recommend(journeys, params.fewerChanges);
   const journey = journeys[selected] ?? null;
   const route: Route | null = journey ?? typical;
+
+  // Disruptions on lines this journey uses, and closures it was routed around.
+  const statuses = status?.statuses ?? [];
+  const usedLines = new Set(route?.edges.flatMap((e) => (e.kind === "ride" ? [e.line] : [])));
+  // Closures are routed around unless the user turned that off, so only then warn about them.
+  const onRoute = statuses.filter(
+    (s) =>
+      isDisrupted(s) &&
+      usedLines.has(s.line) &&
+      (!CLOSURE_SEVERITIES.has(s.severity) || !avoidDisruptions),
+  );
+  const undisrupted = useMemo(
+    () => (from && to && conditions !== NO_CONDITIONS ? findRoute(graph, from, to) : null),
+    [graph, from, to, conditions],
+  );
+  // Closures that the usual route would have run into.
+  const avoided = avoidDisruptions
+    ? statuses.filter(
+        (s) =>
+          CLOSURE_SEVERITIES.has(s.severity) &&
+          undisrupted?.edges.some(
+            (e) =>
+              e.kind === "ride" &&
+              e.line === s.line &&
+              conditions.closedHops.has(hopKey(e.line, e.from, e.to)),
+          ),
+      )
+    : [];
+  const lineName = (id: string) => graph.lines.get(id)?.name ?? id;
 
   const onPlaceClick = (id: PlaceId) => {
     if (!from || (from && to)) update({ from: id, to: null });
@@ -143,6 +200,14 @@ export function App({ graph = tubeGraph, timetable: injected, now = () => new Da
               />
               Prefer fewer changes
             </label>
+            <label className="checkbox">
+              <input
+                type="checkbox"
+                checked={avoidDisruptions}
+                onChange={(event) => update({ live: event.target.checked })}
+              />
+              Avoid live disruptions
+            </label>
           </form>
 
           {route ? (
@@ -160,6 +225,23 @@ export function App({ graph = tubeGraph, timetable: injected, now = () => new Da
                   No timetabled journey found; showing a typical journey time.
                 </p>
               )}
+              {avoided.length > 0 && (
+                <p className="notice" role="status">
+                  Rerouted to avoid:{" "}
+                  {[...new Set(avoided.map((s) => `${lineName(s.line)} (${s.description})`))].join(
+                    ", ",
+                  )}
+                  .
+                </p>
+              )}
+              {onRoute.length > 0 && (
+                <p className="notice warning">
+                  {[...new Set(onRoute.map((s) => `${lineName(s.line)}: ${s.description}`))].join(
+                    ". ",
+                  )}
+                  .{avoidDisruptions && " Journey times allow for delays."}
+                </p>
+              )}
               {journeys.length > 1 && (
                 <JourneyOptions journeys={journeys} selected={selected} onSelect={setChosen} />
               )}
@@ -170,10 +252,19 @@ export function App({ graph = tubeGraph, timetable: injected, now = () => new Da
           ) : (
             <p className="muted hint">Choose two stations above, or click them on the map.</p>
           )}
+
+          <StatusPanel graph={graph} status={status} error={polled.error} />
         </aside>
 
         <section className="map-panel" aria-label="Map">
-          <TubeMap graph={graph} route={route} from={from} to={to} onPlaceClick={onPlaceClick} />
+          <TubeMap
+            graph={graph}
+            route={route}
+            from={from}
+            to={to}
+            onPlaceClick={onPlaceClick}
+            closedHops={avoidDisruptions ? conditions.closedHops : undefined}
+          />
           <Legend lines={[...graph.lines.values()]} />
         </section>
       </main>

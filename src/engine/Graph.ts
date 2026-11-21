@@ -12,6 +12,7 @@ import type {
 } from "./types";
 
 import { buildStateIndex, type StateIndex } from "./StateIndex";
+import { hopKey, type Conditions } from "./conditions";
 
 export class UnknownStationError extends Error {
   constructor(readonly id: string) {
@@ -103,6 +104,26 @@ export class Graph {
   get index(): StateIndex {
     this.stateIndex ??= buildStateIndex(this);
     return this.stateIndex;
+  }
+
+  private readonly factorCache = new WeakMap<Conditions, Float64Array>();
+
+  /**
+   * Run-time multiplier for every edge under `conditions`: Infinity where the
+   * hop is closed, the line's delay factor otherwise, 1 for walks. Cached per
+   * conditions object.
+   */
+  edgeFactors(conditions: Conditions): Float64Array {
+    let factors = this.factorCache.get(conditions);
+    if (!factors) {
+      factors = Float64Array.from(this.edges, (edge) => {
+        if (edge.kind === "walk") return 1;
+        if (conditions.closedHops.has(hopKey(edge.line, edge.from, edge.to))) return Infinity;
+        return conditions.delayFactor.get(edge.line) ?? 1;
+      });
+      this.factorCache.set(conditions, factors);
+    }
+    return factors;
   }
 
   station(id: StationId): Station {

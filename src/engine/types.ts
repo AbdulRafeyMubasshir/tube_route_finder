@@ -126,6 +126,8 @@ export interface Route {
 }
 
 export interface RouteOptions {
+  /** Live conditions: closed sections are avoided and delayed lines run slower. */
+  conditions?: import("./conditions").Conditions;
   /**
    * Minutes allowed for each change of train (platform change and wait).
    * Counted in the journey time. Default 3.

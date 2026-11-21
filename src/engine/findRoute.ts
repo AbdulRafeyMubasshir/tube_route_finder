@@ -1,5 +1,6 @@
 import { MinHeap } from "./MinHeap";
 import type { Graph } from "./Graph";
+import { NO_CONDITIONS } from "./conditions";
 import type { Edge, PatternId, PlaceId, Route, RouteOptions, Segment, StationId } from "./types";
 
 export const DEFAULT_CHANGE_MINUTES = 3;
@@ -65,6 +66,7 @@ export function findRoute(
 
   const ix = graph.index;
   const n = ix.stationCount;
+  const factor = graph.edgeFactors(options.conditions ?? NO_CONDITIONS);
   const cost = new Float64Array(ix.stateCount).fill(Infinity);
   const changes = new Int32Array(ix.stateCount);
   const prevState = new Int32Array(ix.stateCount).fill(-1);
@@ -75,7 +77,7 @@ export function findRoute(
   const heap = new MinHeap<Entry>(compareEntries);
 
   const relax = (from: number, to: number, newCost: number, newChanges: number, edge: number) => {
-    if (settled[to]) return;
+    if (settled[to] || newCost === Infinity) return;
     const diff = newCost - (cost[to] as number);
     if (diff > EPSILON || (Math.abs(diff) <= EPSILON && newChanges >= (changes[to] as number)))
       return;
@@ -115,13 +117,9 @@ export function findRoute(
         i < (ix.boardStart[station + 1] as number);
         i++
       ) {
-        relax(
-          state,
-          ix.boardTarget[i] as number,
-          c + (ix.boardMinutes[i] as number) + extra,
-          k + (isChange ? 1 : 0),
-          ix.boardEdge[i] as number,
-        );
+        const e = ix.boardEdge[i] as number;
+        const minutes = (ix.boardMinutes[i] as number) * (factor[e] as number);
+        relax(state, ix.boardTarget[i] as number, c + minutes + extra, k + (isChange ? 1 : 0), e);
       }
       for (
         let i = ix.walkStart[station] as number;
@@ -135,8 +133,10 @@ export function findRoute(
       // On a train: stay on it, or alight onto the platform.
       const t = state - 2 * n;
       const next = ix.nextState[t] as number;
-      if (next >= 0)
-        relax(state, next, c + (ix.nextMinutes[t] as number), k, ix.nextEdge[t] as number);
+      if (next >= 0) {
+        const e = ix.nextEdge[t] as number;
+        relax(state, next, c + (ix.nextMinutes[t] as number) * (factor[e] as number), k, e);
+      }
       relax(state, n + station, c, k, -1);
     }
   }
@@ -146,7 +146,10 @@ export function findRoute(
   const edges: Edge[] = [];
   for (let s = goal; prevState[s] !== -1; s = prevState[s] as number) {
     const e = prevEdge[s] as number;
-    if (e >= 0) edges.push(graph.edges[e] as Edge);
+    if (e < 0) continue;
+    const edge = graph.edges[e] as Edge;
+    const f = factor[e] as number;
+    edges.push(f === 1 ? edge : { ...edge, minutes: edge.minutes * f });
   }
   edges.reverse();
   const start = edges[0]?.from ?? (ix.stationIds[ix.stationOf[goal] as number] as StationId);

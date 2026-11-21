@@ -8,6 +8,8 @@ export interface JourneyParams {
   at: string | null;
   /** Planned weekday ("mon"…"sun"), with `at`. */
   day: string | null;
+  /** Whether to route around live disruptions (default true). */
+  live: boolean;
 }
 
 export function readJourneyParams(search: string): JourneyParams {
@@ -18,16 +20,25 @@ export function readJourneyParams(search: string): JourneyParams {
     fewerChanges: params.get("prefer") === "fewer-changes",
     at: params.get("at"),
     day: params.get("day"),
+    live: params.get("live") !== "off",
   };
 }
 
-export function writeJourneyParams({ from, to, fewerChanges, at, day }: JourneyParams): string {
+export function writeJourneyParams({
+  from,
+  to,
+  fewerChanges,
+  at,
+  day,
+  live,
+}: JourneyParams): string {
   const params = new URLSearchParams();
   if (from) params.set("from", from);
   if (to) params.set("to", to);
   if (fewerChanges) params.set("prefer", "fewer-changes");
   if (at) params.set("at", at);
   if (at && day) params.set("day", day);
+  if (!live) params.set("live", "off");
   const query = params.toString();
   return query ? `?${query}` : "";
 }

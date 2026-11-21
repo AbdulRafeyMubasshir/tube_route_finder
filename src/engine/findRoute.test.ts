@@ -188,6 +188,35 @@ describe("findRoute", () => {
   });
 });
 
+describe("findRoute with live conditions", () => {
+  const graph = new Graph(
+    makeNetwork([...both("red", ["a", "b", "c"], 2), ...both("blue", ["a", "c"], 10)]),
+  );
+
+  it("routes around a closed section", () => {
+    const conditions = { closedHops: new Set(["red|b|c", "red|c|b"]), delayFactor: new Map() };
+    const route = findRoute(graph, "a", "c", { conditions });
+    expect(route?.segments).toMatchObject([{ kind: "ride", line: "blue" }]);
+    expect(findRoute(graph, "a", "b", { conditions })?.segments).toMatchObject([{ line: "red" }]);
+  });
+
+  it("stretches run times on delayed lines and reports the delayed times", () => {
+    const conditions = { closedHops: new Set<string>(), delayFactor: new Map([["red", 3]]) };
+    const route = findRoute(graph, "a", "c", { conditions });
+    expect(route?.segments).toMatchObject([{ line: "blue", minutes: 10 }]);
+    const viaRed = findRoute(graph, "a", "b", { conditions });
+    expect(viaRed?.totalMinutes).toBe(6);
+  });
+
+  it("returns null when every route is closed", () => {
+    const conditions = {
+      closedHops: new Set(["red|a|b", "blue|a|c"]),
+      delayFactor: new Map(),
+    };
+    expect(findRoute(graph, "a", "c", { conditions })).toBeNull();
+  });
+});
+
 describe("Graph", () => {
   it("rejects patterns that reference unknown stations", () => {
     const network = makeNetwork(both("a", ["p", "q"], 1));
