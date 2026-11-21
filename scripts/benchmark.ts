@@ -1,36 +1,41 @@
 /**
- * Routing benchmark: runs every station pair on the bundled network and
- * reports per-query latency percentiles.
+ * Routing benchmark: times findRoute on a fixed, pseudo-random sample of
+ * journeys between places on the bundled network and reports percentiles.
  *
  * Usage: npm run bench
  */
 import { performance } from "node:perf_hooks";
 import { tubeGraph } from "../src/data/network";
-import { findRoute } from "../src/engine";
+import { findRoute, type RouteOptions } from "../src/engine";
 
-const ids = [...tubeGraph.stations.keys()];
-const pairs = ids.flatMap((from) => ids.map((to) => [from, to] as const));
+const SAMPLE = 20_000;
+const ids = [...tubeGraph.places.keys()];
 
-function run(label: string, penalty: number) {
-  // Warm up the JIT before measuring.
-  for (const [from, to] of pairs) findRoute(tubeGraph, from, to, { interchangePenalty: penalty });
+// Deterministic LCG so every run measures the same journeys.
+let seed = 42;
+const random = () => (seed = (seed * 1103515245 + 12345) % 2 ** 31) / 2 ** 31;
+const pick = () => ids[Math.floor(random() * ids.length)] as string;
+const pairs = Array.from({ length: SAMPLE }, () => [pick(), pick()] as const);
 
+function run(label: string, options: RouteOptions) {
+  for (const [from, to] of pairs.slice(0, 2000)) findRoute(tubeGraph, from, to, options); // warm up
   const samples: number[] = [];
-  for (let round = 0; round < 5; round++) {
-    for (const [from, to] of pairs) {
-      const start = performance.now();
-      findRoute(tubeGraph, from, to, { interchangePenalty: penalty });
-      samples.push(performance.now() - start);
-    }
+  for (const [from, to] of pairs) {
+    const start = performance.now();
+    findRoute(tubeGraph, from, to, options);
+    samples.push(performance.now() - start);
   }
   samples.sort((a, b) => a - b);
   const pct = (p: number) => (samples[Math.floor((samples.length - 1) * p)] ?? 0) * 1000;
   console.log(
-    `${label.padEnd(34)} queries=${samples.length}  p50=${pct(0.5).toFixed(1)}µs  ` +
-      `p95=${pct(0.95).toFixed(1)}µs  p99=${pct(0.99).toFixed(1)}µs`,
+    `${label.padEnd(30)} p50=${pct(0.5).toFixed(0)}µs  p95=${pct(0.95).toFixed(0)}µs  p99=${pct(0.99).toFixed(0)}µs`,
   );
 }
 
-console.log(`Network: ${tubeGraph.stations.size} stations, ${tubeGraph.edges.length} edges`);
-run("fastest (no interchange penalty)", 0);
-run("interchange penalty 5 min", 5);
+console.log(
+  `Network: ${tubeGraph.places.size} places, ${tubeGraph.stations.size} stations, ` +
+    `${tubeGraph.edges.length} edges, ${tubeGraph.index.stateCount} search states. ` +
+    `${SAMPLE.toLocaleString("en-GB")} journeys per mode.`,
+);
+run("fastest", {});
+run("fewer changes (8 min penalty)", { changePenalty: 8 });

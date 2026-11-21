@@ -1,6 +1,6 @@
 # ADR 0001: Dijkstra over a (station, line) state graph
 
-**Status:** Accepted · **Phase:** 1
+**Status:** Accepted, refined by ADR 0003 and ADR 0004 · **Phase:** 1
 
 ## Context
 

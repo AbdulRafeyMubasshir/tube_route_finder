@@ -1,28 +1,30 @@
 import { useMemo } from "react";
 import { network, tubeGraph } from "./data/network";
-import { findRoute, type Graph, type StationId } from "./engine";
+import { findRoute, type Graph, type PlaceId } from "./engine";
 import { StationCombobox } from "./components/StationCombobox";
 import { RouteDetails } from "./components/RouteDetails";
 import { TubeMap } from "./components/TubeMap";
 import { Legend } from "./components/Legend";
 import { useJourneyParams } from "./lib/useUrlState";
 
-/** Minutes a change of line is treated as costing when "fewer changes" is on. */
-export const FEWER_CHANGES_PENALTY = 5;
-
-const stations = [...network.stations].sort((a, b) => a.name.localeCompare(b.name));
+/** Extra cost per change when "fewer changes" is on (steers the search; not added to times). */
+export const FEWER_CHANGES_PENALTY = 8;
 
 export function App({ graph = tubeGraph }: { graph?: Graph }) {
   const [params, setParams] = useJourneyParams();
+  const places = useMemo(
+    () => [...graph.places.values()].sort((a, b) => a.name.localeCompare(b.name)),
+    [graph],
+  );
   // Ignore ids in a shared URL that aren't stations.
-  const from = params.from && graph.stations.has(params.from) ? params.from : null;
-  const to = params.to && graph.stations.has(params.to) ? params.to : null;
+  const from = params.from && graph.places.has(params.from) ? params.from : null;
+  const to = params.to && graph.places.has(params.to) ? params.to : null;
 
   const route = useMemo(
     () =>
       from && to
         ? findRoute(graph, from, to, {
-            interchangePenalty: params.fewerChanges ? FEWER_CHANGES_PENALTY : 0,
+            changePenalty: params.fewerChanges ? FEWER_CHANGES_PENALTY : 0,
           })
         : null,
     [graph, from, to, params.fewerChanges],
@@ -30,7 +32,7 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
 
   const update = (patch: Partial<typeof params>) => setParams({ ...params, from, to, ...patch });
 
-  const onStationClick = (id: StationId) => {
+  const onPlaceClick = (id: PlaceId) => {
     if (!from || (from && to)) update({ from: id, to: null });
     else if (id !== from) update({ to: id });
   };
@@ -39,7 +41,10 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
     <div className="app">
       <header className="app-header">
         <h1>London Underground Route Finder</h1>
-        <p className="muted">Fastest journeys across {graph.stations.size} stations on 6 lines.</p>
+        <p className="muted">
+          Fastest journeys across {places.length} stations on the Underground, DLR, Overground and
+          Elizabeth line.
+        </p>
       </header>
 
       <main className="layout">
@@ -52,7 +57,7 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
             <StationCombobox
               label="From"
               placeholder="Start typing a station"
-              stations={stations}
+              stations={places}
               value={from}
               onChange={(id) => update({ from: id })}
             />
@@ -69,7 +74,7 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
             <StationCombobox
               label="To"
               placeholder="Start typing a station"
-              stations={stations}
+              stations={places}
               value={to}
               onChange={(id) => update({ to: id })}
             />
@@ -93,19 +98,15 @@ export function App({ graph = tubeGraph }: { graph?: Graph }) {
         </aside>
 
         <section className="map-panel" aria-label="Map">
-          <TubeMap
-            graph={graph}
-            route={route}
-            from={from}
-            to={to}
-            onStationClick={onStationClick}
-          />
-          <Legend lines={network.lines} />
+          <TubeMap graph={graph} route={route} from={from} to={to} onPlaceClick={onPlaceClick} />
+          <Legend lines={[...graph.lines.values()]} />
         </section>
       </main>
 
       <footer className="app-footer muted small">
-        Schematic map and run times are a simplified subset of the network, for demonstration.
+        Network data from the TfL Unified API
+        {network.fetchedAt ? ` (${new Date(network.fetchedAt).toLocaleDateString("en-GB")})` : ""}.
+        Powered by TfL Open Data. Not affiliated with TfL.
       </footer>
     </div>
   );

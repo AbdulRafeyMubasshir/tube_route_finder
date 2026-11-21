@@ -1,6 +1,6 @@
 # ADR 0002: Vite, and network data compiled at build time
 
-**Status:** Accepted · **Phase:** 1
+**Status:** Accepted; the data source was replaced in ADR 0003 · **Phase:** 1
 
 ## Context
 

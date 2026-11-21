@@ -2,6 +2,7 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { App } from "./App";
 import { Graph, findRoute } from "./engine";
+import { makeNetwork } from "./engine/testNetwork";
 import { tubeGraph } from "./data/network";
 import { formatMinutes } from "./lib/format";
 
@@ -25,41 +26,41 @@ describe("App", () => {
   it("plans a journey and shows each ride", async () => {
     render(<App />);
     await chooseStation("From", "brix", "Brixton");
-    await chooseStation("To", "stan", "Stanmore");
+    await chooseStation("To", "stanm", "Stanmore");
 
     const details = screen.getByRole("region", { name: "Journey details" });
-    expect(within(details).getByText(/^\d+ min$/)).toHaveTextContent(
-      formatMinutes(findRoute(tubeGraph, "brixton", "stanmore")!.travelMinutes),
-    );
+    const expected = findRoute(tubeGraph, "brixton", "stanmore")!;
+    expect(within(details).getByText(formatMinutes(expected.totalMinutes))).toBeInTheDocument();
     expect(within(details).getByText(/1 change$/)).toBeInTheDocument();
-    expect(within(details).getByText("Victoria line towards Walthamstow")).toBeInTheDocument();
+    expect(
+      within(details).getByText("Victoria line towards Walthamstow Central"),
+    ).toBeInTheDocument();
     expect(within(details).getByText("Jubilee line towards Stanmore")).toBeInTheDocument();
     expect(within(details).getByText("Change at Green Park")).toBeInTheDocument();
     expect(window.location.search).toBe("?from=brixton&to=stanmore");
   });
 
   it("highlights only the segments the route uses", async () => {
+    window.history.replaceState(null, "", "/?from=brixton&to=stanmore");
     render(<App />);
-    await chooseStation("From", "brix", "Brixton");
-    await chooseStation("To", "stan", "Stanmore");
-    // 20 hops from Brixton to Stanmore.
-    expect(screen.getAllByTestId("route-segment")).toHaveLength(20);
+    const hops = findRoute(tubeGraph, "brixton", "stanmore")!.edges.length;
+    expect(screen.getAllByTestId("route-segment")).toHaveLength(hops);
   });
 
   it("restores a journey from the URL and swaps direction", async () => {
-    window.history.replaceState(null, "", "/?from=walthamstow&to=waterloo");
+    window.history.replaceState(null, "", "/?from=walthamstow-central&to=brixton");
     const user = userEvent.setup();
     render(<App />);
-    expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("Walthamstow");
+    expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("Walthamstow Central");
     expect(screen.getByText("Victoria line towards Brixton")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "Swap origin and destination" }));
-    expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("Waterloo");
-    expect(screen.getByRole("combobox", { name: "To" })).toHaveValue("Walthamstow");
-    expect(screen.getByText("Victoria line towards Walthamstow")).toBeInTheDocument();
+    expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("Brixton");
+    expect(screen.getByRole("combobox", { name: "To" })).toHaveValue("Walthamstow Central");
+    expect(screen.getByText("Victoria line towards Walthamstow Central")).toBeInTheDocument();
   });
 
-  it("ignores unknown station ids in the URL", () => {
+  it("ignores unknown place ids in the URL", () => {
     window.history.replaceState(null, "", "/?from=atlantis&to=bank");
     render(<App />);
     expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("");
@@ -69,8 +70,7 @@ describe("App", () => {
   it("sets origin then destination when stations are clicked on the map", () => {
     // fireEvent rather than userEvent: d3-zoom's mousedown handler needs a real window view.
     const { container } = render(<App />);
-    const click = (id: string) =>
-      fireEvent.click(container.querySelector(`[data-station="${id}"]`)!);
+    const click = (id: string) => fireEvent.click(container.querySelector(`[data-place="${id}"]`)!);
 
     click("bank");
     expect(screen.getByRole("combobox", { name: "From" })).toHaveValue("Bank");
@@ -84,7 +84,7 @@ describe("App", () => {
   });
 
   it("can prefer fewer changes", async () => {
-    window.history.replaceState(null, "", "/?from=hammersmith-handc&to=stratford");
+    window.history.replaceState(null, "", "/?from=brixton&to=stanmore");
     const user = userEvent.setup();
     render(<App />);
     await user.click(screen.getByRole("checkbox", { name: "Prefer fewer changes" }));
@@ -99,15 +99,13 @@ describe("App", () => {
   });
 
   it("reports when no route exists", () => {
-    const graph = new Graph({
-      lines: [{ id: "a", name: "A", colour: "#000" }],
-      stations: [
-        { id: "x", name: "X", x: 0, y: 0 },
-        { id: "y", name: "Y", x: 10, y: 0 },
-      ],
-      edges: [],
-    });
-    window.history.replaceState(null, "", "/?from=x&to=y");
+    const graph = new Graph(
+      makeNetwork([
+        ["a", ["x", "y"], 1],
+        ["b", ["p", "q"], 1],
+      ]),
+    );
+    window.history.replaceState(null, "", "/?from=x&to=q");
     render(<App graph={graph} />);
     expect(screen.getByRole("alert")).toHaveTextContent("No route found");
   });

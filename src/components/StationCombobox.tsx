@@ -1,12 +1,11 @@
 import { useId, useMemo, useState, type KeyboardEvent } from "react";
-import type { Station, StationId } from "../engine";
-import { searchStations } from "../lib/searchStations";
+import { searchStations, type Searchable } from "../lib/searchStations";
 
 interface Props {
   label: string;
-  stations: readonly Station[];
-  value: StationId | null;
-  onChange: (id: StationId | null) => void;
+  stations: readonly Searchable[];
+  value: string | null;
+  onChange: (id: string | null) => void;
   placeholder?: string;
 }
 
@@ -34,7 +33,7 @@ export function StationCombobox({ label, stations, value, onChange, placeholder 
   const expanded = open && results.length > 0;
   const noMatch = open && query.trim() !== "" && results.length === 0 && !selected;
 
-  const choose = (station: Station) => {
+  const choose = (station: Searchable) => {
     setQuery(station.name);
     setOpen(false);
     onChange(station.id);

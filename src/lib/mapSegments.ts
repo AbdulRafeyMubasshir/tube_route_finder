@@ -5,34 +5,35 @@ export interface Segment {
   line: LineId;
   a: StationId;
   b: StationId;
-  /** Perpendicular offset so lines sharing a section are drawn side by side. */
-  offset: number;
 }
 
-const LINE_GAP = 6;
 export const pairKey = (a: StationId, b: StationId) => (a < b ? `${a}|${b}` : `${b}|${a}`);
 
-/** One drawable segment per line per pair of adjacent stations. */
+/** One drawable segment per line per pair of adjacent stations, whatever the direction. */
 export function buildSegments(graph: Graph): Segment[] {
-  const byPair = new Map<string, Set<LineId>>();
+  const segments = new Map<string, Segment>();
   for (const edge of graph.edges) {
-    const key = pairKey(edge.from, edge.to);
-    const lines = byPair.get(key) ?? new Set<LineId>();
-    lines.add(edge.line);
-    byPair.set(key, lines);
+    if (edge.kind !== "ride") continue;
+    const key = `${pairKey(edge.from, edge.to)}|${edge.line}`;
+    if (!segments.has(key)) segments.set(key, { key, line: edge.line, a: edge.from, b: edge.to });
   }
-  const segments: Segment[] = [];
-  for (const [pair, lines] of byPair) {
-    const [a, b] = pair.split("|") as [StationId, StationId];
-    [...lines].sort().forEach((line, i, all) => {
-      segments.push({
-        key: `${pair}|${line}`,
-        line,
-        a,
-        b,
-        offset: (i - (all.length - 1) / 2) * LINE_GAP,
-      });
-    });
-  }
-  return segments;
+  return [...segments.values()];
+}
+
+export interface Bounds {
+  minX: number;
+  minY: number;
+  maxX: number;
+  maxY: number;
+}
+
+export function boundsOf(points: readonly { x: number; y: number }[], padding = 0): Bounds {
+  const xs = points.map((p) => p.x);
+  const ys = points.map((p) => p.y);
+  return {
+    minX: Math.min(...xs) - padding,
+    minY: Math.min(...ys) - padding,
+    maxX: Math.max(...xs) + padding,
+    maxY: Math.max(...ys) + padding,
+  };
 }

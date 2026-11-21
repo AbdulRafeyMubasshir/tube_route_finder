@@ -2,9 +2,10 @@
 
 [![CI](https://github.com/AbdulRafeyMubasshir/tube_route_finder/actions/workflows/ci.yml/badge.svg)](https://github.com/AbdulRafeyMubasshir/tube_route_finder/actions/workflows/ci.yml)
 
-A journey planner for the London Underground. Pick two stations, by typing or
-by clicking the map, and it finds the fastest route, shows each train you need,
-where to change, and highlights the journey on an interactive network map.
+A journey planner for London's rail network: the Underground, DLR, Overground
+and Elizabeth line. Pick two stations, by typing or by clicking the map, and it
+finds the fastest route using real TfL timetable data. It shows which train to
+take, where to change and walk, and frames the journey on a geographic map.
 
 **Live demo:** https://tube-route-finder.vercel.app
 
@@ -12,73 +13,90 @@ where to change, and highlights the journey on an interactive network map.
 
 ## Features
 
-- **Time-weighted routing.** Dijkstra's algorithm over a (station, line) state
-  graph, so it can price changes of line as well as travel time.
+- **Whole network:** 420 stations on 19 lines, built from the TfL Unified API.
+- **Branch-aware routing.** The engine knows which trains actually run where.
+  It won't ride "the Northern line" from the Charing Cross branch to the Bank
+  branch without a change, and it tells you every train that works ("Northern
+  line towards Edgware or High Barnet").
+- **Realistic journey times:** timetabled run times, a change allowance, and
+  walking links between nearby stations (e.g. Bank ↔ Monument). Estimated times
+  are labelled.
 - **"Prefer fewer changes"** mode that trades a little time for simpler journeys.
-- **Step-by-step journeys**: each ride with its line, direction ("towards
-  Stanmore"), stops and time.
-- **Interactive map**: pan, zoom, click stations to plan, with the route
-  highlighted and the rest of the network dimmed.
+- **Interactive geographic map:** pan and zoom, with labels that appear as you
+  zoom in. It frames each route automatically, and you can click stations to
+  plan.
 - **Accessible station search**: a WAI-ARIA combobox with full keyboard support
   and forgiving matching ("kings" finds King's Cross St Pancras).
 - **Shareable URLs**: `?from=brixton&to=stanmore` restores a journey.
-- **Responsive** layout for desktop and mobile.
 
 ## How it works
 
 ```
-data/raw/*.json ──► scripts/build-network.mjs ──► src/data/network.json ──► Graph ──► findRoute()
- (per-line data)     normalise · correct · validate    (single, compact)    (indexed)   (Dijkstra)
+TfL Unified API ──► fetch:tfl ──► data/tfl/source.json ──► build:network ──► src/data/network.json ──► Graph ──► findRoute()
+                    (patterns,      (committed snapshot)     (normalise,          (compact, validated)     (indexed)   (Dijkstra)
+                     stops, times)                            estimate, validate)
 ```
 
 ### Routing engine (`src/engine/`)
 
-The engine is a pure TypeScript module with no React or DOM dependencies.
+A pure TypeScript module with no React or DOM dependencies.
 
-- **State-expanded graph.** Each search state is a _(station, arrival line)_
-  pair. Moving along an edge on a different line from the one you arrived on
-  adds an optional interchange penalty. A station-only graph can't express this.
-- **Binary heap** priority queue: `O((S + E) log S)` for S states and E edges,
-  replacing the original `O(V²)` scan.
-- **Tie-breaking**: routes of equal time are ranked by fewer changes.
-- **Rides**: consecutive legs on the same line and direction are grouped into
-  one ride, with its terminus worked out by following the line. Loops such as
-  the Circle line are described by rail instead.
+- **Service patterns, not lines.** TfL publishes each line as ordered stopping
+  patterns (8 for the Northern line). The search tracks which train you are on:
+  staying on it is free, and boarding any other train is a change.
+- **Places, not platforms.** A place groups the stations of an interchange
+  (e.g. Bank Underground and Bank DLR). Searches start from every station in the
+  origin and finish at any station in the destination, with walking links in
+  between.
+- **State model.** The states are _at a station_ (not yet boarded, or on the
+  platform after a train) and _on a train_ (position _j_ of pattern _p_). From a
+  train you can stay on or alight; from a station you can board or walk. This
+  keeps work linear at busy interchanges.
+- **Integer-indexed search.** States and transitions are precompiled into
+  typed arrays (compressed sparse row). Dijkstra runs on a binary heap with
+  `Float64Array` costs. This was about 5× faster than the string-keyed version.
+- **Costs**: time + `changeMinutes` per change (counted in the journey time) +
+  an optional `changePenalty` (steers the choice only). Ties prefer fewer changes.
 
-See [ADR 0001](docs/adr/0001-state-expanded-dijkstra.md) for the reasoning.
+Design decisions are recorded in [`docs/adr/`](docs/adr).
 
-### Data pipeline (`scripts/build-network.mjs`)
+### Data pipeline (`scripts/`)
 
-Raw data is compiled into a single validated file at build time:
-
-- normalises display names and generates stable ids
-- validates unknown stations, non-positive times, duplicate edges, isolated
-  stations, connectivity, and missing reverse edges
-- applies **documented corrections** for known defects. Its first run found four
-  hops with a travel time of 0 minutes.
-- CI fails if `src/data/network.json` is out of date
-
-See [ADR 0002](docs/adr/0002-vite-and-build-time-data.md).
+- `npm run fetch:tfl` downloads lines, stopping patterns, stations, hubs and
+  timetables, paced for the API's rate limits (set `TFL_APP_KEY` to go faster).
+- `npm run build:network` compiles the snapshot:
+  - groups stations into places and gives clashing names distinct labels
+    ("Bethnal Green (Overground)")
+  - averages timetabled hop times; where TfL publishes no timetable (Elizabeth
+    line, Overground) it estimates from distance and typical speed, and flags
+    the result
+  - adds walking links within interchanges and between stations under 350 m apart
+  - **validates**: unknown stops, non-positive times, suspicious outliers, and
+    that every place can reach and be reached from every other
+- A weekly GitHub Action refreshes the snapshot and opens a pull request, which
+  CI must pass.
 
 ## Testing
 
-| Layer  | What is tested                                                                                                                                                                                                 |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Engine | Unit tests for edge cases (same station, unreachable, unknown ids, parallel lines, penalties, ties)                                                                                                            |
-| Engine | **Property-based tests** ([fast-check](https://fast-check.dev)): across 500 random networks per property, the optimal cost matches a Bellman-Ford reference, and every route is a connected path of real edges |
-| Data   | Every station reaches every other (8,100 pairs); golden journeys checked against known answers                                                                                                                 |
-| UI     | Testing Library tests for search, keyboard navigation, map clicks, URL state and error states                                                                                                                  |
+| Layer    | What is tested                                                                                                                                                                 |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Engine   | Edge cases: same place, unreachable, one-way patterns, parallel lines, branch changes, shared sections, walking, multi-station origins, penalties, ties                        |
+| Engine   | **Property-based tests** ([fast-check](https://fast-check.dev)): on 400 random networks per property, results match a simple Bellman-Ford reference and are always valid paths |
+| Pipeline | Fetch logic against a fake TfL API; compilation, estimates, walking links, name clashes and validation errors                                                                  |
+| Data     | Connectivity across the real network; golden journeys (Brixton→Stanmore, Morden→High Barnet, Heathrow T5→Canary Wharf…)                                                        |
+| UI       | Testing Library tests for search, keyboard navigation, map clicks, URL state and error states                                                                                  |
 
 Coverage is enforced in CI (thresholds: 90% lines, 85% branches).
 
 ## Performance
 
-`npm run bench` routes every station pair (8,100 journeys × 5 rounds):
+`npm run bench` times 20,000 fixed pseudo-random journeys on the full network
+(420 places, 3,539 search states):
 
-| Mode                    | p50    | p95    | p99     |
-| ----------------------- | ------ | ------ | ------- |
-| Fastest                 | ~32 µs | ~59 µs | ~118 µs |
-| 5-minute change penalty | ~30 µs | ~58 µs | ~82 µs  |
+| Mode          | p50     | p95     | p99     |
+| ------------- | ------- | ------- | ------- |
+| Fastest       | ~370 µs | ~650 µs | ~820 µs |
+| Fewer changes | ~340 µs | ~690 µs | ~880 µs |
 
 Measured on Node 22 in a CI-class Linux container. Numbers vary by machine.
 
@@ -86,11 +104,12 @@ Measured on Node 22 in a CI-class Linux container. Numbers vary by machine.
 
 ```bash
 npm install
-npm run dev          # start the dev server
-npm test             # run tests
-npm run ci           # everything CI runs: data check, lint, format, types, coverage, build
-npm run bench        # routing benchmark
-npm run build:network  # rebuild src/data/network.json after editing data/raw
+npm run dev            # start the dev server
+npm test               # run tests
+npm run ci             # everything CI runs: data check, lint, format, types, coverage, build
+npm run bench          # routing benchmark
+npm run fetch:tfl      # refresh data/tfl/source.json from the TfL API
+npm run build:network  # recompile src/data/network.json
 ```
 
 Requires Node 20 or later (see `.nvmrc`).
@@ -99,27 +118,38 @@ Requires Node 20 or later (see `.nvmrc`).
 
 ```
 src/
-  engine/        routing engine: Graph, findRoute, MinHeap, types (framework-free)
+  engine/        routing engine: Graph, StateIndex, findRoute, MinHeap, types (framework-free)
   data/          generated network.json and the shared graph instance
   components/    React UI: StationCombobox, RouteDetails, TubeMap, Legend
   lib/           search, formatting, URL state, map geometry
-scripts/         data pipeline and benchmark
-data/raw/        source data, one file per line
+scripts/
+  tfl/           TfL fetcher and network compiler (pure, unit-tested)
+  fetch-tfl.ts   CLI: download the snapshot
+  build-network.ts  CLI: compile and validate
+  benchmark.ts
+data/tfl/        committed TfL snapshot
 docs/adr/        architecture decision records
 ```
 
 ## Limitations and roadmap
 
-The current network is a hand-built subset: 90 stations on 6 lines, with
-schematic coordinates and estimated run times. Times are in-train only.
+- Journey times exclude the wait for the first train; frequencies aren't
+  modelled yet.
+- Elizabeth line and Overground run times are estimated (no TfL timetable).
+- Shared track sections (e.g. Circle, District, H&C) are drawn on top of each
+  other rather than side by side.
 
-- **Phase 2:** full network from the TfL Unified API, with interchange and walking times
-- **Phase 3:** RAPTOR for multi-criteria (Pareto) results, benchmarked against this engine
+Next:
+
+- **Phase 3:** RAPTOR for timetable-aware, multi-criteria (Pareto) results, benchmarked against this engine
 - **Phase 4:** live line status and rerouting around disruption; step-free routing
-- **Phase 5:** geographic map, offline-capable PWA, leave-at / arrive-by
+- **Phase 5:** map polish (parallel lines, label collision), offline-capable PWA, leave-at / arrive-by
 - **Phase 6:** technical write-up and demo video
 
 ## Tech
 
 React 19 · TypeScript 5 (strict) · Vite · d3-zoom · Vitest · Testing Library ·
 fast-check · ESLint · Prettier · GitHub Actions · Vercel
+
+Data: Powered by TfL Open Data. Contains OS data © Crown copyright and database
+rights. Not affiliated with or endorsed by Transport for London.

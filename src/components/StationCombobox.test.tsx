@@ -3,14 +3,13 @@ import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import { StationCombobox } from "./StationCombobox";
 import { searchStations } from "../lib/searchStations";
-import type { Station } from "../engine";
 
-const stations: Station[] = [
-  { id: "bank", name: "Bank", x: 0, y: 0 },
-  { id: "baker-street", name: "Baker Street", x: 0, y: 0 },
-  { id: "kings-cross", name: "King's Cross St Pancras", x: 0, y: 0 },
-  { id: "elephant", name: "Elephant & Castle", x: 0, y: 0 },
-  { id: "great-portland", name: "Great Portland Street", x: 0, y: 0 },
+const stations = [
+  { id: "bank", name: "Bank" },
+  { id: "baker-street", name: "Baker Street" },
+  { id: "kings-cross", name: "King's Cross St Pancras" },
+  { id: "elephant", name: "Elephant & Castle" },
+  { id: "great-portland", name: "Great Portland Street" },
 ];
 
 function Harness({ onChange = () => {} }: { onChange?: (id: string | null) => void }) {

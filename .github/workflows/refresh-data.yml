@@ -1,0 +1,39 @@
+name: Refresh TfL data
+
+on:
+  schedule:
+    - cron: "17 4 * * 1" # Mondays 04:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Download network from the TfL API
+        run: npm run fetch:tfl
+        env:
+          TFL_APP_KEY: ${{ secrets.TFL_APP_KEY }}
+      - name: Compile and validate
+        run: npm run build:network
+      - name: Test against the new data
+        run: npm test
+      - name: Open a pull request if anything changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: data/tfl-refresh
+          commit-message: "data: refresh TfL network snapshot"
+          title: "Refresh TfL network data"
+          body: Automated weekly refresh from the TfL Unified API. CI must pass before merging.
+          add-paths: |
+            data/tfl/source.json
+            src/data/network.json
