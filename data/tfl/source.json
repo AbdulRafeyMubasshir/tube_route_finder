@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-11-21T22:00:27.283Z",
+ "fetchedAt": "2026-11-23T14:47:55.072Z",
  "lines": [
   {
    "id": "bakerloo",
@@ -102,8 +102,8 @@
    "id": "910GABWDXR",
    "name": "Abbey Wood",
    "placeId": "HUBABW",
-   "lat": 51.491241,
-   "lon": 0.121374,
+   "lat": 51.491284,
+   "lon": 0.121087,
    "zone": "4"
   },
   {
@@ -190,8 +190,8 @@
    "id": "910GBRBYPK",
    "name": "Brondesbury Park Rail Station",
    "placeId": "910GBRBYPK",
-   "lat": 51.540699,
-   "lon": -0.210128,
+   "lat": 51.540734,
+   "lon": -0.210054,
    "zone": "2"
   },
   {
@@ -230,8 +230,8 @@
    "id": "910GBUSHYDC",
    "name": "Bushey Rail Station",
    "placeId": "HUBBSH",
-   "lat": 51.645894,
-   "lon": -0.385229,
+   "lat": 51.645877,
+   "lon": -0.385302,
    "zone": "8"
   },
   {
@@ -246,8 +246,8 @@
    "id": "910GCANWHRF",
    "name": "Canary Wharf",
    "placeId": "HUBCAW",
-   "lat": 51.506321,
-   "lon": -0.018815,
+   "lat": 51.506203,
+   "lon": -0.018834,
    "zone": "2"
   },
   {
@@ -462,8 +462,8 @@
    "id": "910GFRNDXR",
    "name": "Farringdon",
    "placeId": "HUBZFD",
-   "lat": 51.519961,
-   "lon": -0.103051,
+   "lat": 51.519635,
+   "lon": -0.102892,
    "zone": "1"
   },
   {
@@ -1206,8 +1206,8 @@
    "id": "910GWCHAPXR",
    "name": "Whitechapel",
    "placeId": "HUBZWL",
-   "lat": 51.519555,
-   "lon": -0.059537,
+   "lat": 51.51943,
+   "lon": -0.060191,
    "zone": "2"
   },
   {
@@ -1318,8 +1318,8 @@
    "id": "910GWOLWXR",
    "name": "Woolwich",
    "placeId": "910GWOLWXR",
-   "lat": 51.492168,
-   "lon": 0.070593,
+   "lat": 51.492017,
+   "lon": 0.0705,
    "zone": "4"
   },
   {
@@ -1623,7 +1623,7 @@
    "name": "South Quay DLR Station",
    "placeId": "940GZZDLSOQ",
    "lat": 51.50005,
-   "lon": -0.015975,
+   "lon": -0.01597,
    "zone": "2"
   },
   {
@@ -1870,8 +1870,8 @@
    "id": "940GZZLUBNK",
    "name": "Bank Underground Station",
    "placeId": "HUBBAN",
-   "lat": 51.513132,
-   "lon": -0.090047,
+   "lat": 51.51225,
+   "lon": -0.087792,
    "zone": "1"
   },
   {
@@ -1950,8 +1950,8 @@
    "id": "940GZZLUBZP",
    "name": "Belsize Park Underground Station",
    "placeId": "940GZZLUBZP",
-   "lat": 51.550311,
-   "lon": -0.164648,
+   "lat": 51.550529,
+   "lon": -0.164783,
    "zone": "2"
   },
   {
@@ -2302,8 +2302,8 @@
    "id": "940GZZLUEUS",
    "name": "Euston Underground Station",
    "placeId": "HUBEUS",
-   "lat": 51.528344,
-   "lon": -0.1323,
+   "lat": 51.528089,
+   "lon": -0.132066,
    "zone": "1"
   },
   {
@@ -2646,8 +2646,8 @@
    "id": "940GZZLUICK",
    "name": "Ickenham Underground Station",
    "placeId": "940GZZLUICK",
-   "lat": 51.56177,
-   "lon": -0.442225,
+   "lat": 51.561992,
+   "lon": -0.442001,
    "zone": "6"
   },
   {
@@ -9100,41 +9100,132 @@
    "from": "940GZZLUBST",
    "to": "940GZZLUMYB",
    "minutes": 1,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUBST",
+   "to": "940GZZLURGP",
+   "minutes": 1.5,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUCHX",
+   "to": "940GZZLUEMB",
+   "minutes": 1,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUCHX",
    "to": "940GZZLUPCC",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUEAC",
    "to": "940GZZLULBN",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUEMB",
    "to": "940GZZLUCHX",
    "minutes": 1,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUEMB",
+   "to": "940GZZLUWLO",
+   "minutes": 3.5,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUERB",
+   "to": "940GZZLUMYB",
+   "minutes": 1.5,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUERB",
    "to": "940GZZLUPAC",
    "minutes": 2,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUHAW",
+   "to": "940GZZLUKEN",
+   "minutes": 2,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUHSN",
+   "to": "940GZZLUSGP",
+   "minutes": 4,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUHSN",
+   "to": "940GZZLUWJN",
+   "minutes": 2,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUKEN",
+   "to": "940GZZLUHAW",
+   "minutes": 4,
    "samples": 1
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUKEN",
+   "to": "940GZZLUSKT",
+   "minutes": 2,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUKPK",
+   "to": "940GZZLUMVL",
+   "minutes": 2,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUKPK",
    "to": "940GZZLUQPS",
-   "minutes": 5,
+   "minutes": 3,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUKSL",
+   "to": "940GZZLUQPS",
+   "minutes": 4.67,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUKSL",
+   "to": "940GZZLUWJN",
+   "minutes": 3,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLULBN",
+   "to": "940GZZLUEAC",
+   "minutes": 3,
    "samples": 1
   },
   {
@@ -9142,63 +9233,203 @@
    "from": "940GZZLULBN",
    "to": "940GZZLUWLO",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUMVL",
    "to": "940GZZLUKPK",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUMVL",
+   "to": "940GZZLUWKA",
+   "minutes": 1.5,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUMYB",
+   "to": "940GZZLUBST",
+   "minutes": 1.5,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUMYB",
    "to": "940GZZLUERB",
    "minutes": 1,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUNWY",
+   "to": "940GZZLUSKT",
+   "minutes": 2,
    "samples": 1
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUNWY",
+   "to": "940GZZLUWYC",
+   "minutes": 2,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUOXC",
+   "to": "940GZZLUPCC",
+   "minutes": 2.5,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUOXC",
    "to": "940GZZLURGP",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUPAC",
+   "to": "940GZZLUERB",
+   "minutes": 1.5,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUPAC",
    "to": "940GZZLUWKA",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUPCC",
+   "to": "940GZZLUCHX",
+   "minutes": 1,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUPCC",
    "to": "940GZZLUOXC",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUQPS",
+   "to": "940GZZLUKPK",
+   "minutes": 1.5,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUQPS",
+   "to": "940GZZLUKSL",
+   "minutes": 3,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLURGP",
    "to": "940GZZLUBST",
    "minutes": 2,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLURGP",
+   "to": "940GZZLUOXC",
+   "minutes": 2.5,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUSGP",
+   "to": "940GZZLUHSN",
+   "minutes": 2.33,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUSGP",
+   "to": "940GZZLUWYC",
+   "minutes": 3,
    "samples": 1
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUSKT",
+   "to": "940GZZLUKEN",
+   "minutes": 2,
+   "samples": 1
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUSKT",
+   "to": "940GZZLUNWY",
+   "minutes": 2,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUWJN",
+   "to": "940GZZLUHSN",
+   "minutes": 2,
+   "samples": 2
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUWJN",
+   "to": "940GZZLUKSL",
+   "minutes": 2.67,
+   "samples": 3
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUWKA",
    "to": "940GZZLUMVL",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUWKA",
+   "to": "940GZZLUPAC",
+   "minutes": 2,
+   "samples": 2
   },
   {
    "line": "bakerloo",
    "from": "940GZZLUWLO",
    "to": "940GZZLUEMB",
    "minutes": 1,
+   "samples": 3
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUWLO",
+   "to": "940GZZLULBN",
+   "minutes": 2,
    "samples": 1
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUWYC",
+   "to": "940GZZLUNWY",
+   "minutes": 2,
+   "samples": 1
+  },
+  {
+   "line": "bakerloo",
+   "from": "940GZZLUWYC",
+   "to": "940GZZLUSGP",
+   "minutes": 3,
+   "samples": 3
   },
   {
    "line": "central",
@@ -11225,10 +11456,38 @@
   },
   {
    "line": "dlr",
+   "from": "940GZZDLABR",
+   "to": "940GZZDLABR",
+   "minutes": 0.4,
+   "samples": 5
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLABR",
+   "to": "940GZZDLSHS",
+   "minutes": 2,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLABR",
+   "to": "940GZZDLWHM",
+   "minutes": 1.5,
+   "samples": 4
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLALL",
+   "to": "940GZZDLALL",
+   "minutes": 1,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
    "from": "940GZZDLALL",
    "to": "940GZZDLPOP",
-   "minutes": 2,
-   "samples": 2
+   "minutes": 1,
+   "samples": 1
   },
   {
    "line": "dlr",
@@ -11236,6 +11495,13 @@
    "to": "940GZZDLGAL",
    "minutes": 2,
    "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLBLA",
+   "to": "940GZZDLBLA",
+   "minutes": 0.2,
+   "samples": 5
   },
   {
    "line": "dlr",
@@ -11248,14 +11514,14 @@
    "line": "dlr",
    "from": "940GZZDLBLA",
    "to": "940GZZDLPOP",
-   "minutes": 2,
+   "minutes": 1.33,
    "samples": 3
   },
   {
    "line": "dlr",
    "from": "940GZZDLBNK",
    "to": "940GZZDLSHA",
-   "minutes": 4,
+   "minutes": 3,
    "samples": 2
   },
   {
@@ -11263,20 +11529,20 @@
    "from": "940GZZDLBOW",
    "to": "940GZZDLBOW",
    "minutes": 0,
-   "samples": 2
+   "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLBOW",
    "to": "940GZZDLDEV",
    "minutes": 1,
-   "samples": 2
+   "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLBPK",
    "to": "940GZZDLBPK",
-   "minutes": 1,
+   "minutes": 0,
    "samples": 1
   },
   {
@@ -11290,14 +11556,14 @@
    "line": "dlr",
    "from": "940GZZDLBPK",
    "to": "940GZZDLRAL",
-   "minutes": 1,
+   "minutes": 2,
    "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLCAN",
    "to": "940GZZDLCAN",
-   "minutes": 1,
+   "minutes": 0,
    "samples": 2
   },
   {
@@ -11318,8 +11584,8 @@
    "line": "dlr",
    "from": "940GZZDLCGT",
    "to": "940GZZDLCGT",
-   "minutes": 1,
-   "samples": 3
+   "minutes": 0.88,
+   "samples": 8
   },
   {
    "line": "dlr",
@@ -11332,7 +11598,14 @@
    "line": "dlr",
    "from": "940GZZDLCGT",
    "to": "940GZZDLRVC",
-   "minutes": 3,
+   "minutes": 2,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLCGT",
+   "to": "940GZZDLSTL",
+   "minutes": 1,
    "samples": 1
   },
   {
@@ -11340,14 +11613,14 @@
    "from": "940GZZDLCGT",
    "to": "940GZZDLWSV",
    "minutes": 3,
-   "samples": 1
+   "samples": 3
   },
   {
    "line": "dlr",
    "from": "940GZZDLCLA",
    "to": "940GZZDLCLA",
-   "minutes": 1,
-   "samples": 2
+   "minutes": 0,
+   "samples": 3
   },
   {
    "line": "dlr",
@@ -11360,15 +11633,15 @@
    "line": "dlr",
    "from": "940GZZDLCLA",
    "to": "940GZZDLSOQ",
-   "minutes": 1,
+   "minutes": 2,
    "samples": 2
   },
   {
    "line": "dlr",
    "from": "940GZZDLCUS",
    "to": "940GZZDLCUS",
-   "minutes": 1,
-   "samples": 1
+   "minutes": 0,
+   "samples": 2
   },
   {
    "line": "dlr",
@@ -11381,8 +11654,15 @@
    "line": "dlr",
    "from": "940GZZDLCUS",
    "to": "940GZZDLRVC",
-   "minutes": 1,
+   "minutes": 2,
    "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLCUT",
+   "to": "940GZZDLCUT",
+   "minutes": 0.33,
+   "samples": 3
   },
   {
    "line": "dlr",
@@ -11402,22 +11682,29 @@
    "line": "dlr",
    "from": "940GZZDLCYP",
    "to": "940GZZDLBPK",
-   "minutes": 2,
+   "minutes": 1,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLCYP",
+   "to": "940GZZDLCYP",
+   "minutes": 1,
    "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLCYP",
    "to": "940GZZDLGAL",
-   "minutes": 2,
+   "minutes": 1,
    "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLDEP",
    "to": "940GZZDLDEP",
-   "minutes": 1,
-   "samples": 1
+   "minutes": 0.33,
+   "samples": 3
   },
   {
    "line": "dlr",
@@ -11437,21 +11724,21 @@
    "line": "dlr",
    "from": "940GZZDLDEV",
    "to": "940GZZDLDEV",
-   "minutes": 1,
-   "samples": 2
+   "minutes": 0,
+   "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLDEV",
    "to": "940GZZDLLDP",
-   "minutes": 1,
-   "samples": 2
+   "minutes": 2,
+   "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLEIN",
    "to": "940GZZDLBLA",
-   "minutes": 1,
+   "minutes": 1.67,
    "samples": 3
   },
   {
@@ -11465,7 +11752,7 @@
    "line": "dlr",
    "from": "940GZZDLEIN",
    "to": "940GZZDLEIN",
-   "minutes": 0.4,
+   "minutes": 0,
    "samples": 5
   },
   {
@@ -11507,7 +11794,7 @@
    "line": "dlr",
    "from": "940GZZDLGRE",
    "to": "940GZZDLCUT",
-   "minutes": 2,
+   "minutes": 1.5,
    "samples": 2
   },
   {
@@ -11519,17 +11806,24 @@
   },
   {
    "line": "dlr",
+   "from": "940GZZDLGRE",
+   "to": "940GZZDLGRE",
+   "minutes": 0,
+   "samples": 3
+  },
+  {
+   "line": "dlr",
    "from": "940GZZDLHEQ",
    "to": "940GZZDLCAN",
-   "minutes": 1,
+   "minutes": 2,
    "samples": 2
   },
   {
    "line": "dlr",
    "from": "940GZZDLHEQ",
    "to": "940GZZDLHEQ",
-   "minutes": 1,
-   "samples": 2
+   "minutes": 0,
+   "samples": 3
   },
   {
    "line": "dlr",
@@ -11549,8 +11843,8 @@
    "line": "dlr",
    "from": "940GZZDLISL",
    "to": "940GZZDLISL",
-   "minutes": 1,
-   "samples": 2
+   "minutes": 0.67,
+   "samples": 3
   },
   {
    "line": "dlr",
@@ -11563,57 +11857,71 @@
    "line": "dlr",
    "from": "940GZZDLKGV",
    "to": "940GZZDLKGV",
-   "minutes": 1,
-   "samples": 3
+   "minutes": 0.29,
+   "samples": 7
   },
   {
    "line": "dlr",
    "from": "940GZZDLKGV",
    "to": "940GZZDLLCA",
    "minutes": 2,
-   "samples": 3
+   "samples": 4
   },
   {
    "line": "dlr",
    "from": "940GZZDLKGV",
    "to": "940GZZDLWLA",
    "minutes": 3,
-   "samples": 1
+   "samples": 3
   },
   {
    "line": "dlr",
    "from": "940GZZDLLCA",
    "to": "940GZZDLKGV",
-   "minutes": 2,
-   "samples": 1
+   "minutes": 1.33,
+   "samples": 3
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLLCA",
+   "to": "940GZZDLLCA",
+   "minutes": 0.86,
+   "samples": 7
   },
   {
    "line": "dlr",
    "from": "940GZZDLLCA",
    "to": "940GZZDLPDK",
    "minutes": 2,
-   "samples": 3
+   "samples": 4
   },
   {
    "line": "dlr",
    "from": "940GZZDLLDP",
    "to": "940GZZDLALL",
-   "minutes": 2,
-   "samples": 2
+   "minutes": 1,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLLDP",
+   "to": "940GZZDLLDP",
+   "minutes": 0,
+   "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLLEW",
    "to": "940GZZDLELV",
-   "minutes": 2,
+   "minutes": 1,
    "samples": 2
   },
   {
    "line": "dlr",
    "from": "940GZZDLLIM",
    "to": "940GZZDLLIM",
-   "minutes": 1,
-   "samples": 3
+   "minutes": 0.17,
+   "samples": 6
   },
   {
    "line": "dlr",
@@ -11626,7 +11934,7 @@
    "line": "dlr",
    "from": "940GZZDLLIM",
    "to": "940GZZDLWFE",
-   "minutes": 1,
+   "minutes": 1.33,
    "samples": 3
   },
   {
@@ -11647,36 +11955,43 @@
    "line": "dlr",
    "from": "940GZZDLMUD",
    "to": "940GZZDLMUD",
-   "minutes": 1,
-   "samples": 1
+   "minutes": 0.33,
+   "samples": 3
   },
   {
    "line": "dlr",
    "from": "940GZZDLPDK",
    "to": "940GZZDLLCA",
-   "minutes": 3,
-   "samples": 1
+   "minutes": 2.33,
+   "samples": 3
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLPDK",
+   "to": "940GZZDLPDK",
+   "minutes": 0,
+   "samples": 7
   },
   {
    "line": "dlr",
    "from": "940GZZDLPDK",
    "to": "940GZZDLWSV",
-   "minutes": 2,
-   "samples": 3
+   "minutes": 1,
+   "samples": 4
   },
   {
    "line": "dlr",
    "from": "940GZZDLPOP",
    "to": "940GZZDLBLA",
-   "minutes": 2,
+   "minutes": 1.5,
    "samples": 2
   },
   {
    "line": "dlr",
    "from": "940GZZDLPOP",
    "to": "940GZZDLPOP",
-   "minutes": 0.25,
-   "samples": 4
+   "minutes": 0.6,
+   "samples": 5
   },
   {
    "line": "dlr",
@@ -11689,8 +12004,8 @@
    "line": "dlr",
    "from": "940GZZDLPOP",
    "to": "940GZZDLWIQ",
-   "minutes": 2,
-   "samples": 2
+   "minutes": 1,
+   "samples": 1
   },
   {
    "line": "dlr",
@@ -11703,14 +12018,14 @@
    "line": "dlr",
    "from": "940GZZDLPRE",
    "to": "940GZZDLPRE",
-   "minutes": 1,
-   "samples": 1
+   "minutes": 0.5,
+   "samples": 2
   },
   {
    "line": "dlr",
    "from": "940GZZDLPRE",
    "to": "940GZZDLRAL",
-   "minutes": 2,
+   "minutes": 1,
    "samples": 1
   },
   {
@@ -11718,34 +12033,34 @@
    "from": "940GZZDLPUD",
    "to": "940GZZDLBOW",
    "minutes": 2,
-   "samples": 2
+   "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLPUD",
    "to": "940GZZDLPUD",
-   "minutes": 0.5,
-   "samples": 2
+   "minutes": 1,
+   "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLRAL",
    "to": "940GZZDLBPK",
-   "minutes": 1,
+   "minutes": 2,
    "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLRAL",
    "to": "940GZZDLPRE",
-   "minutes": 1,
+   "minutes": 2,
    "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLRAL",
    "to": "940GZZDLRAL",
-   "minutes": 1,
+   "minutes": 0,
    "samples": 1
   },
   {
@@ -11766,8 +12081,8 @@
    "line": "dlr",
    "from": "940GZZDLRVC",
    "to": "940GZZDLRVC",
-   "minutes": 1,
-   "samples": 1
+   "minutes": 0.5,
+   "samples": 2
   },
   {
    "line": "dlr",
@@ -11787,8 +12102,8 @@
    "line": "dlr",
    "from": "940GZZDLSHA",
    "to": "940GZZDLSHA",
-   "minutes": 0.67,
-   "samples": 3
+   "minutes": 0.5,
+   "samples": 6
   },
   {
    "line": "dlr",
@@ -11796,6 +12111,34 @@
    "to": "940GZZDLTWG",
    "minutes": 2,
    "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSHS",
+   "to": "940GZZDLABR",
+   "minutes": 1,
+   "samples": 4
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSHS",
+   "to": "940GZZDLSHS",
+   "minutes": 0.4,
+   "samples": 5
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSHS",
+   "to": "940GZZDLSTD",
+   "minutes": 1,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSIT",
+   "to": "940GZZDLSTD",
+   "minutes": 2.5,
+   "samples": 2
   },
   {
    "line": "dlr",
@@ -11808,22 +12151,64 @@
    "line": "dlr",
    "from": "940GZZDLSOQ",
    "to": "940GZZDLHEQ",
-   "minutes": 1,
+   "minutes": 2,
    "samples": 2
   },
   {
    "line": "dlr",
    "from": "940GZZDLSOQ",
    "to": "940GZZDLSOQ",
-   "minutes": 1,
-   "samples": 2
+   "minutes": 0,
+   "samples": 3
   },
   {
    "line": "dlr",
    "from": "940GZZDLSTD",
    "to": "940GZZDLPUD",
-   "minutes": 1.5,
-   "samples": 2
+   "minutes": 1,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSTD",
+   "to": "940GZZDLSHS",
+   "minutes": 1,
+   "samples": 4
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSTD",
+   "to": "940GZZDLSIT",
+   "minutes": 3,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSTD",
+   "to": "940GZZDLSTD",
+   "minutes": 0.33,
+   "samples": 3
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSTL",
+   "to": "940GZZDLCGT",
+   "minutes": 1,
+   "samples": 4
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSTL",
+   "to": "940GZZDLSTL",
+   "minutes": 0.4,
+   "samples": 5
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLSTL",
+   "to": "940GZZDLWHM",
+   "minutes": 1,
+   "samples": 1
   },
   {
    "line": "dlr",
@@ -11855,23 +12240,51 @@
   },
   {
    "line": "dlr",
-   "from": "940GZZDLWIQ",
-   "to": "940GZZDLCAN",
+   "from": "940GZZDLWFE",
+   "to": "940GZZDLWFE",
+   "minutes": 0.17,
+   "samples": 6
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLWHM",
+   "to": "940GZZDLABR",
+   "minutes": 1,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLWHM",
+   "to": "940GZZDLSTL",
+   "minutes": 1.5,
+   "samples": 4
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLWHM",
+   "to": "940GZZDLWHM",
    "minutes": 1,
    "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLWIQ",
+   "to": "940GZZDLCAN",
+   "minutes": 0,
+   "samples": 1
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLWIQ",
    "to": "940GZZDLWFE",
-   "minutes": 2,
+   "minutes": 1,
    "samples": 1
   },
   {
    "line": "dlr",
    "from": "940GZZDLWIQ",
    "to": "940GZZDLWIQ",
-   "minutes": 0,
+   "minutes": 1,
    "samples": 2
   },
   {
@@ -11879,21 +12292,28 @@
    "from": "940GZZDLWLA",
    "to": "940GZZDLKGV",
    "minutes": 3,
-   "samples": 3
+   "samples": 4
   },
   {
    "line": "dlr",
    "from": "940GZZDLWSV",
    "to": "940GZZDLCGT",
-   "minutes": 3.33,
-   "samples": 3
+   "minutes": 2.5,
+   "samples": 4
   },
   {
    "line": "dlr",
    "from": "940GZZDLWSV",
    "to": "940GZZDLPDK",
    "minutes": 2,
-   "samples": 1
+   "samples": 3
+  },
+  {
+   "line": "dlr",
+   "from": "940GZZDLWSV",
+   "to": "940GZZDLWSV",
+   "minutes": 0.57,
+   "samples": 7
   },
   {
    "line": "hammersmith-city",
@@ -13166,14 +13586,14 @@
    "line": "northern",
    "from": "940GZZLUACY",
    "to": "940GZZLUHGT",
-   "minutes": 2,
+   "minutes": 2.13,
    "samples": 8
   },
   {
    "line": "northern",
    "from": "940GZZLUACY",
    "to": "940GZZLUTFP",
-   "minutes": 1.38,
+   "minutes": 1.5,
    "samples": 8
   },
   {
@@ -13195,13 +13615,13 @@
    "from": "940GZZLUBLM",
    "to": "940GZZLUCPS",
    "minutes": 2,
-   "samples": 10
+   "samples": 9
   },
   {
    "line": "northern",
    "from": "940GZZLUBLM",
    "to": "940GZZLUTBC",
-   "minutes": 2,
+   "minutes": 1.83,
    "samples": 6
   },
   {
@@ -13271,14 +13691,14 @@
    "line": "northern",
    "from": "940GZZLUBZP",
    "to": "940GZZLUHTD",
-   "minutes": 2.4,
+   "minutes": 2.6,
    "samples": 5
   },
   {
    "line": "northern",
    "from": "940GZZLUCFM",
    "to": "940GZZLUBZP",
-   "minutes": 1.6,
+   "minutes": 1.4,
    "samples": 5
   },
   {
@@ -13299,14 +13719,14 @@
    "line": "northern",
    "from": "940GZZLUCHX",
    "to": "940GZZLULSQ",
-   "minutes": 1.13,
+   "minutes": 1.38,
    "samples": 8
   },
   {
    "line": "northern",
    "from": "940GZZLUCND",
    "to": "940GZZLUBTK",
-   "minutes": 2.33,
+   "minutes": 2.67,
    "samples": 3
   },
   {
@@ -13320,8 +13740,8 @@
    "line": "northern",
    "from": "940GZZLUCPC",
    "to": "940GZZLUCPN",
-   "minutes": 1.8,
-   "samples": 10
+   "minutes": 1.78,
+   "samples": 9
   },
   {
    "line": "northern",
@@ -13334,15 +13754,15 @@
    "line": "northern",
    "from": "940GZZLUCPN",
    "to": "940GZZLUCPC",
-   "minutes": 1.5,
+   "minutes": 1.67,
    "samples": 6
   },
   {
    "line": "northern",
    "from": "940GZZLUCPN",
    "to": "940GZZLUSKW",
-   "minutes": 1.6,
-   "samples": 10
+   "minutes": 1.56,
+   "samples": 9
   },
   {
    "line": "northern",
@@ -13355,8 +13775,8 @@
    "line": "northern",
    "from": "940GZZLUCPS",
    "to": "940GZZLUCPC",
-   "minutes": 1.9,
-   "samples": 10
+   "minutes": 1.89,
+   "samples": 9
   },
   {
    "line": "northern",
@@ -13370,13 +13790,13 @@
    "from": "940GZZLUCSD",
    "to": "940GZZLUTBY",
    "minutes": 2,
-   "samples": 10
+   "samples": 9
   },
   {
    "line": "northern",
    "from": "940GZZLUCTN",
    "to": "940GZZLUCFM",
-   "minutes": 1.6,
+   "minutes": 1.8,
    "samples": 5
   },
   {
@@ -13397,7 +13817,7 @@
    "line": "northern",
    "from": "940GZZLUCTN",
    "to": "940GZZLUKSH",
-   "minutes": 1.63,
+   "minutes": 1.75,
    "samples": 8
   },
   {
@@ -13425,14 +13845,14 @@
    "line": "northern",
    "from": "940GZZLUEFY",
    "to": "940GZZLUFYC",
-   "minutes": 4.5,
+   "minutes": 4.38,
    "samples": 8
   },
   {
    "line": "northern",
    "from": "940GZZLUEFY",
    "to": "940GZZLUHGT",
-   "minutes": 2.25,
+   "minutes": 2.38,
    "samples": 8
   },
   {
@@ -13446,7 +13866,7 @@
    "line": "northern",
    "from": "940GZZLUEMB",
    "to": "940GZZLUCHX",
-   "minutes": 1.13,
+   "minutes": 1,
    "samples": 8
   },
   {
@@ -13502,21 +13922,21 @@
    "line": "northern",
    "from": "940GZZLUFYC",
    "to": "940GZZLUWFN",
-   "minutes": 2.33,
+   "minutes": 2.67,
    "samples": 3
   },
   {
    "line": "northern",
    "from": "940GZZLUGDG",
    "to": "940GZZLUTCR",
-   "minutes": 1.22,
+   "minutes": 1.33,
    "samples": 9
   },
   {
    "line": "northern",
    "from": "940GZZLUGDG",
    "to": "940GZZLUWRR",
-   "minutes": 1.13,
+   "minutes": 1.38,
    "samples": 8
   },
   {
@@ -13551,14 +13971,14 @@
    "line": "northern",
    "from": "940GZZLUHCL",
    "to": "940GZZLUCND",
-   "minutes": 3,
+   "minutes": 2.67,
    "samples": 3
   },
   {
    "line": "northern",
    "from": "940GZZLUHGT",
    "to": "940GZZLUACY",
-   "minutes": 2.75,
+   "minutes": 2.63,
    "samples": 8
   },
   {
@@ -13579,7 +13999,7 @@
    "line": "northern",
    "from": "940GZZLUHTD",
    "to": "940GZZLUGGN",
-   "minutes": 4.6,
+   "minutes": 4.4,
    "samples": 5
   },
   {
@@ -13593,21 +14013,21 @@
    "line": "northern",
    "from": "940GZZLUKNG",
    "to": "940GZZLUKNG",
-   "minutes": 0,
+   "minutes": 0.17,
    "samples": 6
   },
   {
    "line": "northern",
    "from": "940GZZLUKNG",
    "to": "940GZZLUOVL",
-   "minutes": 2,
+   "minutes": 1.83,
    "samples": 6
   },
   {
    "line": "northern",
    "from": "940GZZLUKNG",
    "to": "940GZZLUWLO",
-   "minutes": 2.5,
+   "minutes": 2.63,
    "samples": 8
   },
   {
@@ -13663,22 +14083,22 @@
    "line": "northern",
    "from": "940GZZLULSQ",
    "to": "940GZZLUCHX",
-   "minutes": 1.22,
+   "minutes": 1.33,
    "samples": 9
   },
   {
    "line": "northern",
    "from": "940GZZLULSQ",
    "to": "940GZZLUTCR",
-   "minutes": 1.13,
+   "minutes": 1,
    "samples": 8
   },
   {
    "line": "northern",
    "from": "940GZZLUMDN",
    "to": "940GZZLUSWN",
-   "minutes": 2.1,
-   "samples": 10
+   "minutes": 2.11,
+   "samples": 9
   },
   {
    "line": "northern",
@@ -13705,7 +14125,7 @@
    "line": "northern",
    "from": "940GZZLUMTC",
    "to": "940GZZLUCTN",
-   "minutes": 2.13,
+   "minutes": 2,
    "samples": 8
   },
   {
@@ -13740,14 +14160,14 @@
    "line": "northern",
    "from": "940GZZLUOVL",
    "to": "940GZZLUSKW",
-   "minutes": 2,
+   "minutes": 2.17,
    "samples": 6
   },
   {
    "line": "northern",
    "from": "940GZZLUSKW",
    "to": "940GZZLUCPN",
-   "minutes": 1.5,
+   "minutes": 1.33,
    "samples": 6
   },
   {
@@ -13762,7 +14182,7 @@
    "from": "940GZZLUSWN",
    "to": "940GZZLUCSD",
    "minutes": 2,
-   "samples": 10
+   "samples": 9
   },
   {
    "line": "northern",
@@ -13789,8 +14209,8 @@
    "line": "northern",
    "from": "940GZZLUTBC",
    "to": "940GZZLUBLM",
-   "minutes": 1.3,
-   "samples": 10
+   "minutes": 1.33,
+   "samples": 9
   },
   {
    "line": "northern",
@@ -13810,35 +14230,35 @@
    "line": "northern",
    "from": "940GZZLUTBY",
    "to": "940GZZLUTBC",
-   "minutes": 1.9,
-   "samples": 10
+   "minutes": 1.89,
+   "samples": 9
   },
   {
    "line": "northern",
    "from": "940GZZLUTCR",
    "to": "940GZZLUGDG",
-   "minutes": 1.75,
+   "minutes": 1.63,
    "samples": 8
   },
   {
    "line": "northern",
    "from": "940GZZLUTCR",
    "to": "940GZZLULSQ",
-   "minutes": 1.67,
+   "minutes": 1.44,
    "samples": 9
   },
   {
    "line": "northern",
    "from": "940GZZLUTFP",
    "to": "940GZZLUACY",
-   "minutes": 2,
+   "minutes": 1.88,
    "samples": 8
   },
   {
    "line": "northern",
    "from": "940GZZLUTFP",
    "to": "940GZZLUKSH",
-   "minutes": 1.63,
+   "minutes": 1.5,
    "samples": 8
   },
   {
@@ -13852,21 +14272,21 @@
    "line": "northern",
    "from": "940GZZLUWFN",
    "to": "940GZZLUWOP",
-   "minutes": 1.67,
+   "minutes": 1.33,
    "samples": 3
   },
   {
    "line": "northern",
    "from": "940GZZLUWLO",
    "to": "940GZZLUEMB",
-   "minutes": 1.75,
+   "minutes": 1.63,
    "samples": 8
   },
   {
    "line": "northern",
    "from": "940GZZLUWLO",
    "to": "940GZZLUKNG",
-   "minutes": 3.67,
+   "minutes": 3.44,
    "samples": 9
   },
   {
@@ -13887,7 +14307,7 @@
    "line": "northern",
    "from": "940GZZLUWRR",
    "to": "940GZZLUEUS",
-   "minutes": 1.5,
+   "minutes": 1.38,
    "samples": 8
   },
   {
@@ -14924,19 +15344,156 @@
       "940GZZLUKPK",
       "940GZZLUQPS"
      ],
-     "times": [0,2,4,5,6,8,10,12,14,15,16,18,20,22,24,29]
+     "times": [0,2,4,5,6,8,10,12,14,15,16,18,20,22,24,27]
+    },
+    {
+     "stops": [
+      "940GZZLUEAC",
+      "940GZZLULBN",
+      "940GZZLUWLO",
+      "940GZZLUEMB",
+      "940GZZLUCHX",
+      "940GZZLUPCC",
+      "940GZZLUOXC",
+      "940GZZLURGP",
+      "940GZZLUBST",
+      "940GZZLUMYB",
+      "940GZZLUERB",
+      "940GZZLUPAC",
+      "940GZZLUWKA",
+      "940GZZLUMVL",
+      "940GZZLUKPK",
+      "940GZZLUQPS",
+      "940GZZLUKSL",
+      "940GZZLUWJN",
+      "940GZZLUHSN",
+      "940GZZLUSGP",
+      "940GZZLUWYC",
+      "940GZZLUNWY",
+      "940GZZLUSKT",
+      "940GZZLUKEN",
+      "940GZZLUHAW"
+     ],
+     "times": [0,2,4,5,6,8,10,12,14,15,16,18,20,22,24,27,30,33,35,38,41,43,45,47,51]
+    },
+    {
+     "stops": [
+      "940GZZLUEAC",
+      "940GZZLULBN",
+      "940GZZLUWLO",
+      "940GZZLUEMB",
+      "940GZZLUCHX",
+      "940GZZLUPCC",
+      "940GZZLUOXC",
+      "940GZZLURGP",
+      "940GZZLUBST",
+      "940GZZLUMYB",
+      "940GZZLUERB",
+      "940GZZLUPAC",
+      "940GZZLUWKA",
+      "940GZZLUMVL",
+      "940GZZLUKPK",
+      "940GZZLUQPS",
+      "940GZZLUKSL",
+      "940GZZLUWJN",
+      "940GZZLUHSN",
+      "940GZZLUSGP"
+     ],
+     "times": [0,2,4,5,6,8,10,12,14,15,16,18,20,22,24,27,30,33,35,40]
     }
    ],
    "schedules": [
     {
-     "name": "Sunday",
-     "departures": [436,445,455,465,475,480,489,495,500,505,510,515,520,525,530,535,540,544,549,553,559,564,569,573,579,584,589,593,599,604,609,613,617,621,625,629,633,637,641,645,649,653,657,661,665,669,673,677,681,685,689,693,697,701,705,709,713,717,721,725,729,733,737,741,745,749,753,757,761,765,769,773,777,781,785,789,793,797,801,805,809,813,817,821,825,829,833,837,841,845,849,853,857,861,865,869,873,877,881,885,889,893,897,901,905,909,913,917,921,925,929,933,937,941,945,949,953,957,961,965,969,973,977,981,985,989,993,997,1001,1005,1009,1013,1017,1021,1025,1029,1033,1037,1041,1045,1049,1053,1057,1061,1065,1069,1073,1077,1081,1085,1089,1093,1097,1101,1105,1109,1113,1117,1121,1125,1129,1133,1137,1141,1145,1149,1153,1157,1161,1165,1169,1173,1177,1181,1185,1189,1193,1197,1201,1205,1209,1213,1217,1221,1225,1229,1233,1237,1241,1245,1249,1253,1257,1261,1265,1269,1273,1277,1281,1285,1289,1293,1297,1301,1305,1309,1313,1317,1321,1325,1329,1333,1337,1341,1346,1351,1357,1363,1370,1377,1385,1395,1406,1417],
-     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+     "name": "Daily",
+     "departures": [337,346,356,363,371,379,386,395,402,410,414,420,424,428,431,434,438,444,448,451,454,458,461,464,468,471,474,478,481,484,488,491,494,498,501,504,508,511,514,518,521,524,528,531,534,538,541,544,548,551,554,558,561,564,568,571,574,578,581,584,588,591,595,599,602,606,610,614,617,621,625,629,632,636,640,644,647,651,653,657,659,661,666,670,674,677,681,685,689,692,696,700,704,707,711,715,719,722,726,730,734,737,741,745,749,752,756,760,764,767,771,773,777,779,781,786,790,794,797,801,805,809,812,816,820,824,827,831,835,839,842,846,850,854,857,861,865,869,872,876,880,884,887,891,893,897,899,901,906,910,914,917,921,925,929,932,936,940,944,947,951,955,959,962,966,969,972,976,979,982,986,989,992,996,999,1002,1005,1009,1012,1015,1019,1022,1025,1029,1032,1036,1039,1042,1046,1049,1052,1056,1059,1062,1066,1069,1072,1075,1079,1082,1085,1089,1092,1096,1099,1102,1106,1109,1112,1116,1119,1122,1126,1129,1132,1136,1139,1142,1146,1149,1152,1156,1159,1162,1165,1169,1172,1176,1180,1184,1187,1191,1195,1197,1201,1203,1207,1209,1214,1217,1221,1225,1229,1232,1236,1240,1244,1247,1251,1255,1259,1262,1266,1270,1274,1277,1281,1285,1289,1292,1296,1300,1304,1307,1311,1315,1319,1322,1326,1330,1334,1337,1341,1343,1347,1349,1351,1356,1360,1364,1367,1371,1375,1379,1382,1386,1390,1394,1398,1402,1406,1411,1415,1421,1427,1432,1438,1443,1453,1463],
+     "routes": [1,1,0,1,2,1,0,0,1,0,0,0,2,0,1,0,1,0,1,2,0,1,0,2,0,1,0,0,1,2,0,2,0,1,0,0,2,1,0,2,0,2,0,1,0,2,1,0,0,2,1,0,2,0,2,1,0,0,2,1,0,0,2,0,1,2,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,0,1,0,2,0,1,0,0,1,2,0,0,1,2,0,0,1,2,0,2,0,1,0,0,1,2,0,1,2,0,1,0,0,1,2,0,0,1,1,0,0,1,0,2,0,1,0,2,1,0,0,1,2,0,1,0,1,0,0,2,1,0,2,0,0,1,2,0,0,2,1,2,0,2,1,0,2,0,2,0,1,0,2,0,1,0,2,0,0,1,0,2,1,0,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,1,0,2,0,0,1,0,2,0,1,0,2,1,0,0,2,1,2,0,1,2,2,1,2,0,0,2,0]
+    }
+   ]
+  },
+  {
+   "line": "bakerloo",
+   "direction": "inbound",
+   "origin": "940GZZLUHAW",
+   "routes": [
+    {
+     "stops": [
+      "940GZZLUHAW",
+      "940GZZLUKEN",
+      "940GZZLUSKT",
+      "940GZZLUNWY",
+      "940GZZLUWYC",
+      "940GZZLUSGP",
+      "940GZZLUHSN",
+      "940GZZLUWJN",
+      "940GZZLUKSL",
+      "940GZZLUQPS",
+      "940GZZLUKPK",
+      "940GZZLUMVL",
+      "940GZZLUWKA",
+      "940GZZLUPAC",
+      "940GZZLUERB",
+      "940GZZLUMYB",
+      "940GZZLUBST",
+      "940GZZLURGP",
+      "940GZZLUOXC",
+      "940GZZLUPCC",
+      "940GZZLUCHX",
+      "940GZZLUEMB",
+      "940GZZLUWLO",
+      "940GZZLULBN",
+      "940GZZLUEAC"
+     ],
+     "times": [0,2,4,6,8,11,13,15,18,22,23,25,27,29,30,32,33,35,37,40,41,42,44,46,49]
     },
     {
-     "name": "Saturdays and Public Holidays",
-     "departures": [337,346,356,363,370,378,388,397,405,409,413,421,425,429,433,441,445,449,453,461,465,469,473,477,481,485,489,493,497,501,505,509,513,517,521,525,529,533,537,541,545,549,553,557,561,565,569,573,577,581,585,589,593,597,601,605,609,613,617,621,625,629,633,637,641,645,649,653,657,661,665,669,673,677,681,685,689,693,697,701,705,709,713,717,721,725,729,733,737,741,745,749,753,757,761,765,769,773,777,781,785,789,793,797,801,805,809,813,817,821,825,829,833,837,841,845,849,853,857,861,865,869,873,877,881,885,889,893,897,901,905,909,913,917,921,925,929,933,937,941,945,949,953,957,961,965,969,973,977,981,985,989,993,997,1001,1005,1009,1013,1017,1021,1025,1029,1033,1037,1041,1045,1049,1053,1057,1061,1065,1069,1073,1077,1081,1085,1089,1093,1097,1101,1105,1109,1113,1117,1121,1125,1129,1133,1137,1141,1145,1149,1153,1157,1161,1165,1169,1173,1177,1181,1185,1189,1193,1197,1201,1205,1209,1213,1217,1221,1225,1229,1233,1237,1241,1245,1249,1253,1257,1261,1265,1269,1273,1277,1281,1285,1289,1293,1297,1301,1305,1309,1313,1317,1321,1325,1329,1333,1337,1341,1345,1349,1353,1357,1361,1365,1369,1373,1377,1381,1385,1389,1393,1397,1402,1406,1412,1417,1422,1430,1437,1445,1453,1463],
-     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+     "stops": [
+      "940GZZLUHAW",
+      "940GZZLUKEN",
+      "940GZZLUSKT",
+      "940GZZLUNWY",
+      "940GZZLUWYC",
+      "940GZZLUSGP",
+      "940GZZLUHSN",
+      "940GZZLUWJN",
+      "940GZZLUKSL",
+      "940GZZLUQPS",
+      "940GZZLUKPK",
+      "940GZZLUMVL",
+      "940GZZLUWKA",
+      "940GZZLUPAC",
+      "940GZZLUERB",
+      "940GZZLUMYB",
+      "940GZZLUBST",
+      "940GZZLURGP",
+      "940GZZLUOXC",
+      "940GZZLUPCC",
+      "940GZZLUCHX",
+      "940GZZLUEMB",
+      "940GZZLUWLO"
+     ],
+     "times": [0,2,4,6,8,11,13,15,18,22,24,26,27,29,31,32,34,35,38,40,41,42,47]
+    },
+    {
+     "stops": [
+      "940GZZLUHAW",
+      "940GZZLUKEN",
+      "940GZZLUSKT",
+      "940GZZLUNWY",
+      "940GZZLUWYC",
+      "940GZZLUSGP",
+      "940GZZLUHSN",
+      "940GZZLUWJN",
+      "940GZZLUKSL",
+      "940GZZLUQPS"
+     ],
+     "times": [0,2,4,6,8,11,14,16,18,24]
+    }
+   ],
+   "schedules": [
+    {
+     "name": "Daily",
+     "departures": [339,368,387,401,415,429,443,449,462,473,479,492,503,509,522,533,548,563,578,593,608,623,638,653,668,683,698,713,728,743,758,773,788,803,818,833,848,863,878,893,908,923,937,952,967,982,997,1013,1029,1042,1050,1062,1073,1080,1093,1102,1110,1122,1133,1140,1151,1163,1178,1193,1208,1224,1238,1253,1268,1283,1298,1313,1328,1343,1358,1373,1388,1403,1418,1434,1445,1459,1471],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2,2,2]
     }
    ]
   },
@@ -17120,18 +17677,26 @@
      "stops": [
       "940GZZDLBNK",
       "940GZZDLSHA",
+      "940GZZDLSHA",
       "940GZZDLLIM",
       "940GZZDLLIM",
+      "940GZZDLWFE",
       "940GZZDLWFE",
       "940GZZDLCAN",
       "940GZZDLCAN",
       "940GZZDLHEQ",
+      "940GZZDLHEQ",
       "940GZZDLSOQ",
+      "940GZZDLSOQ",
+      "940GZZDLCLA",
       "940GZZDLCLA",
       "940GZZDLMUD",
       "940GZZDLMUD",
       "940GZZDLISL",
+      "940GZZDLISL",
       "940GZZDLCUT",
+      "940GZZDLCUT",
+      "940GZZDLGRE",
       "940GZZDLGRE",
       "940GZZDLDEP",
       "940GZZDLDEP",
@@ -17139,30 +17704,44 @@
       "940GZZDLELV",
       "940GZZDLLEW"
      ],
-     "times": [0,4,6,7,8,11,12,13,15,17,18,19,20,22,24,25,26,27,28,29]
+     "times": [0,3,4,6,6,7,8,11,11,12,12,14,14,16,16,17,18,19,19,21,21,23,23,24,25,26,27,28]
     },
     {
      "stops": [
       "940GZZDLBNK",
       "940GZZDLSHA",
+      "940GZZDLSHA",
       "940GZZDLLIM",
       "940GZZDLLIM",
       "940GZZDLWFE",
+      "940GZZDLWFE",
       "940GZZDLPOP",
+      "940GZZDLPOP",
+      "940GZZDLBLA",
       "940GZZDLBLA",
       "940GZZDLEIN",
       "940GZZDLEIN",
       "940GZZDLCGT",
+      "940GZZDLCGT",
+      "940GZZDLWSV",
       "940GZZDLWSV",
       "940GZZDLPDK",
+      "940GZZDLPDK",
       "940GZZDLLCA",
+      "940GZZDLLCA",
+      "940GZZDLKGV",
       "940GZZDLKGV",
       "940GZZDLWLA"
      ],
-     "times": [0,4,6,7,8,10,12,13,14,16,19,21,24,26,29]
+     "times": [0,3,3,5,6,7,7,9,10,11,12,13,13,15,15,18,18,20,20,23,23,25,25,28]
     }
    ],
    "schedules": [
+    {
+     "name": "Monday - Friday",
+     "departures": [330,333,340,343,350,353,360,363,366,370,373,377,379,381,386,388,390,395,397,399,404,406,408,413,415,417,422,424,426,431,433,435,440,442,444,449,451,453,458,460,462,467,469,471,476,478,480,485,487,489,494,496,498,503,505,507,512,514,516,521,523,525,530,532,534,539,541,543,548,550,552,557,559,561,566,568,570,575,577,579,584,586,588,593,595,597,602,604,606,610,613,615,620,623,625,630,633,635,640,643,645,650,653,655,660,663,665,670,673,675,680,683,685,690,693,695,700,703,705,710,713,715,720,723,725,730,733,735,740,743,745,750,753,755,760,763,765,770,773,775,780,783,785,790,793,795,800,803,805,810,813,815,820,823,825,830,833,835,840,843,845,850,853,855,860,863,865,870,873,875,880,883,885,890,893,895,900,904,906,910,913,915,920,923,925,930,933,935,940,943,945,950,953,955,960,964,966,971,973,975,980,982,984,989,991,993,998,1000,1002,1007,1009,1011,1016,1018,1020,1025,1027,1029,1034,1036,1038,1043,1045,1047,1052,1054,1056,1061,1063,1065,1070,1072,1074,1079,1081,1083,1088,1090,1092,1097,1099,1101,1106,1108,1110,1115,1117,1119,1124,1126,1128,1133,1135,1137,1142,1144,1146,1151,1153,1155,1160,1162,1164,1169,1171,1173,1178,1181,1183,1187,1190,1193,1195,1200,1203,1205,1210,1213,1215,1220,1223,1225,1230,1233,1235,1240,1243,1245,1250,1253,1255,1260,1263,1265,1270,1273,1275,1280,1283,1285,1290,1293,1295,1300,1303,1305,1310,1313,1315,1320,1323,1325,1330,1333,1335,1340,1343,1345,1350,1353,1355,1360,1363,1365,1370,1373,1375,1380,1383,1385,1390,1393,1395,1400,1403,1405,1410,1413,1415,1420,1423,1425,1430,1433,1440,1443,1450,1453,1460,1463,1470,1473],
+     "routes": [0,1,0,1,0,1,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,1,0,1,0,1]
+    },
     {
      "name": "Sunday",
      "departures": [420,423,430,433,440,443,450,453,460,463,470,473,480,483,490,493,500,503,510,513,520,523,530,533,540,543,550,553,560,563,570,573,580,583,590,593,595,600,603,605,610,613,615,620,623,625,630,633,635,640,643,645,650,653,655,660,663,665,670,673,675,680,683,685,690,693,695,700,703,705,710,713,715,720,723,725,730,733,735,740,743,745,750,753,755,760,763,765,770,773,775,780,783,785,790,793,795,800,803,805,810,813,815,820,823,825,830,833,835,840,843,845,850,853,855,860,863,865,870,873,875,880,883,885,890,893,895,900,903,905,910,913,915,920,923,925,930,933,935,940,943,945,950,953,955,960,963,965,970,973,975,980,983,985,990,993,995,1000,1003,1005,1010,1013,1015,1020,1023,1025,1030,1033,1035,1040,1043,1045,1050,1053,1055,1060,1063,1065,1070,1073,1075,1080,1083,1085,1090,1093,1095,1100,1103,1105,1110,1113,1115,1120,1123,1125,1130,1133,1135,1140,1143,1145,1150,1153,1155,1160,1163,1165,1170,1173,1175,1180,1183,1190,1193,1200,1203,1210,1213,1220,1223,1230,1233,1240,1243,1250,1253,1260,1263,1270,1273,1280,1283,1290,1293,1300,1303,1310,1313,1320,1323,1330,1333,1340,1343,1350,1353,1360,1363,1370,1373,1380,1383,1390,1393,1400,1403,1410,1413],
@@ -17190,6 +17769,8 @@
       "940GZZDLDEV",
       "940GZZDLDEV",
       "940GZZDLLDP",
+      "940GZZDLLDP",
+      "940GZZDLALL",
       "940GZZDLALL",
       "940GZZDLPOP",
       "940GZZDLPOP",
@@ -17197,36 +17778,90 @@
       "940GZZDLWIQ",
       "940GZZDLCAN"
      ],
-     "times": [0,1,2,4,4,5,6,7,9,11,11,13,13,14]
-    },
-    {
-     "stops": [
-      "940GZZDLSTD",
-      "940GZZDLPUD",
-      "940GZZDLPUD",
-      "940GZZDLBOW",
-      "940GZZDLBOW",
-      "940GZZDLDEV",
-      "940GZZDLDEV",
-      "940GZZDLLDP",
-      "940GZZDLALL",
-      "940GZZDLPOP",
-      "940GZZDLPOP",
-      "940GZZDLWIQ"
-     ],
-     "times": [0,2,2,4,4,5,6,7,9,11,12,14]
+     "times": [0,1,2,4,4,5,5,7,7,8,9,10,11,12,13,13]
     }
    ],
    "schedules": [
     {
+     "name": "Monday - Friday",
+     "departures": [320,330,340,350,360,370,380,384,389,394,399,404,409,414,419,424,429,434,439,444,449,454,459,464,469,474,479,484,489,494,499,504,509,514,519,524,529,534,539,544,549,554,559,564,569,574,579,584,588,593,600,606,613,619,626,632,639,645,652,658,665,671,678,684,691,697,704,710,717,723,730,736,743,749,756,762,769,775,782,788,795,801,808,814,821,827,834,840,847,853,860,866,873,879,886,892,899,905,912,918,925,931,938,944,949,954,959,964,969,974,979,984,989,994,999,1004,1009,1014,1019,1024,1029,1034,1039,1044,1049,1054,1059,1064,1069,1074,1079,1084,1089,1094,1099,1104,1109,1114,1119,1124,1129,1134,1139,1144,1149,1154,1159,1164,1169,1174,1179,1185,1193,1198,1205,1211,1218,1224,1231,1237,1244,1250,1257,1263,1270,1276,1283,1289,1296,1302,1309,1315,1322,1328,1335,1341,1348,1354,1361,1367,1374,1380,1387,1393,1400,1406,1413,1423,1430,1440,1450,1460,1470,1480,1490],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    },
+    {
      "name": "Sunday",
-     "departures": [410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,606,619,625,632,638,645,651,658,664,671,677,684,690,697,703,710,716,723,729,736,742,749,755,762,768,775,781,788,794,801,807,814,820,827,833,840,846,853,859,866,872,879,885,892,898,905,911,918,924,931,937,944,950,957,963,970,976,983,989,996,1002,1009,1015,1022,1028,1035,1041,1048,1054,1061,1067,1074,1080,1087,1093,1100,1106,1113,1119,1126,1132,1139,1145,1152,1158,1165,1171,1178,1191,1200,1210,1220,1230,1240,1250,1260,1270,1280,1290,1300,1310,1320,1330,1340,1350,1360,1370,1380,1390,1400,1410,1420,1430],
-     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+     "departures": [410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,628,634,641,647,654,660,667,673,680,686,693,699,706,712,719,725,732,738,745,751,758,764,771,777,784,790,797,803,810,816,823,829,836,842,849,855,862,868,875,881,888,894,901,907,914,920,927,933,940,946,953,959,966,972,979,985,992,998,1005,1011,1018,1024,1031,1037,1044,1050,1057,1063,1070,1076,1083,1089,1096,1102,1109,1115,1122,1128,1135,1141,1148,1154,1161,1167,1174,1180,1190,1200,1210,1220,1230,1240,1250,1260,1270,1280,1290,1300,1310,1320,1330,1340,1350,1360,1370,1380,1390,1400,1410,1420,1430],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     {
      "name": "Saturdays and Public Holidays",
      "departures": [320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,505,512,518,525,531,538,544,551,557,564,570,577,583,590,596,603,609,616,622,629,635,642,648,655,661,668,674,681,687,694,700,707,713,720,726,733,739,746,752,759,765,772,778,785,791,798,804,811,817,824,830,837,843,850,856,863,869,876,882,889,895,902,908,915,921,928,934,941,947,954,960,967,973,980,986,993,999,1006,1012,1019,1025,1032,1038,1045,1051,1058,1064,1071,1077,1084,1090,1097,1103,1110,1116,1123,1129,1136,1142,1149,1155,1162,1168,1175,1181,1188,1194,1201,1207,1214,1220,1227,1233,1240,1246,1253,1259,1266,1272,1279,1285,1292,1298,1305,1311,1318,1324,1330,1340,1350,1360,1370,1380,1390,1400,1410,1420,1430,1440,1450,1460,1470,1480,1490],
      "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    }
+   ]
+  },
+  {
+   "line": "dlr",
+   "direction": "outbound",
+   "origin": "940GZZDLSIT",
+   "routes": [
+    {
+     "stops": [
+      "940GZZDLSIT",
+      "940GZZDLSTD",
+      "940GZZDLSTD",
+      "940GZZDLSHS",
+      "940GZZDLSHS",
+      "940GZZDLABR",
+      "940GZZDLABR",
+      "940GZZDLWHM",
+      "940GZZDLSTL",
+      "940GZZDLSTL",
+      "940GZZDLCGT",
+      "940GZZDLCGT",
+      "940GZZDLWSV",
+      "940GZZDLWSV",
+      "940GZZDLPDK",
+      "940GZZDLPDK",
+      "940GZZDLLCA",
+      "940GZZDLLCA",
+      "940GZZDLKGV",
+      "940GZZDLKGV",
+      "940GZZDLWLA"
+     ],
+     "times": [0,2,3,4,4,5,6,7,9,9,10,11,14,14,16,16,18,19,20,21,24]
+    },
+    {
+     "stops": [
+      "940GZZDLSIT",
+      "940GZZDLSTD",
+      "940GZZDLSTD",
+      "940GZZDLSHS",
+      "940GZZDLSHS",
+      "940GZZDLABR",
+      "940GZZDLABR",
+      "940GZZDLWHM",
+      "940GZZDLSTL",
+      "940GZZDLSTL",
+      "940GZZDLCGT"
+     ],
+     "times": [0,3,3,4,5,6,6,8,9,10,11]
+    }
+   ],
+   "schedules": [
+    {
+     "name": "Monday - Friday",
+     "departures": [322,332,342,352,361,370,379,388,397,406,415,424,433,442,451,460,469,478,487,496,505,514,523,532,541,550,559,568,577,585,595,602,612,622,632,642,652,662,672,682,692,702,712,722,732,742,752,762,772,782,792,802,812,822,832,842,852,862,872,882,892,902,912,922,932,942,955,964,973,982,991,1000,1009,1018,1027,1036,1045,1054,1063,1072,1081,1090,1099,1108,1117,1126,1135,1144,1153,1162,1172,1182,1192,1202,1212,1222,1232,1242,1252,1262,1272,1282,1292,1302,1312,1322,1332,1342,1352,1362,1372,1382,1392,1402,1412,1422,1432,1442,1452,1462,1472,1482],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1]
+    },
+    {
+     "name": "Sunday",
+     "departures": [412,422,432,442,452,462,472,482,492,502,512,522,532,542,552,562,572,582,592,602,612,622,632,642,652,662,672,682,692,702,712,722,732,742,752,762,772,782,792,802,812,822,832,842,852,862,872,882,892,902,912,922,932,942,952,962,972,982,992,1002,1012,1022,1032,1042,1052,1062,1072,1082,1092,1102,1112,1122,1132,1142,1152,1162,1172,1182,1192,1202,1212,1222,1232,1242,1252,1262,1272,1282,1292,1302,1312,1322,1332,1342,1352,1362,1372,1382,1392,1402,1412,1422],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1]
+    },
+    {
+     "name": "Saturdays and Public Holidays",
+     "departures": [322,332,342,352,362,372,382,392,402,412,422,432,442,452,462,472,482,492,502,512,522,532,542,552,562,572,582,592,602,612,622,632,642,652,662,672,682,692,702,712,722,732,742,752,762,772,782,792,802,812,822,832,842,852,862,872,882,892,902,912,922,932,942,952,962,972,982,992,1002,1012,1022,1032,1042,1052,1062,1072,1082,1092,1102,1112,1122,1132,1142,1152,1162,1172,1182,1192,1202,1212,1222,1232,1242,1252,1262,1272,1282,1292,1302,1312,1322,1332,1342,1352,1362,1372,1382,1392,1402,1412,1422,1432,1442,1452,1462,1472,1482],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1]
     }
    ]
   },
@@ -17239,29 +17874,42 @@
      "stops": [
       "940GZZDLTWG",
       "940GZZDLSHA",
+      "940GZZDLSHA",
       "940GZZDLLIM",
       "940GZZDLLIM",
       "940GZZDLWFE",
+      "940GZZDLWFE",
       "940GZZDLPOP",
+      "940GZZDLPOP",
+      "940GZZDLBLA",
       "940GZZDLBLA",
       "940GZZDLEIN",
       "940GZZDLEIN",
       "940GZZDLCGT",
+      "940GZZDLCGT",
+      "940GZZDLRVC",
       "940GZZDLRVC",
       "940GZZDLCUS",
       "940GZZDLCUS",
+      "940GZZDLPRE",
       "940GZZDLPRE",
       "940GZZDLRAL",
       "940GZZDLBPK",
       "940GZZDLBPK",
       "940GZZDLCYP",
+      "940GZZDLCYP",
       "940GZZDLGAL",
       "940GZZDLBEC"
      ],
-     "times": [0,2,4,5,6,8,10,11,12,14,17,18,19,20,22,23,24,25,27,30]
+     "times": [0,2,2,4,4,6,6,8,8,10,10,11,11,13,14,16,17,18,18,19,20,21,23,23,24,25,26,29]
     }
    ],
    "schedules": [
+    {
+     "name": "Monday - Friday",
+     "departures": [320,330,340,350,360,369,377,385,394,403,412,421,430,439,448,457,466,475,484,493,502,511,520,529,538,547,556,565,574,583,592,601,610,620,630,640,650,660,670,680,690,700,710,720,730,740,750,760,770,780,790,800,810,820,830,840,850,860,870,880,890,900,910,920,930,940,950,960,970,979,988,997,1006,1015,1024,1033,1042,1051,1060,1069,1078,1087,1096,1105,1114,1123,1132,1141,1150,1159,1168,1177,1186,1200,1210,1220,1230,1240,1250,1260,1270,1280,1290,1300,1310,1320,1330,1340,1350,1360,1370,1380,1390,1400,1410,1420,1430,1440,1450,1460,1470,1480],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    },
     {
      "name": "Sunday",
      "departures": [410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680,690,700,710,720,730,740,750,760,770,780,790,800,810,820,830,840,850,860,870,880,890,900,910,920,930,940,950,960,970,980,990,1000,1010,1020,1030,1040,1050,1060,1070,1080,1090,1100,1110,1120,1130,1140,1150,1160,1170,1180,1190,1200,1210,1220,1230,1240,1250,1260,1270,1280,1290,1300,1310,1320,1330,1340,1350,1360,1370,1380,1390,1400,1410,1420],
@@ -17290,6 +17938,7 @@
       "940GZZDLPRE",
       "940GZZDLPRE",
       "940GZZDLCUS",
+      "940GZZDLCUS",
       "940GZZDLRVC",
       "940GZZDLRVC",
       "940GZZDLCGT",
@@ -17297,18 +17946,26 @@
       "940GZZDLEIN",
       "940GZZDLEIN",
       "940GZZDLBLA",
+      "940GZZDLBLA",
       "940GZZDLPOP",
       "940GZZDLPOP",
       "940GZZDLWFE",
+      "940GZZDLWFE",
+      "940GZZDLLIM",
       "940GZZDLLIM",
       "940GZZDLSHA",
       "940GZZDLSHA",
       "940GZZDLTWG"
      ],
-     "times": [0,2,4,6,7,8,9,10,11,12,13,15,16,18,18,19,21,21,23,25,27,28,30]
+     "times": [0,2,4,5,7,7,9,9,10,10,12,12,14,15,17,17,18,18,20,20,22,22,24,24,26,27,29]
     }
    ],
    "schedules": [
+    {
+     "name": "Monday - Friday",
+     "departures": [323,333,340,349,358,367,376,385,394,403,412,421,430,439,448,457,466,475,484,493,502,511,520,529,538,547,556,565,573,583,593,603,613,623,633,643,653,663,673,683,693,703,713,723,733,743,753,763,773,783,793,803,813,823,833,843,853,863,873,883,893,903,913,923,933,943,952,961,970,979,988,997,1006,1015,1024,1033,1042,1051,1060,1069,1078,1087,1096,1105,1114,1123,1132,1141,1150,1163,1173,1183,1193,1203,1213,1223,1233,1243,1253,1263,1273,1283,1293,1303,1313,1323,1333,1343,1353,1363,1373,1383,1393,1403,1413,1423,1433,1443,1453,1463],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    },
     {
      "name": "Sunday",
      "departures": [402,412,422,432,442,452,462,472,482,492,502,512,522,532,542,552,562,572,582,592,602,612,622,632,642,652,662,672,682,692,702,712,722,732,742,752,762,772,782,792,802,812,822,832,842,852,862,872,882,892,902,912,922,932,942,952,962,972,982,992,1002,1012,1022,1032,1042,1052,1062,1072,1082,1092,1102,1112,1122,1132,1142,1152,1162,1172,1182,1192,1202,1212,1222,1232,1242,1252,1262,1272,1282,1292,1302,1312,1322,1332,1342,1352,1362,1372,1382,1392,1402],
@@ -17331,10 +17988,14 @@
       "940GZZDLLEW",
       "940GZZDLELV",
       "940GZZDLDEP",
+      "940GZZDLDEP",
       "940GZZDLGRE",
+      "940GZZDLGRE",
+      "940GZZDLCUT",
       "940GZZDLCUT",
       "940GZZDLISL",
       "940GZZDLISL",
+      "940GZZDLMUD",
       "940GZZDLMUD",
       "940GZZDLCLA",
       "940GZZDLCLA",
@@ -17347,22 +18008,28 @@
       "940GZZDLWIQ",
       "940GZZDLWIQ",
       "940GZZDLWFE",
+      "940GZZDLWFE",
+      "940GZZDLLIM",
       "940GZZDLLIM",
       "940GZZDLSHA",
       "940GZZDLSHA",
       "940GZZDLBNK"
      ],
-     "times": [0,2,4,6,8,9,10,11,12,13,14,15,16,17,18,19,20,20,22,24,26,26,30]
+     "times": [0,1,3,3,5,5,6,7,8,9,10,10,11,11,13,13,15,15,17,17,18,19,20,20,22,22,24,25,28]
     },
     {
      "stops": [
       "940GZZDLLEW",
       "940GZZDLELV",
       "940GZZDLDEP",
+      "940GZZDLDEP",
       "940GZZDLGRE",
+      "940GZZDLGRE",
+      "940GZZDLCUT",
       "940GZZDLCUT",
       "940GZZDLISL",
       "940GZZDLISL",
+      "940GZZDLMUD",
       "940GZZDLMUD",
       "940GZZDLCLA",
       "940GZZDLCLA",
@@ -17372,10 +18039,15 @@
       "940GZZDLHEQ",
       "940GZZDLCAN"
      ],
-     "times": [0,2,4,6,8,9,10,11,12,13,14,15,16,17,18]
+     "times": [0,1,3,3,5,5,7,7,8,9,10,10,11,11,13,13,15,15,17]
     }
    ],
    "schedules": [
+    {
+     "name": "Monday - Friday",
+     "departures": [327,337,349,358,367,376,380,385,389,394,398,403,407,412,416,421,425,430,434,439,443,448,452,457,461,466,470,475,479,484,488,493,497,502,506,511,515,520,524,529,533,538,542,547,551,556,560,565,569,574,577,582,587,592,597,602,607,612,617,622,627,632,637,642,647,652,657,662,667,672,677,682,687,692,697,702,707,712,717,722,727,732,737,742,747,752,757,762,767,772,777,782,787,792,797,802,807,812,817,822,827,832,837,842,847,852,857,862,867,872,877,882,887,892,897,902,907,912,917,922,927,934,938,943,947,952,956,961,965,970,974,979,983,988,992,997,1001,1006,1010,1015,1019,1024,1028,1033,1037,1042,1046,1051,1055,1060,1064,1069,1073,1078,1082,1087,1091,1096,1100,1105,1109,1114,1118,1123,1127,1132,1136,1141,1145,1150,1154,1158,1162,1167,1172,1177,1182,1187,1192,1197,1202,1207,1212,1217,1222,1227,1232,1237,1242,1247,1252,1257,1262,1267,1272,1277,1282,1287,1292,1297,1302,1307,1312,1317,1322,1327,1332,1337,1342,1347,1352,1357,1362,1367,1372,1377,1382,1387,1392,1398,1402,1408,1418,1428,1438,1448,1458,1468,1478],
+     "routes": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1]
+    },
     {
      "name": "Sunday",
      "departures": [416,426,436,446,456,466,476,486,496,506,516,526,536,546,556,566,576,586,596,601,606,611,616,621,626,631,636,641,646,651,656,661,666,671,676,681,686,691,696,701,706,711,716,721,726,731,736,741,746,751,756,761,766,771,776,781,786,791,796,801,806,811,816,821,826,831,836,841,846,851,856,861,866,871,876,881,886,891,896,901,906,911,916,921,926,931,936,941,946,951,956,961,966,971,976,981,986,991,996,1001,1006,1011,1016,1021,1026,1031,1036,1041,1046,1051,1056,1061,1066,1071,1076,1081,1086,1091,1096,1101,1106,1111,1116,1121,1126,1131,1136,1141,1146,1151,1156,1161,1166,1176,1186,1196,1206,1216,1226,1236,1246,1256,1266,1276,1286,1296,1306,1316,1326,1336,1346,1356,1366,1376,1386,1396,1406,1416],
@@ -17399,34 +18071,28 @@
       "940GZZDLKGV",
       "940GZZDLKGV",
       "940GZZDLLCA",
-      "940GZZDLPDK",
-      "940GZZDLWSV",
-      "940GZZDLCGT"
-     ],
-     "times": [0,3,4,6,8,10,14]
-    },
-    {
-     "stops": [
-      "940GZZDLWLA",
-      "940GZZDLKGV",
-      "940GZZDLKGV",
       "940GZZDLLCA",
       "940GZZDLPDK",
+      "940GZZDLPDK",
+      "940GZZDLWSV",
       "940GZZDLWSV",
       "940GZZDLCGT",
       "940GZZDLCGT",
       "940GZZDLEIN",
       "940GZZDLEIN",
       "940GZZDLBLA",
+      "940GZZDLBLA",
       "940GZZDLPOP",
       "940GZZDLPOP",
       "940GZZDLWFE",
+      "940GZZDLWFE",
+      "940GZZDLLIM",
       "940GZZDLLIM",
       "940GZZDLSHA",
       "940GZZDLSHA",
       "940GZZDLBNK"
      ],
-     "times": [0,3,4,6,8,10,13,14,16,16,17,19,19,21,23,25,26,29]
+     "times": [0,3,3,5,6,8,8,9,10,12,13,15,15,17,17,18,19,21,21,23,23,25,25,29]
     },
     {
      "stops": [
@@ -17434,28 +18100,79 @@
       "940GZZDLKGV",
       "940GZZDLKGV",
       "940GZZDLLCA",
+      "940GZZDLLCA",
       "940GZZDLPDK",
+      "940GZZDLPDK",
+      "940GZZDLWSV",
+      "940GZZDLWSV",
+      "940GZZDLCGT",
+      "940GZZDLCGT",
+      "940GZZDLSTL",
+      "940GZZDLSTL",
+      "940GZZDLWHM",
+      "940GZZDLWHM",
+      "940GZZDLABR",
+      "940GZZDLABR",
+      "940GZZDLSHS",
+      "940GZZDLSHS",
+      "940GZZDLSTD",
+      "940GZZDLSTD",
+      "940GZZDLSIT"
+     ],
+     "times": [0,3,3,5,6,8,8,9,10,13,14,15,15,16,17,18,18,20,20,21,21,24]
+    },
+    {
+     "stops": [
+      "940GZZDLWLA",
+      "940GZZDLKGV",
+      "940GZZDLKGV",
+      "940GZZDLLCA",
+      "940GZZDLLCA",
+      "940GZZDLPDK",
+      "940GZZDLPDK",
+      "940GZZDLWSV",
       "940GZZDLWSV",
       "940GZZDLCGT",
       "940GZZDLCGT",
       "940GZZDLEIN",
       "940GZZDLEIN",
       "940GZZDLBLA",
+      "940GZZDLBLA",
       "940GZZDLPOP"
      ],
-     "times": [0,3,4,6,8,10,13,14,16,16,17,19]
+     "times": [0,3,3,5,6,8,8,9,10,12,13,15,15,17,17,18]
+    },
+    {
+     "stops": [
+      "940GZZDLWLA",
+      "940GZZDLKGV",
+      "940GZZDLKGV",
+      "940GZZDLLCA",
+      "940GZZDLLCA",
+      "940GZZDLPDK",
+      "940GZZDLPDK",
+      "940GZZDLWSV",
+      "940GZZDLWSV",
+      "940GZZDLCGT"
+     ],
+     "times": [0,3,3,5,6,8,8,9,10,13]
     }
    ],
    "schedules": [
     {
+     "name": "Monday - Friday",
+     "departures": [319,329,339,344,346,350,355,359,364,369,373,379,382,386,391,395,400,404,409,413,418,422,427,431,436,440,445,449,454,458,463,467,472,476,481,485,490,494,499,503,508,512,517,521,526,530,535,539,544,548,553,557,562,566,571,575,579,584,589,594,599,604,609,614,619,624,629,634,639,644,649,654,659,664,669,674,679,684,689,694,699,704,709,714,719,724,729,734,739,744,749,754,759,764,769,774,779,784,789,794,799,804,809,814,819,824,829,834,839,844,849,854,859,864,869,874,879,884,889,894,899,904,909,914,919,924,930,934,940,944,949,954,958,964,967,971,976,980,985,989,994,998,1003,1007,1012,1016,1021,1025,1030,1034,1039,1043,1048,1052,1057,1061,1066,1070,1075,1079,1084,1088,1093,1097,1102,1106,1111,1115,1120,1124,1129,1133,1138,1142,1147,1151,1159,1164,1169,1174,1179,1184,1189,1194,1198,1204,1208,1214,1219,1224,1229,1234,1239,1244,1249,1254,1259,1264,1269,1274,1279,1284,1289,1294,1299,1304,1309,1314,1319,1324,1329,1334,1339,1344,1349,1354,1359,1364,1369,1374,1379,1384,1389,1394,1399,1404,1409,1414,1419,1424,1429,1434,1439,1444,1449,1454,1459,1464,1469,1474,1479,1484],
+     "routes": [0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,2,3,2,3,2,3]
+    },
+    {
      "name": "Sunday",
-     "departures": [409,414,419,424,429,434,439,444,449,454,459,464,469,474,479,484,489,494,499,504,509,514,519,524,529,534,539,544,549,554,559,564,569,574,579,584,589,594,599,604,609,614,619,624,629,634,639,644,649,654,659,664,669,674,679,684,689,694,699,704,709,714,719,724,729,734,739,744,749,754,759,764,769,774,779,784,789,794,799,804,809,814,819,824,829,834,839,844,849,854,859,864,869,874,879,884,889,894,899,904,909,914,919,924,929,934,939,944,949,954,959,964,969,974,979,984,989,994,999,1004,1009,1014,1019,1024,1029,1034,1039,1044,1049,1054,1059,1064,1069,1074,1079,1084,1089,1094,1099,1104,1109,1114,1119,1124,1129,1134,1139,1144,1149,1154,1159,1164,1169,1174,1179,1184,1189,1194,1199,1204,1209,1214,1219,1224,1229,1234,1239,1244,1249,1254,1259,1264,1269,1274,1279,1284,1289,1294,1299,1304,1309,1314,1319,1324,1329,1334,1339,1344,1349,1354,1359,1364,1369,1374,1379,1384,1389,1394,1399,1404,1409,1414,1419,1424],
-     "routes": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,2,0,2,0]
+     "departures": [409,419,429,434,439,444,449,454,459,464,469,474,479,484,489,494,499,504,509,514,519,524,529,534,539,544,549,554,559,564,569,574,579,584,589,594,599,604,609,614,619,624,629,634,639,644,649,654,659,664,669,674,679,684,689,694,699,704,709,714,719,724,729,734,739,744,749,754,759,764,769,774,779,784,789,794,799,804,809,814,819,824,829,834,839,844,849,854,859,864,869,874,879,884,889,894,899,904,909,914,919,924,929,934,939,944,949,954,959,964,969,974,979,984,989,994,999,1004,1009,1014,1019,1024,1029,1034,1039,1044,1049,1054,1059,1064,1069,1074,1079,1084,1089,1094,1099,1104,1109,1114,1119,1124,1129,1134,1139,1144,1149,1154,1159,1164,1169,1174,1179,1184,1189,1194,1199,1204,1209,1214,1219,1224,1229,1234,1239,1244,1249,1254,1259,1264,1269,1274,1279,1284,1289,1294,1299,1304,1309,1314,1319,1324,1329,1334,1339,1344,1349,1354,1359,1364,1369,1374,1379,1384,1390,1394,1399,1404,1409,1414,1419,1424],
+     "routes": [0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,2,3,2,3,2,3]
     },
     {
      "name": "Saturdays and Public Holidays",
-     "departures": [319,324,329,334,339,344,349,354,359,364,369,374,379,384,389,394,399,404,409,414,419,424,429,434,439,444,449,454,459,464,469,474,479,484,489,494,499,504,509,514,519,524,529,534,539,544,549,554,559,564,569,574,579,584,589,594,599,604,609,614,619,624,629,634,639,644,649,654,659,664,669,674,679,684,689,694,699,704,709,714,719,724,729,734,739,744,749,754,759,764,769,774,779,784,789,794,799,804,809,814,819,824,829,834,839,844,849,854,859,864,869,874,879,884,889,894,899,904,909,914,919,924,929,934,939,944,949,954,959,964,969,974,979,984,989,994,999,1004,1009,1014,1019,1024,1029,1034,1039,1044,1049,1054,1059,1064,1069,1074,1079,1084,1089,1094,1099,1104,1109,1114,1119,1124,1129,1134,1139,1144,1149,1154,1159,1164,1169,1174,1179,1184,1189,1194,1199,1204,1209,1214,1219,1224,1229,1234,1239,1244,1249,1254,1259,1264,1269,1274,1279,1284,1289,1294,1299,1304,1309,1314,1319,1324,1329,1334,1339,1344,1349,1354,1359,1364,1369,1374,1379,1384,1389,1394,1399,1404,1409,1414,1419,1424,1429,1434,1439,1444,1449,1454,1459,1464,1469,1474,1479,1484],
-     "routes": [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,2,0,2,0]
+     "departures": [319,329,339,344,349,354,359,364,369,374,379,384,389,394,399,404,409,414,419,424,429,434,439,444,449,454,459,464,469,474,479,484,489,494,499,504,509,514,519,524,529,534,539,544,549,554,559,564,569,574,579,584,589,594,599,604,609,614,619,624,629,634,639,644,649,654,659,664,669,674,679,684,689,694,699,704,709,714,719,724,729,734,739,744,749,754,759,764,769,774,779,784,789,794,799,804,809,814,819,824,829,834,839,844,849,854,859,864,869,874,879,884,889,894,899,904,909,914,919,924,929,934,939,944,949,954,959,964,969,974,979,984,989,994,999,1004,1009,1014,1019,1024,1029,1034,1039,1044,1049,1054,1059,1064,1069,1074,1079,1084,1089,1094,1099,1104,1109,1114,1119,1124,1129,1134,1139,1144,1149,1154,1159,1164,1169,1174,1179,1184,1189,1194,1199,1204,1209,1214,1219,1224,1229,1234,1239,1244,1249,1254,1259,1264,1269,1274,1279,1284,1289,1294,1299,1304,1309,1314,1319,1324,1329,1334,1339,1344,1349,1354,1359,1364,1369,1374,1379,1384,1389,1394,1399,1404,1409,1414,1419,1424,1429,1434,1439,1444,1450,1454,1459,1464,1469,1474,1479,1484],
+     "routes": [0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,2,3,2,3,2,3]
     }
    ]
   },
@@ -19145,7 +19862,43 @@
       "940GZZLUTAW",
       "940GZZLUHBT"
      ],
-     "times": [0,2,4,6,8,9,11,13,15,17,19,21,24,25,27,28,29,31,32,33,35,38,38,39,41,43,45,48,52,54,56,59,62]
+     "times": [0,2,4,6,8,9,11,13,15,16,18,21,24,25,26,28,29,30,32,33,35,37,37,39,41,42,45,48,51,54,55,58,61]
+    },
+    {
+     "stops": [
+      "940GZZLUMDN",
+      "940GZZLUSWN",
+      "940GZZLUCSD",
+      "940GZZLUTBY",
+      "940GZZLUTBC",
+      "940GZZLUBLM",
+      "940GZZLUCPS",
+      "940GZZLUCPC",
+      "940GZZLUCPN",
+      "940GZZLUSKW",
+      "940GZZLUOVL",
+      "940GZZLUKNG",
+      "940GZZLUWLO",
+      "940GZZLUEMB",
+      "940GZZLUCHX",
+      "940GZZLULSQ",
+      "940GZZLUTCR",
+      "940GZZLUGDG",
+      "940GZZLUWRR",
+      "940GZZLUEUS",
+      "940GZZLUMTC",
+      "940GZZLUCTN",
+      "940GZZLUCFM",
+      "940GZZLUBZP",
+      "940GZZLUHTD",
+      "940GZZLUGGN",
+      "940GZZLUBTX",
+      "940GZZLUHCL",
+      "940GZZLUCND",
+      "940GZZLUBTK",
+      "940GZZLUEGW"
+     ],
+     "times": [0,2,4,6,8,10,12,13,15,17,19,21,24,25,26,28,29,30,32,33,35,37,39,40,43,47,50,52,54,57,59]
     },
     {
      "stops": [
@@ -19196,42 +19949,6 @@
       "940GZZLUSKW",
       "940GZZLUOVL",
       "940GZZLUKNG",
-      "940GZZLUWLO",
-      "940GZZLUEMB",
-      "940GZZLUCHX",
-      "940GZZLULSQ",
-      "940GZZLUTCR",
-      "940GZZLUGDG",
-      "940GZZLUWRR",
-      "940GZZLUEUS",
-      "940GZZLUMTC",
-      "940GZZLUCTN",
-      "940GZZLUCFM",
-      "940GZZLUBZP",
-      "940GZZLUHTD",
-      "940GZZLUGGN",
-      "940GZZLUBTX",
-      "940GZZLUHCL",
-      "940GZZLUCND",
-      "940GZZLUBTK",
-      "940GZZLUEGW"
-     ],
-     "times": [0,2,4,6,8,10,12,13,15,17,19,22,24,26,27,28,30,31,32,34,36,38,39,41,43,48,51,53,56,58,60]
-    },
-    {
-     "stops": [
-      "940GZZLUMDN",
-      "940GZZLUSWN",
-      "940GZZLUCSD",
-      "940GZZLUTBY",
-      "940GZZLUTBC",
-      "940GZZLUBLM",
-      "940GZZLUCPS",
-      "940GZZLUCPC",
-      "940GZZLUCPN",
-      "940GZZLUSKW",
-      "940GZZLUOVL",
-      "940GZZLUKNG",
       "940GZZLUEAC",
       "940GZZLUBOR",
       "940GZZLULNB",
@@ -19248,21 +19965,6 @@
       "940GZZLUGGN"
      ],
      "times": [0,2,4,6,8,9,11,13,15,17,19,21,23,25,27,29,31,33,35,38,40,43,45,46,49,53]
-    },
-    {
-     "stops": [
-      "940GZZLUMDN",
-      "940GZZLUSWN",
-      "940GZZLUCSD",
-      "940GZZLUTBY",
-      "940GZZLUTBC",
-      "940GZZLUBLM",
-      "940GZZLUCPS",
-      "940GZZLUCPC",
-      "940GZZLUCPN",
-      "940GZZLUSKW"
-     ],
-     "times": [0,2,4,6,8,9,11,13,15,16]
     },
     {
      "stops": [
@@ -19336,23 +20038,23 @@
    "schedules": [
     {
      "name": "Saturday (also Good Friday)",
-     "departures": [186,194,201,209,216,224,231,239,246,254,261,269,276,284,291,299,306,315,318,321,325,329,332,336,339,342,346,350,353,357,361,365,368,370,373,376,379,381,384,386,389,392,395,398,401,404,407,409,413,416,419,422,425,428,431,434,437,440,443,446,449,452,455,458,461,464,467,470,473,476,479,482,485,488,491,494,497,500,503,506,509,512,515,518,521,524,527,530,533,536,539,542,545,548,551,554,557,560,563,566,569,572,575,578,581,584,587,590,593,596,599,602,605,608,611,614,617,620,623,626,629,632,635,638,641,644,647,650,653,656,659,662,665,668,671,674,677,680,683,686,689,692,695,698,701,704,707,710,713,716,719,722,725,728,731,734,737,740,743,746,749,752,755,758,761,764,767,770,773,776,779,782,785,788,791,794,797,800,803,806,809,812,815,818,821,824,827,830,833,836,839,842,845,848,851,854,857,860,863,866,869,872,875,878,881,884,887,890,893,896,899,902,905,908,911,914,917,920,923,926,929,932,935,938,941,944,947,950,953,956,959,962,965,968,971,974,977,980,983,986,989,992,995,998,1001,1004,1007,1010,1013,1016,1019,1022,1025,1028,1031,1034,1037,1040,1043,1046,1049,1052,1055,1058,1061,1064,1067,1070,1073,1076,1079,1082,1085,1088,1091,1094,1097,1100,1103,1106,1109,1112,1115,1118,1121,1124,1127,1130,1133,1136,1139,1142,1145,1148,1151,1154,1157,1160,1163,1166,1169,1172,1175,1178,1181,1184,1187,1190,1193,1196,1199,1202,1205,1208,1211,1214,1217,1220,1223,1226,1229,1232,1235,1238,1241,1244,1247,1250,1253,1256,1259,1262,1265,1268,1271,1274,1277,1280,1283,1286,1289,1292,1295,1298,1301,1304,1307,1310,1313,1316,1319,1322,1325,1328,1331,1334,1337,1340,1343,1346,1349,1352,1355,1358,1361,1364,1368,1371,1375,1378,1382,1385,1389,1392,1396,1399,1403,1406,1410,1414,1419,1424,1430,1435,1440,1446,1452,1452,1461,1461,1469,1476,1484,1491,1499,1506,1514,1521,1529,1536,1544,1551,1559,1566,1574,1581,1589,1596,1604,1611,1619],
-     "routes": [7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,0,3,0,3,1,0,3,1,1,0,4,1,0,2,5,0,1,0,1,0,5,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,1,0,0,1,0,1,0,1,1,3,3,5,5,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7]
+     "departures": [186,194,201,209,216,224,231,239,246,254,261,269,276,284,291,299,306,315,318,321,325,329,332,336,339,342,346,350,353,357,361,365,368,370,373,376,379,381,384,386,389,392,395,398,401,404,407,409,413,416,419,422,425,428,431,434,437,440,443,446,449,452,455,458,461,464,467,470,473,476,479,482,485,488,491,494,497,500,503,506,509,512,515,518,521,524,527,530,533,536,539,542,545,548,551,554,557,560,563,566,569,572,575,578,581,584,587,590,593,596,599,602,605,608,611,614,617,620,623,626,629,632,635,638,641,644,647,650,653,656,659,662,665,668,671,674,677,680,683,686,689,692,695,698,701,704,707,710,713,716,719,722,725,728,731,734,737,740,743,746,749,752,755,758,761,764,767,770,773,776,779,782,785,788,791,794,797,800,803,806,809,812,815,818,821,824,827,830,833,836,839,842,845,848,851,854,857,860,863,866,869,872,875,878,881,884,887,890,893,896,899,902,905,908,911,914,917,920,923,926,929,932,935,938,941,944,947,950,953,956,959,962,965,968,971,974,977,980,983,986,989,992,995,998,1001,1004,1007,1010,1013,1016,1019,1022,1025,1028,1031,1034,1037,1040,1043,1046,1049,1052,1055,1058,1061,1064,1067,1070,1073,1076,1079,1082,1085,1088,1091,1094,1097,1100,1103,1106,1109,1112,1115,1118,1121,1124,1127,1130,1133,1136,1139,1142,1145,1148,1151,1154,1157,1160,1163,1166,1169,1172,1175,1178,1181,1184,1187,1190,1193,1196,1199,1202,1205,1208,1211,1214,1217,1220,1223,1226,1229,1232,1235,1238,1241,1244,1247,1250,1253,1256,1259,1262,1265,1268,1271,1274,1277,1280,1283,1286,1289,1292,1295,1298,1301,1304,1307,1310,1313,1316,1319,1322,1325,1328,1331,1334,1337,1340,1343,1346,1349,1352,1355,1358,1361,1364,1368,1371,1375,1378,1382,1385,1389,1392,1396,1399,1403,1406,1410,1414,1419,1424,1430,1435,1440,1446,1452,1461,1469,1476,1484,1491,1499,1506,1514,1521,1529,1536,1544,1551,1559,1566,1574,1581,1589,1596,1604,1611,1619],
+     "routes": [4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,0,3,0,3,1,0,3,1,1,0,5,1,0,2,4,0,1,0,1,0,4,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,1,0,0,1,0,1,0,1,1,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3]
     },
     {
      "name": "Monday - Thursday",
      "departures": [315,318,321,324,327,330,333,337,341,345,349,353,356,359,362,364,367,369,372,374,377,380,383,385,388,390,393,395,397,400,402,404,407,409,411,413,416,418,420,422,425,427,429,431,434,436,438,440,442,444,446,448,450,452,454,456,458,459,461,463,465,467,469,471,473,475,477,479,480,482,484,486,488,490,492,494,496,498,500,502,504,506,507,509,511,513,515,517,519,521,523,525,527,529,531,533,536,538,540,543,545,547,549,552,554,557,560,562,564,566,570,572,575,578,581,583,587,589,593,595,599,602,605,608,611,614,617,620,623,626,629,632,635,638,641,644,647,650,653,656,659,662,665,668,671,674,677,680,683,686,689,692,695,698,701,704,707,710,713,716,719,722,725,728,731,734,737,740,743,746,749,752,755,758,761,764,767,770,773,776,779,782,785,788,791,794,797,800,803,806,809,812,815,818,821,824,827,830,833,836,839,842,845,848,851,854,857,860,863,866,869,872,875,878,881,884,887,890,893,896,899,902,905,908,911,914,917,920,923,926,929,932,935,938,941,944,947,950,953,956,959,961,964,966,968,971,974,976,978,982,985,987,989,991,993,995,997,999,1001,1003,1005,1007,1009,1011,1013,1015,1017,1019,1021,1024,1026,1028,1030,1032,1034,1036,1038,1040,1042,1044,1046,1048,1050,1052,1054,1056,1058,1060,1062,1064,1066,1068,1070,1072,1074,1076,1078,1080,1082,1084,1086,1088,1090,1092,1094,1096,1098,1100,1102,1104,1106,1108,1110,1112,1114,1116,1118,1120,1122,1124,1126,1128,1130,1132,1134,1136,1139,1141,1144,1147,1150,1152,1154,1157,1160,1162,1164,1166,1169,1172,1175,1178,1181,1184,1187,1190,1193,1196,1199,1202,1205,1208,1211,1213,1217,1220,1223,1226,1229,1232,1235,1238,1241,1244,1247,1250,1253,1256,1259,1262,1265,1268,1271,1274,1277,1280,1283,1286,1289,1292,1295,1298,1301,1304,1307,1310,1313,1316,1319,1322,1325,1328,1331,1334,1337,1340,1344,1347,1351,1355,1358,1362,1365,1369,1372,1376,1379,1383,1386,1390,1393,1397,1400,1404,1407,1410,1416,1420,1425,1430,1436,1445],
-     "routes": [3,0,3,1,5,0,3,1,0,3,1,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,0,3,0,0,3,0,0,4,0,0,3,0,0,4,0,0,3,0,6,0,0,0,0,4,6,0,0,0,0,6,0,4,1,0,0,6,0,0,9,0,0,0,6,0,0,3,0,0,6,0,3,0,2,0,0,0,0,0,0,3,6,0,0,0,6,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,5,1,0,1,0,2,0,1,6,1,0,5,8,0,5,1,6,1,0,4,1,6,9,2,0,8,0,1,6,3,1,0,1,0,9,2,6,8,0,3,1,0,1,0,4,1,0,2,0,3,1,0,1,0,3,1,0,1,0,9,2,0,8,0,3,1,0,1,6,4,1,0,2,0,3,1,0,1,0,3,1,0,1,0,3,1,0,1,4,0,1,0,2,3,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,2,6,1,0,2,6,1,0,2,0,1,6,1,0,0,1,0,1]
+     "routes": [3,0,3,1,4,0,3,1,0,3,1,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,0,3,0,0,3,0,0,5,0,0,3,0,0,5,0,0,3,0,6,0,0,0,0,5,6,0,0,0,0,6,0,5,1,0,0,6,0,0,8,0,0,0,6,0,0,3,0,0,6,0,3,0,2,0,0,0,0,0,0,3,6,0,0,0,6,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,4,1,0,1,0,2,0,1,6,1,0,4,7,0,4,1,6,1,0,5,1,6,8,2,0,7,0,1,6,3,1,0,1,0,8,2,6,7,0,3,1,0,1,0,5,1,0,2,0,3,1,0,1,0,3,1,0,1,0,8,2,0,7,0,3,1,0,1,6,5,1,0,2,0,3,1,0,1,0,3,1,0,1,0,3,1,0,1,5,0,1,0,2,3,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,2,6,1,0,2,6,1,0,2,0,1,6,1,0,0,1,0,1]
     },
     {
      "name": "Friday",
      "departures": [315,318,321,324,327,330,333,337,341,345,349,353,356,359,362,364,367,369,372,374,377,380,383,385,388,390,393,395,397,400,402,404,407,409,411,413,416,418,420,422,425,427,429,431,434,436,438,440,442,444,446,448,450,452,454,456,458,459,461,463,465,467,469,471,473,475,477,479,480,482,484,486,488,490,492,494,496,498,500,502,504,506,507,509,511,513,515,517,519,521,523,525,527,529,531,533,536,538,540,543,545,547,549,552,554,557,560,562,564,566,570,572,575,578,581,583,587,589,593,595,599,602,605,608,611,614,617,620,623,626,629,632,635,638,641,644,647,650,653,656,659,662,665,668,671,674,677,680,683,686,689,692,695,698,701,704,707,710,713,716,719,722,725,728,731,734,737,740,743,746,749,752,755,758,761,764,767,770,773,776,779,782,785,788,791,794,797,800,803,806,809,812,815,818,821,824,827,830,833,836,839,842,845,848,851,854,857,860,863,866,869,872,875,878,881,884,887,890,893,896,899,902,905,908,911,914,917,920,923,926,929,932,935,938,941,944,947,950,953,956,959,961,964,966,968,971,974,976,978,982,985,987,989,991,993,995,997,999,1001,1003,1005,1007,1009,1011,1013,1015,1017,1019,1021,1024,1026,1028,1030,1032,1034,1036,1038,1040,1042,1044,1046,1048,1050,1052,1054,1056,1058,1060,1062,1064,1066,1068,1070,1072,1074,1076,1078,1080,1082,1084,1086,1088,1090,1092,1094,1096,1098,1100,1102,1104,1106,1108,1110,1112,1114,1116,1118,1120,1122,1124,1126,1128,1130,1132,1134,1136,1139,1141,1144,1147,1150,1152,1154,1157,1160,1162,1164,1166,1169,1172,1175,1178,1181,1184,1187,1190,1193,1196,1199,1202,1205,1208,1211,1213,1217,1220,1223,1226,1229,1232,1235,1238,1241,1244,1247,1250,1253,1256,1259,1262,1265,1268,1271,1274,1277,1280,1283,1286,1289,1292,1295,1298,1301,1304,1307,1310,1313,1316,1319,1322,1325,1328,1331,1334,1337,1340,1344,1347,1351,1355,1358,1362,1365,1369,1372,1376,1379,1383,1386,1390,1393,1397,1400,1404,1407,1410,1416,1420,1425,1430,1435,1440,1446,1453,1461,1469,1476,1484,1491,1499,1506,1514,1521,1529,1536,1544,1551,1559,1566,1574,1581,1589,1596,1604,1611,1619],
-     "routes": [3,0,3,1,5,0,3,1,0,3,1,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,0,3,0,0,3,0,0,4,0,0,3,0,0,4,0,0,3,0,6,0,0,0,0,4,6,0,0,0,0,6,0,4,1,0,0,6,0,0,9,0,0,0,6,0,0,3,0,0,6,0,3,0,2,0,0,0,0,0,0,3,6,0,0,0,6,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,5,1,0,1,0,2,0,1,6,1,0,5,8,0,5,1,6,1,0,4,1,6,9,2,0,8,0,1,6,3,1,0,1,0,9,2,6,8,0,3,1,0,1,0,4,1,0,2,0,3,1,0,1,0,3,1,0,1,0,9,2,0,8,0,3,1,0,1,6,4,1,0,2,0,3,1,0,1,0,3,1,0,1,0,3,1,0,1,4,0,1,0,2,3,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,2,6,1,0,2,6,1,0,2,0,1,0,1,0,0,1,0,0,1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7]
+     "routes": [3,0,3,1,4,0,3,1,0,3,1,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,3,0,0,3,0,0,0,3,0,0,0,3,0,0,0,0,3,0,0,3,0,0,5,0,0,3,0,0,5,0,0,3,0,6,0,0,0,0,5,6,0,0,0,0,6,0,5,1,0,0,6,0,0,8,0,0,0,6,0,0,3,0,0,6,0,3,0,2,0,0,0,0,0,0,3,6,0,0,0,6,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,4,1,0,1,0,2,0,1,6,1,0,4,7,0,4,1,6,1,0,5,1,6,8,2,0,7,0,1,6,3,1,0,1,0,8,2,6,7,0,3,1,0,1,0,5,1,0,2,0,3,1,0,1,0,3,1,0,1,0,8,2,0,7,0,3,1,0,1,6,5,1,0,2,0,3,1,0,1,0,3,1,0,1,0,3,1,0,1,5,0,1,0,2,3,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,2,6,1,0,2,6,1,0,2,0,1,0,1,0,0,1,0,0,1,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3]
     },
     {
      "name": "Sunday",
      "departures": [186,194,201,209,216,224,231,239,246,254,261,269,276,284,291,299,306,314,321,329,336,344,351,359,366,374,381,389,396,404,409,416,421,424,426,430,434,437,440,443,448,453,457,460,463,465,468,470,473,476,480,483,486,489,493,496,499,502,506,510,512,516,519,522,525,528,532,535,537,539,542,545,548,551,554,557,560,563,566,569,572,575,578,581,584,587,590,593,596,599,602,605,608,611,616,620,623,626,629,632,635,638,641,644,647,650,653,656,659,662,665,668,671,674,677,680,683,686,689,692,695,698,701,704,707,710,713,716,719,722,725,728,731,734,737,740,743,746,749,752,755,758,761,764,767,770,773,776,779,782,785,788,791,794,797,800,803,806,809,812,815,818,821,824,827,830,833,836,839,842,845,848,851,854,857,860,863,866,869,872,875,878,881,884,887,890,893,896,899,902,905,908,911,914,917,920,923,926,929,932,935,938,941,944,947,950,953,956,959,962,965,968,971,974,977,980,983,986,989,992,995,998,1001,1004,1007,1010,1013,1016,1019,1022,1025,1028,1031,1034,1037,1040,1043,1046,1049,1052,1055,1058,1061,1064,1067,1070,1073,1076,1079,1082,1085,1088,1091,1094,1097,1100,1103,1106,1109,1112,1115,1118,1121,1124,1127,1130,1133,1136,1139,1142,1145,1148,1151,1154,1157,1160,1163,1166,1169,1172,1175,1178,1181,1184,1187,1190,1193,1196,1199,1202,1205,1208,1211,1214,1217,1220,1223,1226,1229,1232,1235,1238,1241,1244,1247,1250,1253,1256,1259,1262,1265,1268,1271,1274,1277,1280,1283,1286,1289,1292,1295,1298,1301,1305,1307,1310,1315,1318,1321,1324,1327,1331,1334,1338,1342,1346,1351,1355,1359,1364,1368,1373,1377,1382,1386,1391],
-     "routes": [7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,5,0,3,1,5,0,3,1,0,1,0,5,1,0,5,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,1,0,5,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,2,0,1,6,1,0,1,0,1,6,1,0,2,0,1,0,1]
+     "routes": [4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,4,1,4,0,3,1,4,0,3,1,0,1,0,4,1,0,4,2,0,1,0,1,0,1,0,1,0,2,0,1,0,2,0,1,0,1,0,1,0,4,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,1,0,2,0,1,0,1,0,1,0,2,0,1,6,1,0,1,0,1,6,1,0,2,0,1,0,1]
     }
    ]
   },
@@ -19485,7 +20187,7 @@
       "940GZZLUSWN",
       "940GZZLUMDN"
      ],
-     "times": [0,2,5,7,9,12,16,18,19,22,24,25,27,28,29,31,32,33,34,38,38,40,42,44,45,47,49,51,53,55,57,61]
+     "times": [0,2,5,7,9,12,16,18,19,22,24,25,27,28,29,30,32,33,34,37,38,39,42,43,45,47,49,50,52,54,57,60]
     },
     {
      "stops": [
@@ -19503,7 +20205,7 @@
     {
      "name": "Saturday (also Good Friday)",
      "departures": [180,183,195,210,216,225,231,240,255,270,285,300,313,323,333,343,348,352,357,362,367,372,376,381,385,389,394,398,402,406,410,414,417,420,423,426,429,432,435,438,441,444,447,450,453,456,459,462,465,468,471,474,477,480,483,486,489,492,495,498,501,504,507,510,513,516,519,522,525,528,531,534,537,540,543,546,549,552,555,558,561,564,567,570,573,576,579,582,585,588,591,594,597,600,603,606,609,612,615,618,621,624,627,630,633,636,639,642,645,648,651,654,657,660,663,666,669,672,675,678,681,684,687,690,693,696,699,702,705,708,711,714,717,720,723,726,729,732,735,738,741,744,747,750,753,756,759,762,765,768,771,774,777,780,783,786,789,792,795,798,801,804,807,810,813,816,819,822,825,828,831,834,837,840,843,846,849,852,855,858,861,864,867,870,873,876,879,882,885,888,891,894,897,900,903,906,909,912,915,918,921,924,927,930,933,936,939,942,945,948,951,954,957,960,963,966,969,972,975,978,981,984,987,990,993,996,999,1002,1005,1008,1011,1014,1017,1020,1023,1026,1029,1032,1035,1038,1041,1044,1047,1050,1053,1056,1059,1062,1065,1068,1071,1074,1077,1080,1083,1086,1089,1092,1095,1098,1101,1104,1107,1110,1113,1116,1119,1122,1125,1128,1131,1134,1137,1140,1143,1146,1149,1152,1155,1158,1161,1164,1167,1170,1173,1176,1179,1182,1185,1188,1191,1194,1197,1200,1203,1206,1209,1212,1215,1218,1221,1224,1227,1230,1233,1236,1239,1242,1245,1248,1251,1254,1257,1260,1263,1266,1269,1272,1275,1278,1281,1284,1287,1290,1293,1296,1299,1302,1305,1308,1311,1314,1317,1320,1323,1326,1329,1332,1335,1338,1341,1344,1347,1350,1353,1356,1359,1362,1365,1368,1371,1374,1377,1380,1383,1386,1389,1393,1397,1400,1402,1405,1408,1412,1417,1421,1426,1431,1436,1441,1446,1455,1464,1470,1473,1485,1493,1500,1515,1530,1545,1560,1575,1590,1605],
-     "routes": [1,4,1,1,4,1,4,1,1,1,1,1,1,1,1,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,3,0,1,0,3,0,1,0,1,0,1,0,4,1,0,3,0,1,0,3,0,3,4,1,4,1,4,1,4,1,1,1,1,1,1,1,1]
+     "routes": [3,4,3,3,4,3,4,3,3,3,3,3,3,3,1,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,3,0,1,0,3,0,1,0,1,0,1,0,4,1,0,3,0,1,0,3,0,3,4,3,4,3,4,3,4,3,3,3,3,3,3,3,3]
     },
     {
      "name": "Monday - Thursday",
@@ -19513,12 +20215,12 @@
     {
      "name": "Friday",
      "departures": [323,333,344,349,354,358,362,367,371,376,380,386,389,392,395,400,403,406,411,415,418,423,427,430,432,436,439,442,445,448,451,454,457,460,463,465,468,470,473,475,478,480,483,485,488,490,493,495,498,500,503,505,508,510,515,518,520,523,527,531,533,537,540,543,545,549,552,555,557,561,564,567,569,573,576,579,581,584,587,591,594,596,600,603,605,609,612,615,618,621,624,627,630,633,636,639,642,645,648,651,654,657,660,663,666,669,672,675,678,681,684,687,690,693,696,699,702,705,708,711,714,717,720,723,726,729,732,735,738,741,744,747,750,753,756,759,762,765,768,771,774,777,780,783,786,789,792,795,798,801,804,807,810,813,816,819,822,825,828,831,834,837,840,843,846,849,852,855,858,861,864,867,870,873,876,879,882,885,888,891,894,897,900,903,906,909,912,915,918,921,924,927,930,933,936,939,942,945,948,951,954,957,960,963,966,969,972,976,979,982,985,988,990,993,996,999,1002,1005,1009,1012,1014,1018,1021,1025,1029,1032,1036,1040,1044,1047,1050,1053,1057,1060,1064,1068,1071,1075,1077,1080,1083,1087,1090,1092,1096,1099,1102,1105,1107,1110,1113,1115,1118,1121,1124,1127,1130,1132,1135,1138,1141,1144,1147,1150,1153,1156,1159,1162,1165,1168,1171,1174,1177,1180,1183,1186,1189,1192,1195,1198,1201,1204,1207,1209,1212,1215,1218,1221,1224,1227,1230,1233,1236,1239,1242,1245,1248,1251,1254,1257,1260,1263,1266,1269,1272,1275,1278,1281,1284,1287,1290,1293,1296,1299,1302,1305,1308,1311,1314,1317,1320,1323,1326,1329,1332,1335,1338,1341,1344,1347,1350,1353,1356,1359,1362,1365,1368,1371,1374,1377,1380,1383,1386,1389,1392,1395,1397,1401,1407,1412,1417,1422,1432,1441,1451,1455,1461,1470,1478,1485,1493,1500,1515,1530,1545,1560,1575,1590,1605],
-     "routes": [3,2,2,1,0,1,0,1,0,1,0,0,2,0,2,2,0,2,2,0,2,2,0,1,0,3,0,2,0,2,0,3,0,2,0,2,0,2,0,1,0,3,0,1,0,3,0,1,0,3,0,1,0,3,1,0,3,0,0,3,0,1,0,1,0,1,0,3,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,2,0,2,2,0,3,0,1,0,0,2,2,0,2,0,2,2,2,0,2,2,2,0,2,0,0,2,0,0,0,2,0,2,0,0,2,0,2,2,0,2,0,2,0,2,0,2,0,2,0,2,0,3,0,1,0,3,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,4,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,3,0,1,0,1,0,1,0,3,0,1,0,1,0,1,0,1,0,3,0,1,0,0,1,0,0,1,0,3,3,3,4,1,4,1,4,1,4,1,1,1,1,1,1,1,1]
+     "routes": [3,2,2,1,0,1,0,1,0,1,0,0,2,0,2,2,0,2,2,0,2,2,0,1,0,3,0,2,0,2,0,3,0,2,0,2,0,2,0,1,0,3,0,1,0,3,0,1,0,3,0,1,0,3,1,0,3,0,0,3,0,1,0,1,0,1,0,3,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,2,0,2,2,0,3,0,1,0,0,2,2,0,2,0,2,2,2,0,2,2,2,0,2,0,0,2,0,0,0,2,0,2,0,0,2,0,2,2,0,2,0,2,0,2,0,2,0,2,0,2,0,3,0,1,0,3,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,4,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,3,0,1,0,1,0,1,0,3,0,1,0,1,0,1,0,1,0,3,0,1,0,0,1,0,0,1,0,3,3,3,4,3,4,3,4,3,4,3,3,3,3,3,3,3,3]
     },
     {
      "name": "Sunday",
-     "departures": [180,195,210,225,240,255,261,270,285,300,315,345,360,375,390,400,409,416,426,436,446,455,460,464,468,472,478,483,488,497,501,505,508,512,515,518,522,525,528,531,534,538,541,544,548,551,554,557,561,564,567,570,573,576,579,582,585,588,591,594,597,600,603,606,609,612,615,618,621,624,627,630,633,636,639,642,645,648,651,654,657,660,663,666,669,672,675,678,681,684,687,690,693,696,699,702,705,708,711,714,717,720,723,726,729,732,735,738,741,744,747,750,753,756,759,762,765,768,771,774,777,780,783,786,789,792,795,798,801,804,807,810,813,816,819,822,825,828,831,834,837,840,843,846,849,852,855,858,861,864,867,870,873,876,879,882,885,888,891,894,897,900,903,906,909,912,915,918,921,924,927,930,933,936,939,942,945,948,951,954,957,960,963,966,969,972,975,978,981,984,987,990,993,996,999,1002,1005,1008,1011,1014,1017,1020,1023,1026,1029,1032,1035,1038,1041,1044,1047,1050,1053,1056,1059,1062,1065,1068,1071,1074,1077,1080,1083,1086,1089,1092,1095,1098,1101,1104,1107,1110,1113,1116,1119,1122,1125,1128,1131,1134,1137,1140,1143,1146,1149,1152,1155,1158,1161,1164,1167,1170,1173,1176,1179,1182,1185,1188,1191,1194,1197,1200,1203,1206,1209,1212,1215,1218,1221,1224,1227,1230,1233,1236,1239,1242,1245,1248,1251,1254,1257,1260,1263,1266,1269,1272,1275,1278,1281,1284,1287,1290,1293,1296,1299,1302,1306,1309,1312,1315,1319,1322,1325,1328,1332,1335,1339,1342,1345,1349,1354,1357,1361,1365,1369,1373,1377,1381,1386,1391,1396,1403,1412,1419,1427,1433,1440],
-     "routes": [1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,2,0,0,0,0,2,1,0,1,0,0,2,2,0,2,0,2,0,2,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,3,0,3,3,0,3,4,4,4,4,4,4,4]
+     "departures": [180,195,210,225,240,255,261,270,285,300,315,330,345,360,375,390,400,409,416,426,436,446,455,460,464,468,472,478,483,488,497,501,505,508,512,515,518,522,525,528,531,534,538,541,544,548,551,554,557,561,564,567,570,573,576,579,582,585,588,591,594,597,600,603,606,609,612,615,618,621,624,627,630,633,636,639,642,645,648,651,654,657,660,663,666,669,672,675,678,681,684,687,690,693,696,699,702,705,708,711,714,717,720,723,726,729,732,735,738,741,744,747,750,753,756,759,762,765,768,771,774,777,780,783,786,789,792,795,798,801,804,807,810,813,816,819,822,825,828,831,834,837,840,843,846,849,852,855,858,861,864,867,870,873,876,879,882,885,888,891,894,897,900,903,906,909,912,915,918,921,924,927,930,933,936,939,942,945,948,951,954,957,960,963,966,969,972,975,978,981,984,987,990,993,996,999,1002,1005,1008,1011,1014,1017,1020,1023,1026,1029,1032,1035,1038,1041,1044,1047,1050,1053,1056,1059,1062,1065,1068,1071,1074,1077,1080,1083,1086,1089,1092,1095,1098,1101,1104,1107,1110,1113,1116,1119,1122,1125,1128,1131,1134,1137,1140,1143,1146,1149,1152,1155,1158,1161,1164,1167,1170,1173,1176,1179,1182,1185,1188,1191,1194,1197,1200,1203,1206,1209,1212,1215,1218,1221,1224,1227,1230,1233,1236,1239,1242,1245,1248,1251,1254,1257,1260,1263,1266,1269,1272,1275,1278,1281,1284,1287,1290,1293,1296,1299,1302,1306,1309,1312,1315,1319,1322,1325,1328,1332,1335,1339,1342,1345,1349,1354,1357,1361,1365,1369,1373,1377,1381,1386,1391,1396,1403,1412,1419,1427,1433,1440],
+     "routes": [3,3,3,3,3,3,4,3,3,3,3,3,3,3,3,3,3,2,0,0,0,0,2,1,0,1,0,0,2,2,0,2,0,2,0,2,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,3,0,3,3,0,3,4,4,4,4,4,4,4]
     }
    ]
   },
@@ -19629,7 +20331,7 @@
       "940GZZLUSWN",
       "940GZZLUMDN"
      ],
-     "times": [0,3,6,7,10,13,15,18,19,21,24,26,28,29,30,31,33,34,35,37,41,41,43,45,47,48,50,52,54,56,58,61,63]
+     "times": [0,3,6,7,10,13,15,18,19,21,24,25,27,28,29,31,32,34,35,36,40,40,42,44,46,47,49,51,53,55,57,59,62]
     },
     {
      "stops": [
@@ -19666,14 +20368,14 @@
       "940GZZLUWLO",
       "940GZZLUKNG"
      ],
-     "times": [0,3,6,7,10,13,15,18,19,21,24,25,27,28,29,31,32,34,35,36,40]
+     "times": [0,3,6,7,10,13,16,18,20,21,24,26,28,29,30,32,33,34,35,37,40]
     }
    ],
    "schedules": [
     {
      "name": "Saturday (also Good Friday)",
      "departures": [186,201,216,231,246,261,276,291,306,315,322,331,341,346,354,360,366,371,374,378,383,387,389,393,398,402,405,408,414,417,420,423,429,432,435,438,444,447,450,453,459,462,465,468,474,477,480,483,489,492,495,498,504,507,510,513,519,522,525,528,534,537,540,543,549,552,555,558,564,567,570,573,579,582,585,588,594,597,600,603,609,612,615,618,624,627,630,633,639,642,645,648,654,657,660,663,669,672,675,678,684,687,690,693,699,702,705,708,714,717,720,723,729,732,735,738,744,747,750,753,759,762,765,768,774,777,780,783,789,792,795,798,804,807,810,813,819,822,825,828,834,837,840,843,849,852,855,858,864,867,870,873,879,882,885,888,894,897,900,903,909,912,915,918,924,927,930,933,939,942,945,948,954,957,960,963,969,972,975,978,984,987,990,993,999,1002,1005,1008,1014,1017,1020,1023,1029,1032,1035,1038,1044,1047,1050,1053,1059,1062,1065,1068,1074,1077,1080,1083,1089,1092,1095,1098,1104,1107,1110,1113,1119,1122,1125,1128,1134,1137,1140,1143,1149,1152,1155,1158,1164,1167,1170,1173,1179,1182,1185,1188,1194,1197,1200,1203,1209,1212,1215,1218,1224,1227,1230,1233,1239,1242,1245,1248,1254,1257,1260,1263,1269,1272,1275,1278,1284,1287,1290,1293,1299,1302,1305,1308,1314,1317,1320,1323,1329,1332,1335,1338,1344,1347,1350,1353,1359,1362,1365,1368,1373,1377,1380,1383,1390,1394,1398,1401,1404,1407,1410,1414,1419,1425,1429,1432,1435,1440,1446,1451,1457,1461,1466,1471,1476,1480,1491,1493,1506,1521,1536,1551,1566,1581,1596,1611],
-     "routes": [4,4,4,4,4,4,4,4,4,4,0,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,3,1,0,1,0,1,0,3,1,0,1,3,3,4,3,3,4,3,4,3,4,4,4,4,4,4,4,4]
+     "routes": [2,2,2,2,2,2,2,2,2,2,0,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,3,1,0,1,0,1,0,3,1,0,1,3,3,2,3,3,2,3,2,3,2,2,2,2,2,2,2,2]
     },
     {
      "name": "Monday - Thursday",
@@ -19683,12 +20385,12 @@
     {
      "name": "Friday",
      "departures": [322,332,342,347,357,362,370,375,380,384,387,392,396,399,404,408,411,415,420,423,427,431,434,439,443,446,451,455,458,462,465,468,471,475,478,480,483,487,489,492,495,499,502,505,508,512,515,518,522,526,529,534,537,541,546,549,552,556,558,563,568,571,574,579,582,585,588,591,594,597,600,603,606,609,612,615,618,624,627,630,633,639,642,645,648,654,657,660,663,669,672,675,678,684,687,690,693,699,702,705,708,714,717,720,723,729,732,735,738,744,747,750,753,759,762,765,768,774,777,780,783,789,792,795,798,804,807,810,813,819,822,825,828,834,837,840,843,849,852,855,858,864,867,870,873,879,882,885,888,894,897,900,903,909,912,915,918,924,927,930,933,939,942,945,948,954,957,960,963,969,972,974,977,983,986,989,991,995,998,1001,1004,1007,1011,1014,1016,1019,1021,1026,1029,1032,1034,1038,1041,1044,1047,1050,1054,1059,1063,1067,1072,1076,1079,1084,1089,1092,1097,1101,1104,1109,1114,1117,1122,1126,1130,1134,1139,1142,1147,1152,1155,1159,1164,1168,1171,1174,1178,1181,1185,1188,1191,1194,1197,1199,1202,1206,1209,1212,1215,1218,1224,1227,1230,1233,1239,1242,1245,1248,1254,1257,1260,1263,1269,1272,1275,1278,1284,1287,1290,1293,1299,1302,1305,1308,1314,1317,1320,1323,1329,1332,1335,1338,1344,1347,1350,1353,1359,1362,1365,1368,1374,1377,1380,1383,1390,1394,1398,1401,1406,1410,1414,1420,1425,1428,1434,1440,1443,1447,1454,1461,1463,1471,1476,1479,1484,1491,1506,1521,1536,1551,1566,1581,1596,1611],
-     "routes": [0,0,0,0,0,1,1,0,0,4,0,0,2,0,0,2,0,0,2,0,0,1,0,0,2,0,0,1,0,0,2,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,1,1,0,1,0,3,0,1,0,1,3,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,2,0,2,0,1,0,1,0,0,4,0,2,0,0,2,0,4,0,0,4,0,2,4,0,2,0,0,2,4,2,0,0,0,4,2,4,0,0,0,2,4,2,0,0,0,1,0,0,0,0,0,1,0,0,1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,3,1,3,4,3,3,4,3,3,4,4,4,4,4,4,4,4,4]
+     "routes": [0,0,0,0,0,1,1,0,0,4,0,0,2,0,0,2,0,0,2,0,0,1,0,0,2,0,0,1,0,0,2,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,1,0,0,1,0,1,1,0,1,0,3,0,1,0,1,3,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,2,0,2,0,1,0,1,0,0,4,0,2,0,0,2,0,4,0,0,4,0,2,4,0,2,0,0,2,4,2,0,0,0,4,2,4,0,0,0,2,4,2,0,0,0,1,0,0,0,0,0,1,0,0,1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,3,1,3,2,3,3,2,3,3,2,2,2,2,2,2,2,2,2]
     },
     {
      "name": "Sunday",
      "departures": [186,201,216,231,246,261,276,291,306,321,336,351,366,381,393,403,413,419,429,435,443,448,453,461,466,472,476,480,484,490,493,497,503,506,510,513,519,523,526,532,536,539,542,548,551,555,558,564,567,570,573,579,582,585,588,594,597,600,603,609,612,615,618,624,627,630,633,639,642,645,648,654,657,660,663,669,672,675,678,684,687,690,693,699,702,705,708,714,717,720,723,729,732,735,738,744,747,750,753,759,762,765,768,774,777,780,783,789,792,795,798,804,807,810,813,819,822,825,828,834,837,840,843,849,852,855,858,864,867,870,873,879,882,885,888,894,897,900,903,909,912,915,918,924,927,930,933,939,942,945,948,954,957,960,963,969,972,975,978,984,987,990,993,999,1002,1005,1008,1014,1017,1020,1023,1029,1032,1035,1038,1044,1047,1050,1053,1059,1062,1065,1068,1074,1077,1080,1083,1089,1092,1095,1098,1104,1107,1110,1113,1119,1122,1125,1128,1134,1137,1140,1143,1149,1152,1155,1158,1164,1167,1170,1173,1179,1182,1185,1188,1194,1197,1200,1203,1209,1212,1215,1218,1224,1227,1230,1233,1239,1242,1245,1248,1254,1257,1260,1263,1269,1272,1275,1278,1284,1287,1290,1294,1300,1303,1306,1309,1314,1317,1320,1323,1330,1333,1335,1339,1344,1347,1350,1354,1359,1363,1368,1372,1375,1378,1384,1388,1391,1396,1405,1412,1422,1432,1440],
-     "routes": [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,1,4,0,4,1,0,0,1,0,4,4,0,4,4,0,4,0,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,3,1,0,0,1,0,1,0,1,0,1,0,2,0,1,3,0,1,0,3,3,3,3,3,3,3]
+     "routes": [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4,0,0,1,4,0,4,1,0,0,1,0,4,4,0,4,4,0,4,0,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,3,1,0,0,1,0,1,0,1,0,1,0,2,0,1,3,0,1,0,3,3,3,3,3,3,3]
     }
    ]
   },
@@ -19849,8 +20551,8 @@
     },
     {
      "name": "Sunday",
-     "departures": [416,416,431,446,464,477,494,507,524,537,552,568,583,598,613,628,643,658,673,688,703,718,733,748,763,778,793,808,823,838,853,868,883,898,913,928,943,958,973,988,1003,1018,1033,1048,1063,1078,1093,1108,1123,1138,1153,1168,1183,1198,1213,1228,1243,1258,1273,1288,1304,1319,1333,1349,1364,1377,1390,1408,1423,1438,1458],
-     "routes": [2,2,3,1,1,0,1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,4,4,4,4,4,4,5,4]
+     "departures": [416,431,446,464,477,494,507,524,537,552,568,583,598,613,628,643,658,673,688,703,718,733,748,763,778,793,808,823,838,853,868,883,898,913,928,943,958,973,988,1003,1018,1033,1048,1063,1078,1093,1108,1123,1138,1153,1168,1183,1198,1213,1228,1243,1258,1273,1288,1304,1319,1333,1349,1364,1377,1390,1408,1423,1438,1458],
+     "routes": [2,3,1,1,0,1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,4,4,4,4,4,4,5,4]
     }
    ]
   },
